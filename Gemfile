@@ -45,6 +45,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
 end
 
 # for image storage
@@ -54,4 +55,4 @@ gem 'spree', '3.0.1'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 
-gem 'spree_build_your_babe', :path => '../spree_build_your_babe'
+gem 'spree_build_your_babe', :git => 'https://github.com/TheTBar/tbar_build_your_babe.git'
