@@ -19,7 +19,7 @@ GIT
       spree_core (~> 3.0.0)
 
 GIT
-  remote: https://radamnyc@github.com/TheTBar/tbar_build_your_babe.git
+  remote: https://e6f0159f3e1ce21650ef25fc8d8564ce51b62c6d:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git
   revision: 63bc4d961a8e3b936c787a71b48c6f9e598f2969
   specs:
     spree_build_your_babe (3.0.1)
