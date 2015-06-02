@@ -47,6 +47,8 @@ group :development, :test do
   gem 'spring'
 end
 
+# for image storage
+gem 'aws-sdk'
 
 gem 'spree', '3.0.1'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
