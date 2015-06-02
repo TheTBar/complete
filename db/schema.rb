@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601184823) do
+ActiveRecord::Schema.define(version: 20150601192533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,30 @@ ActiveRecord::Schema.define(version: 20150601184823) do
 
   add_index "spree_assets", ["viewable_id"], name: "index_assets_on_viewable_id", using: :btree
   add_index "spree_assets", ["viewable_type", "type"], name: "index_assets_on_viewable_type_and_type", using: :btree
+
+  create_table "spree_babes", force: :cascade do |t|
+    t.integer  "spree_user_id",      default: 1
+    t.integer  "body_type_id"
+    t.string   "name"
+    t.integer  "height"
+    t.integer  "band"
+    t.string   "cup"
+    t.string   "bottoms"
+    t.integer  "vixen_value"
+    t.integer  "romantic_value"
+    t.integer  "flirt_value"
+    t.integer  "sophisticate_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_babes", ["spree_user_id"], name: "index_spree_babes_on_spree_user_id", using: :btree
+
+  create_table "spree_body_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_calculators", force: :cascade do |t|
     t.string   "type"

@@ -7,4 +7,5 @@
 
  *= require_self
  *= require_tree .
+ *= require spree/frontend/spree_build_your_babe
 */
