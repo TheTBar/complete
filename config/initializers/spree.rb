@@ -17,12 +17,6 @@ end
 
 Spree.user_class = "Spree::User"
 
-unless Rails.env.production?
-  ENV['AWS_ACCESS_KEY_ID'] = "AKIAIHHK7GIJU2DNES4Q"
-  ENV['AWS_SECRET_ACCESS_KEY'] = "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"
-  ENV['S3_BUCKET_NAME'] = "tbar-products-development"
-end
-
 attachment_config = {
 
     s3_credentials: {

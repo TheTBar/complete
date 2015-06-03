@@ -36,6 +36,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'deface', github: 'spree/deface'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -46,6 +48,8 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  gem 'dotenv-rails', :require => 'dotenv/rails-now'
+
 end
 
 # for image storage
@@ -55,4 +59,4 @@ gem 'spree', '3.0.1'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 
-gem 'spree_build_your_babe', :git => 'https://e6f0159f3e1ce21650ef25fc8d8564ce51b62c6d:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git'
+gem 'spree_build_your_babe', :git => "https://#{ENV['GIT_AUTH_TOKEN']}:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git"
