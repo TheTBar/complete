@@ -197,6 +197,8 @@ GEM
     premailer-rails (1.8.2)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rabl (0.9.4.pre1)
       activesupport (>= 2.3.14)
     rack (1.6.1)
@@ -358,6 +360,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (< 2.0)
+  bootstrap-sass (~> 3.3.4)
   byebug
   coffee-rails (~> 4.1.0)
   deface!
@@ -365,6 +368,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  quiet_assets
   rails (= 4.2.1)
   rails_12factor
   sass-rails (~> 5.0)
