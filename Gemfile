@@ -66,3 +66,6 @@ gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
 gem 'spree_simple_tax_by_zip', :git => "https://github.com/radamnyc/spree_simple_tax_by_zip.git"
 gem 'spree_build_your_babe', :git => "https://#{ENV['GIT_AUTH_TOKEN']}:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git"
 gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
+
+
+#gem 'spree_product_assembly', github: 'radamnyc/spree-product-assembly', branch: '3-0-stable'
