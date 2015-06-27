@@ -39,9 +39,16 @@ GIT
 
 GIT
   remote: https://e6f0159f3e1ce21650ef25fc8d8564ce51b62c6d:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git
-  revision: 88bc136aea2fcf02a38ec919ee23f65584222a42
+  revision: b7cbf45ac75683a2fc7b653fd8823c17ff4f4ea2
   specs:
     spree_build_your_babe (3.0.1)
+      spree_core (~> 3.0.1)
+
+GIT
+  remote: https://github.com/radamnyc/spree_product_packages.git
+  revision: 2de7e59e147e0d89794aad33749dfdc03fe8db47
+  specs:
+    spree_product_packages (3.0.1)
       spree_core (~> 3.0.1)
 
 GIT
@@ -353,7 +360,7 @@ GEM
     truncate_html (0.9.2)
     turbolinks (2.5.3)
       coffee-rails
-    twitter_cldr (3.1.2)
+    twitter_cldr (3.2.1)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0.0)
       json
@@ -400,6 +407,7 @@ DEPENDENCIES
   spree_build_your_babe!
   spree_gateway!
   spree_paypal_express!
+  spree_product_packages!
   spree_simple_tax_by_zip!
   spring
   turbolinks
