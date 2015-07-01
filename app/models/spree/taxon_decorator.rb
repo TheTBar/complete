@@ -35,12 +35,5 @@ Spree::Taxon.class_eval do
   taxon_attachment_config.each do |key, value|
     Spree::Taxon.attachment_definitions[:icon][key.to_sym] = value
   end
-# Load user defined paperclip settings
-#     s3_creds = { :access_key_id => Spree::Config[:access_key_id], :secret_access_key => Spree::Config[:secret_access_key], :bucket => Spree::Config[:bucket] }
-#     Spree::Taxon.attachment_definitions[:icon][:storage] = :s3
-#     Spree::Taxon.attachment_definitions[:icon][:s3_credentials] = s3_creds
-#     Spree::Taxon.attachment_definitions[:icon][:s3_headers] = ActiveSupport::JSON.decode(Spree::Config[:s3_headers])
-#     Spree::Taxon.attachment_definitions[:icon][:bucket] = Spree::Config[:s3_bucket]
-
 
 end
