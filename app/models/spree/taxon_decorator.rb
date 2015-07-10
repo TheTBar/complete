@@ -1,5 +1,10 @@
 Spree::Taxon.class_eval do
 
+  before_create :check_for_sets_parent
+
+  validate :check_for_package_node
+
+
   has_attached_file :icon,
                     styles: { mini: '32x32>', normal: '128x128>', display: '240x240>', large: '600x600'},
                     default_style: :mini,
@@ -36,4 +41,19 @@ Spree::Taxon.class_eval do
     Spree::Taxon.attachment_definitions[:icon][key.to_sym] = value
   end
 
+  def check_for_sets_parent
+    if parent.present?
+      if self.parent.name == 'Sets'
+        self.is_package_node = true
+      end
+    end
+  end
+
+  def check_for_package_node
+    if parent.present?
+      if self.parent.is_package_node == true
+        errors.add :parent_id, "Parent cannot be a Set"
+      end
+    end
+  end
 end
