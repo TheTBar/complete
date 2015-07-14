@@ -47,9 +47,9 @@ GIT
 
 GIT
   remote: https://github.com/radamnyc/spree_product_packages.git
-  revision: ff9f04ba96936c8f14ac00b5f6c7057cba0f7272
+  revision: 86b3545005b684f8c1f6a85a240d212a00cb06e8
   specs:
-    spree_product_packages (3.1.1)
+    spree_product_packages (3.1.2)
       spree_core (~> 3.0.1)
 
 GIT
