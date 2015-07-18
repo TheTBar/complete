@@ -46,3 +46,6 @@ attachment_config = {
 attachment_config.each do |key, value|
   Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
 end
+
+
+Premailer::Rails.config.merge!(preserve_styles: true, remove_ids: true)

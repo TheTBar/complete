@@ -65,14 +65,24 @@ end
 # for image storage
 gem 'aws-sdk', '< 2.0'
 
+#spree functionality stuff
 gem 'spree', '3.0.1'
 gem 'spree_gateway', github: 'spree/spree_gateway', branch: '3-0-stable'
 gem 'spree_auth_devise', github: 'spree/spree_auth_devise', branch: '3-0-stable'
+gem 'spree_mail_settings', github: 'spree-contrib/spree_mail_settings', branch: '3-0-stable'
+gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
+gem 'multipart-post', '~> 2.0.0'
+gem 'spree_social', github: 'spree-contrib/spree_social', branch: '3-0-stable'
+gem 'premailer-rails'
+gem 'nokogiri'
 
+
+
+#custom gems
 gem 'spree_simple_tax_by_zip', :git => "https://github.com/radamnyc/spree_simple_tax_by_zip.git"
 gem 'spree_product_packages', :git => "https://github.com/radamnyc/spree_product_packages.git"
 gem 'spree_build_your_babe', :git => "https://#{ENV['GIT_AUTH_TOKEN']}:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git"
-gem 'spree_paypal_express', github: 'spree-contrib/better_spree_paypal_express', branch: '3-0-stable'
 
 
+#do not use, way out of date but there may be some good info in there
 #gem 'spree_product_assembly', github: 'radamnyc/spree-product-assembly', branch: '3-0-stable'
