@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716155625) do
+ActiveRecord::Schema.define(version: 20150719164415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,25 @@ ActiveRecord::Schema.define(version: 20150716155625) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "spree_babe_trait_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spree_babe_trait_values", force: :cascade do |t|
+    t.integer  "babe_trait_type_id"
+    t.string   "name"
+    t.integer  "vixen_value"
+    t.integer  "flirt_value"
+    t.integer  "romantic_value"
+    t.integer  "sophisticate_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_babe_trait_values", ["babe_trait_type_id"], name: "index_spree_babe_trait_values_on_babe_trait_type_id", using: :btree
 
   create_table "spree_babes", force: :cascade do |t|
     t.integer  "spree_user_id",      default: 1
