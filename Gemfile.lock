@@ -62,9 +62,9 @@ GIT
 
 GIT
   remote: https://e6f0159f3e1ce21650ef25fc8d8564ce51b62c6d:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git
-  revision: 096deb64587174c616cb70d7806eb44127876e96
+  revision: 279eb5946997ce8abe4710c70a19177fc6a4bf23
   specs:
-    spree_build_your_babe (3.1.7)
+    spree_build_your_babe (3.1.8)
       spree_core (~> 3.0.1)
       spree_product_packages
 

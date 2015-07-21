@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721203519) do
+ActiveRecord::Schema.define(version: 20150721210315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,10 +112,10 @@ ActiveRecord::Schema.define(version: 20150721203519) do
   create_table "spree_babe_trait_values", force: :cascade do |t|
     t.integer  "spree_babe_trait_type_id"
     t.string   "name"
-    t.integer  "vixen_value"
-    t.integer  "flirt_value"
-    t.integer  "romantic_value"
-    t.integer  "sophisticate_value"
+    t.integer  "vixen_value",              default: 0
+    t.integer  "flirt_value",              default: 0
+    t.integer  "romantic_value",           default: 0
+    t.integer  "sophisticate_value",       default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",                   default: true
@@ -468,10 +468,10 @@ ActiveRecord::Schema.define(version: 20150721203519) do
     t.datetime "updated_at",                          null: false
     t.boolean  "promotionable",        default: true
     t.string   "meta_title"
-    t.integer  "vixen_value"
-    t.integer  "romantic_value"
-    t.integer  "flirt_value"
-    t.integer  "sophisticate_value"
+    t.integer  "vixen_value",          default: 0
+    t.integer  "romantic_value",       default: 0
+    t.integer  "flirt_value",          default: 0
+    t.integer  "sophisticate_value",   default: 0
     t.string   "brand"
   end
 
@@ -950,10 +950,10 @@ ActiveRecord::Schema.define(version: 20150721203519) do
     t.string   "meta_description"
     t.string   "meta_keywords"
     t.integer  "depth"
-    t.integer  "vixen_value"
-    t.integer  "romantic_value"
-    t.integer  "flirt_value"
-    t.integer  "sophisticate_value"
+    t.integer  "vixen_value",        default: 0
+    t.integer  "romantic_value",     default: 0
+    t.integer  "flirt_value",        default: 0
+    t.integer  "sophisticate_value", default: 0
     t.boolean  "is_package_node",    default: false
     t.boolean  "show_products",      default: false
   end
