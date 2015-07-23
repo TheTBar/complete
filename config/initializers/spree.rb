@@ -49,3 +49,5 @@ end
 
 
 Premailer::Rails.config.merge!(preserve_styles: true, remove_ids: true)
+
+Spree::PermittedAttributes.user_attributes.push :name
