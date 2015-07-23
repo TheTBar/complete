@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723124528) do
+ActiveRecord::Schema.define(version: 20150723171754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -956,6 +956,7 @@ ActiveRecord::Schema.define(version: 20150723124528) do
     t.integer  "sophisticate_value", default: 0
     t.boolean  "is_package_node",    default: false
     t.boolean  "show_products",      default: false
+    t.integer  "theme_taxon_id"
   end
 
   add_index "spree_taxons", ["parent_id"], name: "index_taxons_on_parent_id", using: :btree
