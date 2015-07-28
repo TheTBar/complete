@@ -81,8 +81,6 @@ gem 'nokogiri'
 #custom gems
 gem 'spree_simple_tax_by_zip', :git => "https://github.com/radamnyc/spree_simple_tax_by_zip.git"
 gem 'spree_product_packages', :git => "https://github.com/radamnyc/spree_product_packages.git"
-#gem 'spree_build_your_babe', :git => "https://#{ENV['GIT_AUTH_TOKEN']}:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git"
-
 
 #do not use, way out of date but there may be some good info in there
 #gem 'spree_product_assembly', github: 'radamnyc/spree-product-assembly', branch: '3-0-stable'
