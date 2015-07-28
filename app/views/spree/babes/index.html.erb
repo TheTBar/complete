@@ -1,0 +1,11 @@
+<h1>Your Babes</h1>
+<% @babes.each do |babe| %>
+        <h5><strong><%= babe.name %></strong></h5>
+        <div class="babe-controls">
+          <span><%= link_to 'Show Me Her Goods', my_babes_package_list_path(babe) %></span>
+          <span><%= link_to 'Edit', edit_babe_path(babe) %></span>
+          <span><%= link_to 'Delete', babe, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        </div><p></p>
+
+<% end %>
+<%= link_to 'Build A New Babe', new_babe_path %>
