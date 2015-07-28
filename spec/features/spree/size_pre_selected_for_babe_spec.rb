@@ -83,10 +83,10 @@ describe "Get Size pre selected", type: :feature do
     fill_in "babe_cup", :with => "C"
     fill_in "babe_bottoms", :with => "Medium"
     fill_in "babe_number_size", :with => "3"
-    fill_in "babe_vixen_value", :with => "5"
-    fill_in "babe_romantic_value", :with => "4"
-    fill_in "babe_flirt_value", :with => "3"
-    fill_in "babe_sophisticate_value", :with => "2"
+    # fill_in "babe_vixen_value", :with => "5"
+    # fill_in "babe_romantic_value", :with => "4"
+    # fill_in "babe_flirt_value", :with => "3"
+    # fill_in "babe_sophisticate_value", :with => "2"
 
   end
 

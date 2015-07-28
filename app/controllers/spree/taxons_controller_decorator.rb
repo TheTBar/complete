@@ -12,5 +12,14 @@ module Spree
         @themed_packages = Taxon.where(:theme_taxon_id => @taxon.id).all
       end
     end
+
+    def my_babes_package_list
+      @babe = Spree::Babe.find(params[:id])
+      #set babe_id on session
+      session[:babe_id] = @babe.id
+      @taxons = Taxon.get_babes_package_list(@babe)
+      return unless @taxons
+    end
+
   end
 end
