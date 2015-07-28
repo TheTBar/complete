@@ -1,4 +1,4 @@
-Deface::Override.new(:virtual_path => 'spree/babes/_form',
+Deface::Override.new(:virtual_path => 'spree/babes/x_form',
                      :name => 'temporary_babe_fields',
                      :insert_before => "erb[loud]:contains('f.submit \"Show me the goods\"')",
                      :text => "
