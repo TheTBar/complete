@@ -12,7 +12,5 @@ module Spree
         @themed_packages = Taxon.where(:theme_taxon_id => @taxon.id).all
       end
     end
-
-
   end
 end
