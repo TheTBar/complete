@@ -17,7 +17,7 @@ module Spree
       @babe = Spree::Babe.find(params[:id])
       #set babe_id on session
       session[:babe_id] = @babe.id
-      @taxons = Taxon.get_babes_package_list(@babe)
+      @taxons = Taxon.get_babes_available_package_list(@babe)
       return unless @taxons
     end
 

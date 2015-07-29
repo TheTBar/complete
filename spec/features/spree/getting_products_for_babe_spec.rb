@@ -64,12 +64,14 @@ describe "Getting Babe product results", type: :feature do
 
       #{master, "34a"=>1, "34b"=>0, "34c"=>0, "36a"=>0, "36b"=>0, "36c"=>0}
       #{master, "small"=>1, "medium"=>0, "large"=>0}
-      product1.stock_items.third.set_count_on_hand 1
-      product1b.stock_items.second.set_count_on_hand 1
-      product2.stock_items.fourth.set_count_on_hand 1
-      product2b.stock_items.second.set_count_on_hand 1
-      product3.stock_items.third.set_count_on_hand 1
-      product3b.stock_items.second.set_count_on_hand 1
+      #puts product1b.stock_items.inspect
+      set_count_on_hand_for_size(product1,'34C',1)
+      set_count_on_hand_for_size(product1b,'medium',1)
+      set_count_on_hand_for_size(product2,'34C',1)
+      set_count_on_hand_for_size(product2b,'small',1)
+      set_count_on_hand_for_size(product3,'34C',1)
+      set_count_on_hand_for_size(product3b,'medium',1)
+      set_count_on_hand_for_size(product4,'1',1)
 
       visit spree.build_your_babe_path
       fill_in_babe
@@ -79,8 +81,8 @@ describe "Getting Babe product results", type: :feature do
       expect(page).to have_content("Our personalized selection for Stella")
       expect(page).to have_content("package1")
       expect(page).to have_content("package3")
-      expect(page).to_not have_content("packege2")
-      expect(page).to_not have_content("packege4")
+      expect(page).to_not have_content("package2")
+      expect(page).to_not have_content("package4")
 
 
 
@@ -88,12 +90,32 @@ describe "Getting Babe product results", type: :feature do
 
   end
 
+  def set_count_on_hand_for_size(product,size,count)
+    product.stock_items.each do |stock_item|
+      if !stock_item.variant.is_master?
+        if stock_item.variant.option_values.first.name.downcase == size.downcase
+          stock_item.set_count_on_hand count
+        end
+      end
+    end
+  end
+
+  #this is just for debugging the test. ugh
+  def show_product_stock(product)
+    product.stock_items.each do |stock_item|
+      if !stock_item.variant.is_master?
+        puts stock_item.variant.option_values.first.name.downcase
+        puts "stock on hand is #{stock_item.count_on_hand}"
+      end
+    end
+  end
+
   def fill_in_babe
     fill_in "babe_name", :with => "Stella"
     fill_in "babe_height", :with => "65"
     fill_in "babe_band", :with => "34"
     fill_in "babe_cup", :with => "C"
-    fill_in "babe_bottoms", :with => "M"
+    fill_in "babe_bottoms", :with => "Medium"
     fill_in "babe_number_size", :with => "3"
     # fill_in "babe_vixen_value", :with => "5"
     # fill_in "babe_flirt_value", :with => "2"
