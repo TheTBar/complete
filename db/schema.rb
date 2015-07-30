@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723171754) do
+ActiveRecord::Schema.define(version: 20150730201648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,17 @@ ActiveRecord::Schema.define(version: 20150723171754) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "spree_babe_product_search_failures", force: :cascade do |t|
+    t.integer  "spree_user_id"
+    t.integer  "spree_babe_id"
+    t.integer  "number_of_packages_returned"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_babe_product_search_failures", ["spree_babe_id"], name: "index_spree_babe_product_search_failures_on_spree_babe_id", using: :btree
+  add_index "spree_babe_product_search_failures", ["spree_user_id"], name: "index_spree_babe_product_search_failures_on_spree_user_id", using: :btree
 
   create_table "spree_babe_trait_types", force: :cascade do |t|
     t.string   "name"

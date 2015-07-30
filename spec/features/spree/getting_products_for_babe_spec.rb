@@ -6,6 +6,7 @@ Warden.test_mode!
 describe "Getting Babe product results", type: :feature do
 
   before do
+    @base_user = FactoryGirl.create(:user)
     @city_trait = create(:babe_trait_type, name: 'city')
     create(:babe_trait_value, name: 'city 1', spree_babe_trait_type_id: @city_trait.id, vixen_value: 5, flirt_value: 1, romantic_value: 3, sophisticate_value: 4)
     @date_trait = create(:babe_trait_type, name: 'date')
@@ -89,9 +90,18 @@ describe "Getting Babe product results", type: :feature do
       visit spree.build_your_babe_path
       fill_in_weird_babe
       click_button "Show me the goods"
+      weird_babe = Spree::Babe.last
+      expect(weird_babe.name).to eq "Bad Stella"
+      expect(current_path).to eql(spree.my_babes_package_list_path(weird_babe.id))
       expect(page).to have_content("OH NO")
-      expect(page).to have_content("Sorry we coundn't find any items for Bad Stella")
+      expect(page).to have_content("Sorry we couldn't find any items for Bad Stella")
+      last_failure_record = Spree::BabeProductSearchFailure.last
+      expect(last_failure_record).to_not eq nil
+      expect(last_failure_record.spree_babe_id).to eq weird_babe.id
+      expect(last_failure_record.spree_user_id).to eq user.id
     end
+
+
 
   end
 
