@@ -16,7 +16,29 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+
+# Requires factories and other useful helpers defined in spree_core.
+require 'spree/testing_support/authorization_helpers'
+require 'spree/testing_support/url_helpers'
+
+require 'factory_girl_rails'
+require 'factories'
+
+# require 'simplecov'
+# SimpleCov.start do
+#   add_group 'Controllers', 'app/controllers'
+#   add_group 'Helpers', 'app/helpers'
+#   add_group 'Mailers', 'app/mailers'
+#   add_group 'Models', 'app/models'
+#   add_group 'Views', 'app/views'
+#   add_group 'Libraries', 'lib'
+# end
+
+
 RSpec.configure do |config|
+
+  config.include FactoryGirl::Syntax::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

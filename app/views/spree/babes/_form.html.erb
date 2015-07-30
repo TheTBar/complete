@@ -1,0 +1,42 @@
+<%= form_for @babe do |f| %>
+  <%= f.field_container :body_type, class:['form-group'] do %>
+    <%= f.label :body_type, Spree.t(:body_type) %><p>
+    <%= f.collection_select :body_type_id, Spree::BodyType.all, :id, :name %><p></p>
+  <% end %>
+
+  <%= f.field_container :name, class:['form-group'] do %>
+    <%= f.label :name, Spree.t(:name) %><p>
+    <%= f.text_field :name%>
+  <% end %>
+
+  <%= f.field_container :height, class:['form-group'] do %>
+    <%= f.label :height, Spree.t(:height) %><p>
+    <%= f.text_field :height%>
+  <% end %>
+
+  <%= f.field_container :band, class:['form-group'] do %>
+    <%= f.label :band, Spree.t(:band) %><p>
+    <%= f.text_field :band%>
+  <% end %>
+
+  <%= f.field_container :cup, class:['form-group'] do %>
+    <%= f.label :cup, Spree.t(:cup) %><p>
+    <%= f.text_field :cup%>
+  <% end %>
+
+  <%= f.field_container :bottoms, class:['form-group'] do %>
+    <%= f.label :bottoms, Spree.t(:bottoms) %><p>
+  <%= f.text_field :bottoms%>
+  <% end %>
+
+  <%= f.field_container :number_size, class:['form-group'] do %>
+    <%= f.label :number_size, Spree.t(:number_size) %><p>
+  <%= f.text_field :number_size%>
+  <% end %>
+
+  <%= hidden_field_tag(:number_of_active_traits, @active_traits.size) %>
+  <%= render :partial => "trait_type", collection: @active_traits, :locals=>{:f=>f} %>
+  <p>&nbsp;</p>
+  <%= f.submit "Show me the goods" %>
+
+<% end %>

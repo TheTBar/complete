@@ -13,8 +13,14 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   Spree::Core::Engine.add_routes do
+    resources :babes
+
+    get '/build_your_babe' => 'babes#access_concierge'
+    get '/my_babes_package_list/:id' => 'taxons#my_babes_package_list', as: 'my_babes_package_list'
     get '/' => 'home#concierge_page'
   end
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

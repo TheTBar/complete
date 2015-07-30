@@ -61,14 +61,6 @@ GIT
       spree_core (~> 3.0.0)
 
 GIT
-  remote: https://e6f0159f3e1ce21650ef25fc8d8564ce51b62c6d:x-oauth-basic@github.com/TheTBar/tbar_build_your_babe.git
-  revision: 6162ec70e8f12c94e3873d444e2c024d9dac26b6
-  specs:
-    spree_build_your_babe (3.2.0)
-      spree_core (~> 3.0.1)
-      spree_product_packages
-
-GIT
   remote: https://github.com/radamnyc/spree_product_packages.git
   revision: 663c7283a166bcf4d6fe6bc98d46d4030d340a1b
   specs:
@@ -187,6 +179,7 @@ GEM
     devise-encryptable (0.1.2)
       devise (>= 2.1.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
@@ -373,6 +366,11 @@ GEM
       rdoc (~> 4.0)
     select2-rails (3.5.9.1)
       thor (~> 0.14)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     spree (3.0.1)
       spree_api (= 3.0.1)
       spree_backend (= 3.0.1)
@@ -500,9 +498,9 @@ DEPENDENCIES
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simplecov
   spree (= 3.0.1)
   spree_auth_devise!
-  spree_build_your_babe!
   spree_gateway!
   spree_mail_settings!
   spree_paypal_express!
