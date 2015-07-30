@@ -83,9 +83,14 @@ describe "Getting Babe product results", type: :feature do
       expect(page).to have_content("package3")
       expect(page).to_not have_content("package2")
       expect(page).to_not have_content("package4")
+    end
 
-
-
+    it "should return the no results for babe page" do
+      visit spree.build_your_babe_path
+      fill_in_weird_babe
+      click_button "Show me the goods"
+      expect(page).to have_content("OH NO")
+      expect(page).to have_content("Sorry we coundn't find any items for Bad Stella")
     end
 
   end
@@ -110,6 +115,16 @@ describe "Getting Babe product results", type: :feature do
     end
   end
 
+  def fill_in_weird_babe
+    fill_in "babe_name", :with => "Bad Stella"
+    fill_in "babe_height", :with => "150"
+    fill_in "babe_band", :with => "99"
+    fill_in "babe_cup", :with => "Z"
+    fill_in "babe_bottoms", :with => "Huge"
+    fill_in "babe_number_size", :with => "7"
+
+  end
+
   def fill_in_babe
     fill_in "babe_name", :with => "Stella"
     fill_in "babe_height", :with => "65"
@@ -117,10 +132,6 @@ describe "Getting Babe product results", type: :feature do
     fill_in "babe_cup", :with => "C"
     fill_in "babe_bottoms", :with => "Medium"
     fill_in "babe_number_size", :with => "3"
-    # fill_in "babe_vixen_value", :with => "5"
-    # fill_in "babe_flirt_value", :with => "2"
-    # fill_in "babe_romantic_value", :with => "1"
-    # fill_in "babe_sophisticate_value", :with => "3"
   end
 
 end

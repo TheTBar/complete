@@ -18,7 +18,11 @@ module Spree
       #set babe_id on session
       session[:babe_id] = @babe.id
       @taxons = Taxon.get_babes_available_package_list(@babe)
-      return unless @taxons
+      if @taxons.count < 1
+        #here we would want to log the failure to find items
+        render 'no_matching_packages_for_babe'
+      end
+
     end
 
   end
