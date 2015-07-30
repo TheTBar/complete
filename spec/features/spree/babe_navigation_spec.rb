@@ -57,7 +57,6 @@ describe "babes link", type: :feature do
       click_button "Show me the goods"
       babe = Spree::Babe.last
       expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
-      expect(page).to have_content("Our personalized selection for Stella")
     end
   end
 
@@ -80,7 +79,6 @@ describe "babes link", type: :feature do
       click_button "Show me the goods"
       babe = Spree::Babe.last
       expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
-      expect(page).to have_content("Our personalized selection for Stella")
     end
 
     context "user has at least one babe already" do
