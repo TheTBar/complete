@@ -19,7 +19,8 @@ module Spree
       session[:babe_id] = @babe.id
       @taxons = Taxon.get_babes_available_package_list(@babe)
       if @taxons.count < 1
-        #here we would want to log the failure to find items
+        # here we would want to log the failure to find items so that we can reach out to the customer
+        # if its a guest the page should ask for email so we can contact them.
         render 'no_matching_packages_for_babe'
       end
 
