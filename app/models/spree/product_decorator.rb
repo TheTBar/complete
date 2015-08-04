@@ -70,6 +70,32 @@ module Spree
       count_hash_by_option_value_id
     end
 
+    private
+
+    # Builds variants from a hash of option types & values
+    def build_variants_from_option_values_hash
+      ensure_option_types_exist_for_values_hash
+      values = option_values_hash.values
+      values = values.inject(values.shift) { |memo, value| memo.product(value).map(&:flatten) }
+      values.each do |ids|
+        sku_string = Spree::Product.get_sku_string_from_option_values(ids)
+        variant = variants.create(
+            option_value_ids: ids,
+            price: master.price,
+            sku: master.sku+sku_string
+        )
+      end
+      save
+    end
+
+    def self.get_sku_string_from_option_values(ids)
+      sku_string = ''
+      [*ids].each do |id|
+        option_type = Spree::OptionValue.find(id)
+        sku_string = sku_string+"-#{option_type.presentation}"
+      end
+      sku_string
+    end
 
   end
 end
