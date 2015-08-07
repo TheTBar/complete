@@ -44,6 +44,8 @@ module Spree
         return self.bra_size
       elsif size_type_name.downcase == 'number sizes'
         return self.number_size
+      elsif size_type_name.downcase == 'one size'
+        return 'one size'
       end
     end
 

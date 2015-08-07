@@ -79,7 +79,9 @@ Spree::Taxon.class_eval do
     get_babes_package_list(babe).each do |taxon|
       taxon_is_available = true
       taxon.products.each do |product|
-        taxon_is_available = false unless product.does_product_have_stock_on_hand_for_option_value?(babe.size_value_for_size_option_type_name(product.product_size_type))
+        #taxon_is_available = false unless product.does_product_have_stock_on_hand_for_option_value?(babe.size_value_for_size_option_type_name(product.product_size_type.name))
+        taxon_is_available = false unless product.does_product_have_stock_on_hand_for_size_option_value?(babe.size_value_for_size_option_type_name(product.product_size_type.name))
+        break unless taxon_is_available
       end
       available_taxons.push(taxon) if taxon_is_available
     end
