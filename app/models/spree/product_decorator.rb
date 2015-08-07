@@ -80,6 +80,18 @@ module Spree
       count_hash_by_option_value_name
     end
 
+    def get_variant_id_of_first_matching_size(size_name)
+      size_hash = variants_and_option_values_with_stock(nil).collect{ |v| ["#{v.options_text.downcase}", v.id] }.to_h
+      if id = size_hash[size_name]
+        return id
+      end
+      size_hash.each do |k,v|
+        if k.include? size_name
+          return v
+        end
+      end
+    end
+
     # def product_count_on_hand_hash_by_option_value_id
     #   count_hash_by_option_value_id = {}
     #   self.stock_items.each do |stock_item|

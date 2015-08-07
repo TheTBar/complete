@@ -6,11 +6,11 @@ describe Spree::Product, :type => :model do
   context "product has sizes" do
 
     let(:bottom_option_type) do
-      build_option_type_with_values("Named Sizes", %w(Small))
+      build_option_type_with_values("Named Sizes", %w(Small Medium))
     end
 
     let(:bra_option_type) do
-      build_option_type_with_values("Bra Sizes", %w(34A))
+      build_option_type_with_values("Bra Sizes", %w(34A 34B))
     end
 
     let(:product1) { create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {bra_option_type.id.to_s => bra_option_type.option_value_ids}) }
@@ -18,6 +18,13 @@ describe Spree::Product, :type => :model do
 
     it "should return the size type of the product" do
       expect(product1.product_size_type.name).to eq 'Bra Sizes'
+    end
+
+    it "should return the variant id of the matching size" do
+      expected_id = product1b.variants_and_option_values_with_stock(nil).collect{ |v| ["#{v.options_text.downcase}", v.id] }.to_h['medium']
+      selected_id = product1b.get_variant_id_of_first_matching_size('medium')
+      expect(selected_id).to eq expected_id
+      expect(selected_id).to_not eq nil
     end
 
   end
@@ -59,6 +66,14 @@ describe Spree::Product, :type => :model do
         expect(size_hash['small']).to eq 2
         expect(size_hash['medium']).to eq 2
         expect(size_hash.count).to eq 2
+      end
+
+      it "should return the first matching size for size-color combination" do
+        expected_id = product1.variants_and_option_values_with_stock(nil).collect{ |v| ["#{v.options_text.downcase}", v.id] }.to_h['medium, red']
+        selected_id = product1.get_variant_id_of_first_matching_size('medium')
+        expect(selected_id).to eq expected_id
+        expect(selected_id).to_not eq nil
+
       end
 
     end
