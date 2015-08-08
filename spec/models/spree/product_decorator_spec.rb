@@ -27,6 +27,10 @@ describe Spree::Product, :type => :model do
       expect(selected_id).to_not eq nil
     end
 
+    it "should return true for size only check" do
+      expect(product1.is_size_only_variant?).to eq true
+    end
+
   end
 
   context "product has sizes and colors" do
@@ -49,6 +53,11 @@ describe Spree::Product, :type => :model do
       variant_hash = product1.product_count_on_hand_hash_by_option_value_name
       expect(variant_hash).to include('small-red');
     end
+
+    it "should return false for size only check" do
+      expect(product1.is_size_only_variant?).to eq false
+    end
+
 
     context "there is stock on hand for all variants" do
 

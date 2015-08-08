@@ -4,6 +4,7 @@ Spree::Taxon.class_eval do
 
   validate :check_for_package_node
 
+  attr_accessor :babes_variants_for_taxons_products
 
   has_attached_file :icon,
                     styles: { mini: '32x32>', normal: '128x128>', display: '240x240>', large: '600x600'},
@@ -78,12 +79,19 @@ Spree::Taxon.class_eval do
     available_taxons = []
     get_babes_package_list(babe).each do |taxon|
       taxon_is_available = true
+      size_matched_variants = []
       taxon.products.each do |product|
         #taxon_is_available = false unless product.does_product_have_stock_on_hand_for_option_value?(babe.size_value_for_size_option_type_name(product.product_size_type.name))
         taxon_is_available = false unless product.does_product_have_stock_on_hand_for_size_option_value?(babe.size_value_for_size_option_type_name(product.product_size_type.name))
         break unless taxon_is_available
+        if product.is_size_only_variant?
+          size_matched_variants.push(product.get_variant_id_of_first_matching_size(babe.size_value_for_size_option_type_name(product.product_size_type.name).downcase))
+        end
       end
-      available_taxons.push(taxon) if taxon_is_available
+      if taxon_is_available
+        taxon.babes_variants_for_taxons_products = size_matched_variants if size_matched_variants.count > 0
+        available_taxons.push(taxon)
+      end
     end
     available_taxons
   end

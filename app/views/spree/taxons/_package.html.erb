@@ -1,0 +1,20 @@
+<div class="taxon" data-hook="taxon">
+  <h5 class="subtaxon-title"><%= link_to package.name, show_package_path(package), class: 'breadcrumbs' %></h5>
+  <%= link_to(image_tag(package.icon(:display)), show_package_path(package)) unless package.icon_file_name.nil? %>
+  <% if !package.babes_variants_for_taxons_products.nil? %>
+    <div id="cart-form" data-hook="cart_form">
+      <%= form_for :order, :url => populate_from_package_path do |f| %>
+        <span class="input-group-btn">
+                <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
+                  <%= Spree.t(:add_to_cart) %>
+                <% end %>
+        </span>
+        <%= hidden_field_tag "product_count", package.products.count %>
+        <% package.babes_variants_for_taxons_products.each.with_index do |variant_id,index| %>
+          <%= hidden_field_tag "variant_id_#{index}", variant_id %>
+          <%= hidden_field_tag "quantity_#{index}", 1 %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -101,6 +101,18 @@ describe "Getting Babe product results", type: :feature do
       expect(last_failure_record.spree_user_id).to eq user.id
     end
 
+    it "should allow the user to add the package to their cart if size is the only variant" do
+      set_count_on_hand_for_size(product1,'34C',1)
+      set_count_on_hand_for_size(product1b,'medium',1)
+      visit spree.build_your_babe_path
+      fill_in_babe
+      click_button "Show me the goods"
+      last_babe = Spree::Babe.last
+      expect(page).to have_content("package1")
+      click_button "Add To Cart"
+      expect(current_path).to eql(spree.cart_path)
+
+    end
 
 
   end
@@ -108,7 +120,7 @@ describe "Getting Babe product results", type: :feature do
   def set_count_on_hand_for_size(product,size,count)
     product.stock_items.each do |stock_item|
       if !stock_item.variant.is_master?
-        if stock_item.variant.option_values.first.name.downcase == size.downcase
+        if stock_item.variant.option_values.first.name.downcase == size.downcase || size.downcase == 'all'
           stock_item.set_count_on_hand count
         end
       end
