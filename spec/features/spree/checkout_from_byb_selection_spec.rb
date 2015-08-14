@@ -94,11 +94,9 @@ describe "Get user wants to purchase through BYB", type: :feature do
         expect(current_path).to eql(spree.checkout_state_path("delivery"))
         expect(page).to have_content("product1b")
 
-        puts "about to click for save delivery"
         click_button "Save and Continue"
         expect(current_path).to eql(spree.checkout_state_path("payment"))
 
-        puts "about to click for save payment"
         click_button "Save and Continue"
         expect(current_path).to eql(spree.order_path(Spree::Order.last))
         expect(page).to have_content("product1b")
