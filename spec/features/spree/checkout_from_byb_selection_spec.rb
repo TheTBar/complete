@@ -3,7 +3,7 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 
-describe "Get Size pre selected", type: :feature do
+describe "Get user wants to purchase through BYB", type: :feature do
 
   let(:user) {FactoryGirl.create(:user)}
   let!(:country) { create(:country, :name => "United States", :states_required => true) }
@@ -87,25 +87,26 @@ describe "Get Size pre selected", type: :feature do
         expect(current_path).to eql(spree.cart_path)
         expect(page).to have_content("product1b")
         order = Spree::Order.last
+
+        click_button "Checkout"
+        fill_in_address
+        click_button "Save and Continue"
+        expect(current_path).to eql(spree.checkout_state_path("delivery"))
+        expect(page).to have_content("product1b")
+
+        puts "about to click for save delivery"
+        click_button "Save and Continue"
+        expect(current_path).to eql(spree.checkout_state_path("payment"))
+
+        puts "about to click for save payment"
+        click_button "Save and Continue"
+        expect(current_path).to eql(spree.order_path(Spree::Order.last))
+        expect(page).to have_content("product1b")
+        expect(page).to have_content("Your order has been processed successfully")
         lines = Spree::LineItem.where("order_id = #{order.id}")
         expect(lines.first.babe_id).to eq babe.id
         expect(lines.second.babe_id).to eq babe.id
 
-        # click_button "Checkout"
-        # fill_in_address
-        # click_button "Save and Continue"
-        # expect(current_path).to eql(spree.checkout_state_path("delivery"))
-        # expect(page).to have_content("product1b")
-        #
-        # puts "about to click for save delivery"
-        # click_button "Save and Continue"
-        # expect(current_path).to eql(spree.checkout_state_path("payment"))
-        #
-        # puts "about to click for save payment"
-        # click_button "Save and Continue"
-        # puts "where are we"
-        # expect(current_path).to eql(spree.order_path(Spree::Order.last))
-        # expect(page).to have_content("product1b")
 
       end
     end
