@@ -53,3 +53,5 @@ Premailer::Rails.config.merge!(preserve_styles: true, remove_ids: true)
 Spree::PermittedAttributes.user_attributes.push :name
 
 Spree::PermittedAttributes.taxon_attributes << :theme_taxon_id
+
+Spree::PermittedAttributes.line_item_attributes << :babe_id
