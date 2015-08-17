@@ -14,6 +14,7 @@ Spree.config do |config|
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
     config.products_per_page = 50
+    config.admin_products_per_page = 50
 end
 
 Spree.user_class = "Spree::User"
@@ -36,6 +37,7 @@ attachment_config = {
         mini:     "48x48>",
         small:    "100x100>",
         product:  "240x240>",
+        product2:  "400x400>",
         large:    "600x600>"
     },
 

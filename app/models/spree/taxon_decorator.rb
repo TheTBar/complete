@@ -31,6 +31,7 @@ Spree::Taxon.class_eval do
           mini:     "48x48>",
           small:    "100x100>",
           display:  "240x240>",
+          display2:  "400x400>",
           large:    "600x600>"
       },
 
