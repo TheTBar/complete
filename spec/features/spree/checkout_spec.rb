@@ -62,14 +62,9 @@ describe "Get user wants to purchase a produtc", type: :feature do
     expect(current_path).to eql(spree.order_path(Spree::Order.last))
     expect(page).to have_content(Spree::Order.last.number)
     expect(page).to have_content("product1")
-
-
-
-
+    line_item = Spree::LineItem.find_by_order_id(Spree::Order.last.id)
+    expect(line_item.babe_id).to eq nil
   end
-
-
-
 
   def set_count_on_hand(product,count)
     product.stock_items.each do |si|
@@ -78,7 +73,6 @@ describe "Get user wants to purchase a produtc", type: :feature do
       end
     end
   end
-
 
   def fill_in_address
     address = "order_bill_address_attributes"
@@ -90,7 +84,5 @@ describe "Get user wants to purchase a produtc", type: :feature do
     fill_in "#{address}_zipcode", :with => "80302"
     fill_in "#{address}_phone", :with => "(555) 555-5555"
   end
-
-
 
 end
