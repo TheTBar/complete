@@ -12,3 +12,4 @@
 //= require spree/backend/spree_paypal_express
 //= require spree/backend/spree_simple_tax_by_zip
 //= require spree/backend/spree_product_packages
+//= require spree/backend/spree_variant_options

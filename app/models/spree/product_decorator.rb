@@ -106,6 +106,11 @@ module Spree
     #   count_hash_by_option_value_id
     # end
 
+    def grouped_option_values
+      @_grouped_option_values ||= option_values.group_by(&:option_type)
+      @_grouped_option_values.sort_by { |option_type, option_values| option_type.position }
+    end
+
     private
 
     # Builds variants from a hash of option types & values
