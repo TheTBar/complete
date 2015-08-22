@@ -40,6 +40,10 @@ module Spree
       return nil
     end
 
+    def product_size_type_name_string
+      self.product_size_type.name.downcase.gsub(/\s+/, "")
+    end
+
     def does_product_have_stock_on_hand_for_option_value?(name)
       self.stock_items.each do |stock_item|
         if !stock_item.variant.is_master?
@@ -105,6 +109,11 @@ module Spree
     #   end
     #   count_hash_by_option_value_id
     # end
+
+    def grouped_option_values
+      @_grouped_option_values ||= option_values.group_by(&:option_type)
+      @_grouped_option_values.sort_by { |option_type, option_values| option_type.position }
+    end
 
     private
 

@@ -60,6 +60,9 @@ group :development, :test do
   gem "capybara"
   gem 'simplecov'
 
+  gem 'poltergeist'
+  gem 'database_cleaner'
+
 end
 
 # for image storage
@@ -84,3 +87,6 @@ gem 'spree_product_packages', :git => "https://github.com/radamnyc/spree_product
 
 #do not use, way out of date but there may be some good info in there
 #gem 'spree_product_assembly', github: 'radamnyc/spree-product-assembly', branch: '3-0-stable'
+
+#color choice thing
+gem 'spree_variant_options', :git => 'git://github.com/AgilTec/spree_variant_options.git', :branch => "3.0.0"

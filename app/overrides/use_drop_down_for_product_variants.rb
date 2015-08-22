@@ -1,4 +1,4 @@
-Deface::Override.new(:virtual_path => 'spree/products/_cart_form',
+Deface::Override.new(:virtual_path => 'spree/products/x_cart_form',
                      :name => 'use_drop_down_for_product_variants',
                      :replace_contents => '[id="product-variants"]',
                      :text => '
@@ -9,7 +9,7 @@ Deface::Override.new(:virtual_path => 'spree/products/_cart_form',
 ');
 
 
-Deface::Override.new(:virtual_path => 'spree/products/_multi_item_cart_form_element',
+Deface::Override.new(:virtual_path => 'spree/products/x_multi_item_cart_form_element',
                      :name => 'use_drop_down_for_product_variants_in_package',
                      :replace_contents => '[id="product-variants"]',
                      :text => '

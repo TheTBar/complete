@@ -73,7 +73,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
       end
 
 
-      it "should save the babes id on the order when added from the package page" do
+      it "should save the babes id on the order when added from the package page" , js: true do
 
         visit "/"
         click_link "The Lingerie Concierge"
@@ -133,7 +133,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
     fill_in "#{address}_lastname", :with => "Tbar"
     fill_in "#{address}_address1", :with => "1045 Pine Street"
     fill_in "#{address}_city", :with => "Boulder"
-    fill_in "#{address}_state_name", :with => "Colorado"
+    select "Colorado", :from => "order_bill_address_attributes_state_id"
     fill_in "#{address}_zipcode", :with => "80302"
     fill_in "#{address}_phone", :with => "(555) 555-5555"
   end

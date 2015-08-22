@@ -109,7 +109,6 @@ describe "babes link", type: :feature do
         fill_in "babe_name", :with => "New Stella"
         click_button "Show me the goods"
         expect(Spree::Babe.where("spree_user_id = #{user.id}").count).to eq starting_count+1
-        #puts Spree::Babe.last.inspect
         expect(Spree::Babe.last.name).to eq "New Stella"
       end
 

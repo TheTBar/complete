@@ -31,12 +31,13 @@ describe "Get user wants to purchase a produtc", type: :feature do
   let!(:product1) { create(:product, name: 'product1', option_values_hash: {size_option_type.id.to_s => size_option_type.option_value_ids} ) }
 
 
-  it "should let a user purchase a product" do
+  it "should let a user purchase a product" , js: true do
     set_count_on_hand(product1,1)
     #login_as(user, scope: :spree_user)
     visit "/"
     click_link "Shop All Products"
     click_link 'product1'
+    click_link "Medium"
     click_button 'Add To Cart'
 
     expect(current_path).to eql(spree.cart_path)
@@ -80,7 +81,7 @@ describe "Get user wants to purchase a produtc", type: :feature do
     fill_in "#{address}_lastname", :with => "Tbar"
     fill_in "#{address}_address1", :with => "1045 Pine Street"
     fill_in "#{address}_city", :with => "Boulder"
-    fill_in "#{address}_state_name", :with => "Colorado"
+    select "Colorado", :from => "order_bill_address_attributes_state_id"
     fill_in "#{address}_zipcode", :with => "80302"
     fill_in "#{address}_phone", :with => "(555) 555-5555"
   end
