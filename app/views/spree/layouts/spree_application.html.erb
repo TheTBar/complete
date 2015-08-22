@@ -4,12 +4,12 @@
 
   <head>
     <title>The T Bar</title>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
+    <%= stylesheet_link_tag 'application', 'spree/frontend/all', 'http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
     <%= javascript_include_tag 'application', 'spree/frontend/all' %>
     <%= csrf_meta_tags %>
   </head>
   
-  <body id='<%= params[:controller].gsub 'spree/', '' %>' class='<%= params[:action] %>'>
+  <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
     
     <header>
       <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>

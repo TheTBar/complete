@@ -18,22 +18,234 @@ $small-medium-breakpoint: 500px;
   }
 }
 
-#home.concierge_page {
+body {
   color: white;
   background-color: $body-background-color;
   font-family: 'roboto', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: $link-color;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+header {
+  @include clear;
+  position: relative;
+  padding: 6rem;
+  text-transform: uppercase;
+
+  @media screen and (max-width: $medium-large-breakpoint) {
+    padding: 6rem 2rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .logo {
+    display: inline-block;
+    float: left;
+  
+    @media screen and (max-width: $medium-large-breakpoint) {
+      float: none;
+    }
+  
+  }
   
   a {
-    color: $link-color;
+    color: inherit;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline;
+  
+    @media screen and (max-width: $small-medium-breakpoint) {
+      display: block;
+    }
+  
+  }
+
+  nav {
+    float: right;
+    text-align: right;
+    font-weight: bold;
+    color: #ccc;
+  
+    @media screen and (max-width: $medium-large-breakpoint) {
+      margin-top: 3rem;
+      float: none;
+      text-align: center;
+    }
+  
+    a,
+    a:hover {
+      color: inherit;
+    }
+  
+    a span {
+      color: $link-color;
+    }
+  
+  }
+  
+  #account-links {
+    position: absolute;
+    top: 3rem;
+    right: 6rem;
+    font-size: 1.2rem;
+
+    @media screen and (max-width: $medium-large-breakpoint) {
+      position: static;
+      top: auto;
+      left: auto;
+    }
+
+    li {
+      &:last-child {
+        position: relative;
+    
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          width: 1px;
+          height: 10rem;
+          position: absolute;
+          top: -7rem;
+          background-color: $nav-separator-color;
+      
+          @media screen and (max-width: $medium-large-breakpoint) {
+            background-color: transparent;
+          }
+      
+        }
+    
+        &::before {
+          left: 0;
+        }
+    
+        &::after {
+          right: 0;
+        }
+    
+        @media screen and (max-width: $small-medium-breakpoint) {
+          a::before {
+            content: "My cart";
+            margin-right: 1em;
+          }
+        }
+    
+      }
+  
+      > a {
+        display: inline-block;
+        padding: 0 2rem;
+    
+        @media screen and (max-width: $medium-large-breakpoint) {
+          padding: 0 1rem;
+        }
+    
+      }
+  
+      a + a {
+        padding-left: 0;
+      }
+  
+    }
+
+    img {
+      max-width: 20px;
+      max-height: 20px;
+      position: relative;
+      top: -1px;
+    }
+
+  }
+
+  #store-links {
+    line-height: 76px;
+
+    a {
+      padding: 0 4rem;
+  
+      @media screen and (max-width: $medium-large-breakpoint) {
+        padding: 0 2rem;
+      }
+  
+      @media screen and (max-width: $small-medium-breakpoint) {
+        padding: 0 .5rem;
+      }
+  
+    }
+
+  }
+
+  #social-media-links {
+    position: absolute;
+    top: 1rem;
+    left: 5.2rem;
+
+    @media screen and (max-width: $medium-large-breakpoint) {
+      width: 100%;
+      text-align: center;
+      left: 0;
+    }
+
+    a {
+      padding: 1rem .9rem;
+    }
+
+    img {
+      max-width: 14px;
+      max-height: 14px;
+    }
+
+  }
+
+}
+
+footer {
+  padding: 4rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: inherit;
   
     &:hover {
-      text-decoration: none;
+      color: inherit;
+    }
+  
+    &:not(:first-child)::before {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 1.2em;
+      position: relative;
+      top: .2em;
+      background-color: $nav-separator-color;
+      margin: 0 .75em 0 .5em;
     }
   }
 
+}
+
+[data-route='spree/home/concierge_page'] {
+  
   h1,
   h2,
   h3 {
@@ -53,212 +265,6 @@ $small-medium-breakpoint: 500px;
   h2 {
     font-size: 2.5rem;
   }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  li {
-    display: inline;
-  
-    @media screen and (max-width: $small-medium-breakpoint) {
-      display: block;
-    }
-  
-  }
-
-  header {
-    @include clear;
-    position: relative;
-    padding: 6rem;
-    text-transform: uppercase;
-  
-    @media screen and (max-width: $medium-large-breakpoint) {
-      padding: 6rem 2rem 2rem 2rem;
-      text-align: center;
-    }
-  
-    .logo {
-      display: inline-block;
-      float: left;
-    
-      @media screen and (max-width: $medium-large-breakpoint) {
-        float: none;
-      }
-    
-    }
-  
-    nav {
-      float: right;
-      text-align: right;
-      font-weight: bold;
-      color: #ccc;
-    
-      @media screen and (max-width: $medium-large-breakpoint) {
-        margin-top: 3rem;
-        float: none;
-        text-align: center;
-      }
-    
-      a,
-      a:hover {
-        color: inherit;
-      }
-    
-      a span {
-        color: $link-color;
-      }
-    
-    }
-  
-  }
-
-  footer {
-    padding: 4rem;
-    text-transform: uppercase;
-    font-size: 1.5rem;
-  
-    p:last-child {
-      margin-bottom: 0;
-    }
-  
-    a {
-      color: inherit;
-    
-      &:hover {
-        color: inherit;
-      }
-    
-      &:not(:first-child)::before {
-        content: '';
-        display: inline-block;
-        width: 1px;
-        height: 1.2em;
-        position: relative;
-        top: .2em;
-        background-color: $nav-separator-color;
-        margin: 0 .75em 0 .5em;
-      }
-    }
-  
-  }
-
-  #account-links {
-    position: absolute;
-    top: 3rem;
-    right: 6rem;
-    font-size: 1.2rem;
-  
-    @media screen and (max-width: $medium-large-breakpoint) {
-      position: static;
-      top: auto;
-      left: auto;
-    }
-  
-    li {
-      &:last-child {
-        position: relative;
-      
-        &::before,
-        &::after {
-          content: '';
-          display: block;
-          width: 1px;
-          height: 10rem;
-          position: absolute;
-          top: -7rem;
-          background-color: $nav-separator-color;
-        
-          @media screen and (max-width: $medium-large-breakpoint) {
-            background-color: transparent;
-          }
-        
-        }
-      
-        &::before {
-          left: 0;
-        }
-      
-        &::after {
-          right: 0;
-        }
-      
-        @media screen and (max-width: $small-medium-breakpoint) {
-          a::before {
-            content: "My cart";
-            margin-right: 1em;
-          }
-        }
-      
-      }
-    
-      > a {
-        display: inline-block;
-        padding: 0 2rem;
-      
-        @media screen and (max-width: $medium-large-breakpoint) {
-          padding: 0 1rem;
-        }
-      
-      }
-    
-      a + a {
-        padding-left: 0;
-      }
-    
-    }
-  
-    img {
-      max-width: 20px;
-      max-height: 20px;
-      position: relative;
-      top: -1px;
-    }
-  
-  }
-
-  #store-links {
-    line-height: 76px;
-  
-    a {
-      padding: 0 4rem;
-    
-      @media screen and (max-width: $medium-large-breakpoint) {
-        padding: 0 2rem;
-      }
-    
-      @media screen and (max-width: $small-medium-breakpoint) {
-        padding: 0 .5rem;
-      }
-    
-    }
-  
-  }
-
-  #social-media-links {
-    position: absolute;
-    top: 1rem;
-    left: 5.2rem;
-  
-    @media screen and (max-width: $medium-large-breakpoint) {
-      width: 100%;
-      text-align: center;
-      left: 0;
-    }
-  
-    a {
-      padding: 1rem .9rem;
-    }
-  
-    img {
-      max-width: 14px;
-      max-height: 14px;
-    }
-  
-  }
-
 
   section {
     @include clear;
