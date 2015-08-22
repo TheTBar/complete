@@ -3,7 +3,7 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 
-describe "adding products to cart", type: :feature do
+describe "adding products to cart", type: :feature, js: true do
 
 
   let(:user) {FactoryGirl.create(:user)}
@@ -32,7 +32,7 @@ describe "adding products to cart", type: :feature do
 
   let!(:product1) { create(:product, :name => 'product 1', option_values_hash: {onesize_option_type.id.to_s => onesize_option_type.option_value_ids}) }
 
-  it "should not allow the user to add more items then are in stock" do
+  it "should not allow the user to add more items then are in stock" , js: true do
     product1.stock_items.each do |stock_item|
       stock_item.set_count_on_hand 1
       stock_item.backorderable = false
@@ -42,6 +42,7 @@ describe "adding products to cart", type: :feature do
     visit "/"
     click_link "Shop All Products"
     click_link "product 1"
+    click_link "OneSize"
     fill_in('quantity', :with => '5')
     click_button "Add To Cart"
     expect(page).to have_content("Quantity selected of \"product 1 (OneSize)\" is not available.")

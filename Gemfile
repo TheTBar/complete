@@ -60,6 +60,9 @@ group :development, :test do
   gem "capybara"
   gem 'simplecov'
 
+  gem 'poltergeist'
+  gem 'database_cleaner'
+
 end
 
 # for image storage
