@@ -19,7 +19,8 @@ describe "Get Size pre selected", type: :feature do
     def build_option_type_with_values(name, presentation, values)
       ot = FactoryGirl.create(:option_type, :name => name, :presentation => presentation)
       values.each do |val|
-        ot.option_values.create(:name => val.downcase, :presentation => val)
+        value_presentation = ot.name == 'named sizes' ? val[0].upcase : val
+        ot.option_values.create(:name => val.downcase, :presentation => value_presentation)
       end
       ot
     end
@@ -61,8 +62,8 @@ describe "Get Size pre selected", type: :feature do
         click_link "package1"
         click_button 'Add Package To Cart'
         expect(current_path).to eql(spree.cart_path)
-        expect(page).to have_content("34C")
-        expect(page).to have_content("Medium")
+        expect(page).to have_content("product1 34C")
+        expect(page).to have_content("product1b M")
 
       end
 
@@ -99,7 +100,7 @@ describe "Get Size pre selected", type: :feature do
         click_button 'Add Package To Cart'
         expect(current_path).to eql(spree.cart_path)
         expect(page).to have_content("34C, Red")
-        expect(page).to have_content("Medium, Red")
+        expect(page).to have_content("M, Red")
       end
 
     end

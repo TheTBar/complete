@@ -23,10 +23,11 @@ describe "Get user wants to purchase through BYB", type: :feature do
     let(:sets_taxon) { FactoryGirl.create(:taxon, name: 'sets')}
     let!(:taxon1) { FactoryGirl.create(:taxon, name: 'package1', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
 
-    def build_option_type_with_values(name, values)
-      ot = FactoryGirl.create(:option_type, :name => name)
+    def build_option_type_with_values(name, presentation, values)
+      ot = FactoryGirl.create(:option_type, :name => name, :presentation => presentation)
       values.each do |val|
-        ot.option_values.create(:name => val.downcase, :presentation => val)
+        value_presentation = ot.name == 'named sizes' ? val[0].upcase : val
+        ot.option_values.create(:name => val.downcase, :presentation => value_presentation)
       end
       ot
     end
@@ -36,11 +37,11 @@ describe "Get user wants to purchase through BYB", type: :feature do
     end
 
     let!(:bottom_option_type) do
-      build_option_type_with_values("named sizes", %w(Small))
+      build_option_type_with_values("named sizes", "Size", %w(Small))
     end
 
     let!(:bra_option_type) do
-      build_option_type_with_values("bra sizes", %w(34A))
+      build_option_type_with_values("bra sizes", "Size", %w(34A))
     end
 
 

@@ -85,7 +85,7 @@ module Spree
     end
 
     def get_variant_id_of_first_matching_size(size_name)
-      size_hash = variants_and_option_values_with_stock(nil).collect{ |v| ["#{v.options_text.downcase}", v.id] }.to_h
+      size_hash = variants_and_option_values_with_stock(nil).collect{ |v| ["#{v.options_text_by_name.downcase}", v.id] }.to_h
       if id = size_hash[size_name]
         return id
       end
@@ -144,8 +144,9 @@ module Spree
 
     def get_option_value_string_for_stock_item(stock_item)
       variant_string = ''
-      stock_item.variant.option_values.each do |ov|
-         variant_string = variant_string + ov.name + "-"
+      ovs = stock_item.variant.option_values.sort_by { |ovalue| ovalue.option_type.position}
+      ovs.each do |ov|
+        variant_string = variant_string + ov.name + "-"
       end
       variant_string[0...-1]
     end
