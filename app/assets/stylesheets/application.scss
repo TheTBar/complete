@@ -35,6 +35,13 @@ a {
   }
 }
 
+header,
+main,
+footer {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 header {
   @include clear;
   position: relative;
@@ -324,8 +331,9 @@ footer {
     padding-top: 15rem;
     padding-left: 40%;
     background-image: image-url('woman-on-stairs.jpg');
-    background-position: center center;
-    background-size: cover;
+    background-position: center top;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
   
     @media screen and (max-width: $medium-large-breakpoint) {
       background-position: -20rem center;
