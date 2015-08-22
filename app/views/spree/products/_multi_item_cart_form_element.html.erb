@@ -17,13 +17,10 @@
             <% values.sort_by(&:position).each do |value| %>
               <% classes = ["option-value"] %>
               <% unless (variants = @product.variants_for_option_value(value)).empty? %>
-                  <% Rails.logger.debug ("v_index: #{v_index}") %>
-                <% variants.each do |vv| %>
-                   <% Rails.logger.debug("variant: #{vv.inspect}  instock: #{vv.in_stock?}") %>
-                <% end %>
                 <% classes << ( variants.any? { |v| v.in_stock? } ? "in-stock" : "out-of-stock" ) if v_index == 0 %>
                 <% classes << 'with-image' if value.has_image? %>
-                <li><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" "), :id => value.presentation ,:rel => "#{type.id}-#{value.id}" %></li>
+                <% id = type.isSizeOptionType? ? value.presentation.downcase : "#{@product.product_size_type_name_string}-#{value.presentation.downcase}" %>
+                <li><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" "), :id => "#{id}" ,:rel => "#{type.id}-#{value.id}" %></li>
               <% end %>
             <% end %>
             <li class="clear"></li>

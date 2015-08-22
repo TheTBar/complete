@@ -58,11 +58,10 @@
     <% end %>
   <% end %>
 </div>
-<% @pre_selected_sizes.each do |size| %>
 <script type="text/javascript">
   $(function () {
-    document.getElementById("<%= size %>").click();
+    <% @pre_selected_sizes.each do |size| %>
+      $("#<%= size.downcase %>").click();
+    <% end %>
   });
-  alert("size: <%= size %>");
 </script>
-<% end %>
