@@ -5,9 +5,7 @@ module Spree
       @taxon = Taxon.friendly.find(params[:id])
       return unless @taxon
       @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
-      # products = @searcher.retrieve_products
-      # @products = [products[0]]
-      @products = @searcher.retrieve_products
+      @products = @searcher.retrieve_products.sort_by { |p| p.product_size_type.name} # makes sure bras are always displayed first
       @pre_selected_sizes = []
       if session.key?(:babe_id)
         @products.each do |product|
