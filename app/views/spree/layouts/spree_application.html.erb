@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>The T Bar</title>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
+    <%= javascript_include_tag 'application', 'spree/frontend/all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body>
+    
+    <header>
+      <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
+      <nav>
+        <ul id='account-links'>
+          <li><a href=''>Contact us</a></li>
+          <li>
+            <a href=''>Have an account? <span>Sign in</span></a>
+            <%= link_to image_tag('user-icon.png') %>
+          </li>
+          <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
+        </ul>
+        <ul id='store-links'>
+          <li><a href=''>Build your babe</a></li>
+          <li><a href=''>Shop</a></li>
+          <li><a href=''>Men's</a></li>
+          <li><a href=''>Gift sets</a></li>
+        </ul>
+      </nav>
+      <div id='social-media-links'>
+        <%= link_to image_tag('facebook-icon.png') %>
+        <%= link_to image_tag('twitter-icon.png') %>
+        <%= link_to image_tag('instagram-icon.png') %>
+        <%= link_to image_tag('tumblr-icon.png') %>
+        <%= link_to image_tag('pinterest-icon.png') %>
+      </div>
+    </header>
+      
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <p>
+        <a href=''>About us</a>
+        <a href=''>Our story</a>
+        <a href=''>Fit guide</a>
+        <a href=''>Hassle-free returns &amp; exchanges</a>
+        <a href=''>Subscriptions</a>
+        <a href=''>The Panty Press</a>
+        <a href=''>Contact us</a>
+      </p>
+      <p>
+        <span>Copyright 2015 The T Bar</span>
+        <a href=''>Privacy policy</a>
+        <a href=''>Terms of use</a>
+      </p>
+    </footer>
+    
+  </body>
+  
+</html>
