@@ -13,7 +13,12 @@ Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
+    config.products_per_page = 50
+    config.admin_products_per_page = 50
+
 end
+
+SpreeVariantOptions::VariantConfig.main_option_type_id = 0
 
 Spree.user_class = "Spree::User"
 
@@ -35,6 +40,7 @@ attachment_config = {
         mini:     "48x48>",
         small:    "100x100>",
         product:  "240x240>",
+        product2:  "400x400>",
         large:    "600x600>"
     },
 
@@ -53,3 +59,5 @@ Premailer::Rails.config.merge!(preserve_styles: true, remove_ids: true)
 Spree::PermittedAttributes.user_attributes.push :name
 
 Spree::PermittedAttributes.taxon_attributes << :theme_taxon_id
+
+Spree::PermittedAttributes.line_item_attributes << :babe_id

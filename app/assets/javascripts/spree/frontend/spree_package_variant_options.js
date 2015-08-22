@@ -1,0 +1,1 @@
+//= require spree/frontend/package_variant_options_script
