@@ -7,24 +7,28 @@
     <%= stylesheet_link_tag 'application', 'spree/frontend/all', 'http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
     <%= javascript_include_tag 'application', 'spree/frontend/all' %>
     <%= csrf_meta_tags %>
+    <script type="text/javascript">
+      function readCookie(name)
+      {
+        var ca = document.cookie.split(';');
+        var nameEQ = name + "=";
+        for(var i=0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0)==' ') c = c.substring(1, c.length); //delete spaces
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+    </script>
   </head>
   
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
-    
     <header>
       <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
       <nav>
         <ul id='account-links'>
           <li><a href=''>Contact us</a></li>
-          <% if spree_current_user %>
-            <li><a href="/account">My Account</a></li>
-            <li><a href="/logout">Logout</a></li>
-          <% else %>
-            <li>
-              <a href='/login'>Have an account? <span>Sign in</span></a>
-              <%= link_to image_tag('user-icon.png') %>
-            </li>
-          <% end %>
+          <span id="login-logout-links"></span>
           <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
         </ul>
         <ul id='store-links'>
@@ -64,7 +68,13 @@
         <a href=''>Terms of use</a>
       </p>
     </footer>
-    
   </body>
-  
+  <script type="text/javascript">
+    if (readCookie('logged_in') == 'true') {
+      $("#login-logout-links").html('<li><a href="/account">My Account</a></li><li><a href="/logout">Logout</a></li>');
+    } else {
+      $("#login-logout-links").html('<li><a href="/login">Have an account? <span>Sign in</span></a><%= link_to image_tag("user-icon.png")%></li>');
+    }
+  </script>
+
 </html>

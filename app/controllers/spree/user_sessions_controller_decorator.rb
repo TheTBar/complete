@@ -7,7 +7,7 @@ module Spree
     def set_auth_cookie
       Rails.logger.debug "WE ARE SETTING THE COOKIE ***************************"
       if spree_user_signed_in?
-        cookies[:logged_in] = true
+        cookies[:logged_in] = 'true'
       end
     end
 
