@@ -17,15 +17,13 @@ describe "shopping by themes", type: :feature do
 
 
   it "should show all themes when clicing the Explore Themed Collections link" do
-    visit "/"
-    click_link 'Explore Themed Collections'
+    visit "/t/themes"
     expect(page).to have_content ("Theme 1")
     expect(page).to have_content ("Theme 2")
   end
 
   it "should only show sets that are part of the clicked theme" do
-    visit "/"
-    click_link 'Explore Themed Collections'
+    visit "/t/themes"
     click_link 'taxon-link-themes/theme-1'
     expect(page).to have_link ('taxon-link-sets/set-10')
     expect(page).to have_link ('taxon-link-sets/set-11')

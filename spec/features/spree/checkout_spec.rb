@@ -34,8 +34,7 @@ describe "Get user wants to purchase a produtc", type: :feature do
   it "should let a user purchase a product" , js: true do
     set_count_on_hand(product1,1)
     #login_as(user, scope: :spree_user)
-    visit "/"
-    click_link "Shop All Products"
+    visit "/products"
     click_link 'product1'
     click_link "Medium"
     click_button 'Add To Cart'

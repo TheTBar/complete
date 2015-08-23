@@ -39,8 +39,7 @@ describe "adding products to cart", type: :feature, js: true do
       stock_item.save
     end
 
-    visit "/"
-    click_link "Shop All Products"
+    visit "/products"
     click_link "product 1"
     click_link "OneSize"
     fill_in('quantity', :with => '5')
