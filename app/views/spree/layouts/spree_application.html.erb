@@ -28,7 +28,7 @@
       <nav>
         <ul id='account-links'>
           <li><a href=''>Contact us</a></li>
-          <span id="login_logout_links"></span>
+          <span id="login-logout-links"></span>
           <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
         </ul>
         <ul id='store-links'>
@@ -68,14 +68,12 @@
         <a href=''>Terms of use</a>
       </p>
     </footer>
-    
   </body>
   <script type="text/javascript">
-    alert(readCookie('logged_in'));
-    if (readCookie('logged_in') == true) {
-      $("#login_logout_links").innerHTML = '<li><a href="/account">My Account</a></li><li><a href="/logout">Logout</a></li>';
+    if (readCookie('logged_in') == 'true') {
+      $("#login-logout-links").html('<li><a href="/account">My Account</a></li><li><a href="/logout">Logout</a></li>');
     } else {
-      $("#login_logout_links").innerHTML = '<li><a href="/login">Have an account? <span>Sign in</span></a><%= link_to image_tag("user-icon.png")%></li>';
+      $("#login-logout-links").html('<li><a href="/login">Have an account? <span>Sign in</span></a><%= link_to image_tag("user-icon.png")%></li>');
     }
   </script>
 
