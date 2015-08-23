@@ -1,14 +1,53 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-  <title>Thetbar</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<%= yield %>
-
-</body>
+  <head>
+    <title>The T Bar</title>
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body>
+    
+    <header>
+      <a href=''>The T Bar</a>
+      <nav>
+        <ul>
+          <li>Have an account? <a href=''>Sign in</a></li>
+          <li><a href=''>Search</a></li>
+          <li><a href=''>Cart</a></li>
+        </ul>
+        <ul>
+          <li><a href=''>The Lingerie Concierge</a></li>
+          <li><a href=''>Explore Themed Collections</a></li>
+          <li><a href=''>Shop All Products</a></li>
+        </ul>
+      </nav>
+    </header>
+      
+    <main>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <p>
+        <a href=''>About us</a>
+        <a href=''>Our story</a>
+        <a href=''>Fit guide</a>
+        <a href=''>Hassle-free returns &amp; exchanges</a>
+        <a href=''>Subscriptions</a>
+        <a href=''>The Panty Press</a>
+        <a href=''>Contact us</a>
+      </p>
+      <p>
+        <span>Copyright 2015 The T Bar</span>
+        <a href=''>Privacy policy</a>
+        <a href=''>Terms of use</a>
+      </p>
+    </footer>
+    
+  </body>
+  
 </html>

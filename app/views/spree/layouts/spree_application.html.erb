@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>The T Bar</title>
+    <%= stylesheet_link_tag 'application', 'spree/frontend/all', 'http://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
+    <%= javascript_include_tag 'application', 'spree/frontend/all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
+    
+    <header>
+      <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
+      <nav>
+        <ul id='account-links'>
+          <li><a href=''>Contact us</a></li>
+          <% if cookies[:logged_in] %>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/logout">Logout</a></li>
+          <% else %>
+            <li>
+              <a href='/login'>Have an account? <span>Sign in</span></a>
+              <%= link_to image_tag('user-icon.png') %>
+            </li>
+          <% end %>
+          <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
+        </ul>
+        <ul id='store-links'>
+          <li><a href='/build_your_babe'>Build your babe</a></li>
+          <li><a href='/products'>Shop</a></li>
+          <li><a href=''>Men's</a></li>
+          <li><a href=''>Gift sets</a></li>
+        </ul>
+      </nav>
+      <div id='social-media-links'>
+        <%= link_to image_tag('facebook-icon.png') %>
+        <%= link_to image_tag('twitter-icon.png') %>
+        <%= link_to image_tag('instagram-icon.png') %>
+        <%= link_to image_tag('tumblr-icon.png') %>
+        <%= link_to image_tag('pinterest-icon.png') %>
+      </div>
+    </header>
+      
+    <main>
+      <%= flash_messages %>
+      <%= yield %>
+    </main>
+    
+    <footer>
+      <p>
+        <a href=''>About us</a>
+        <a href=''>Our story</a>
+        <a href=''>Fit guide</a>
+        <a href=''>Hassle-free returns &amp; exchanges</a>
+        <a href=''>Subscriptions</a>
+        <a href=''>The Panty Press</a>
+        <a href=''>Contact us</a>
+      </p>
+      <p>
+        <span>Copyright 2015 The T Bar</span>
+        <a href=''>Privacy policy</a>
+        <a href=''>Terms of use</a>
+      </p>
+    </footer>
+    
+  </body>
+  
+</html>

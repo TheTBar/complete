@@ -49,14 +49,13 @@ describe "Get Size pre selected", type: :feature do
 
       it "should preselect the size values" , js: true  do
 
-        visit "/"
-        click_link "The Lingerie Concierge"
+        visit "/build_your_babe"
         expect(current_path).to eql(spree.new_babe_path)
         fill_in_babe
         click_button "Show me the goods"
         babe = Spree::Babe.last
         expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
-        expect(page).to have_content("Our personalized selection for Stella")
+        expect(page.body.downcase).to have_content("Our personalized selection for Stella".downcase)
         expect(page).to have_content("package1")
         expect(page).to have_link("package1");
         click_link "package1"
@@ -84,14 +83,12 @@ describe "Get Size pre selected", type: :feature do
       end
 
       it "should preselect the first color that matches the babes size" do
-        visit "/"
-        click_link "The Lingerie Concierge"
+        visit "/build_your_babe"
         expect(current_path).to eql(spree.new_babe_path)
         fill_in_babe
         click_button "Show me the goods"
         babe = Spree::Babe.last
         expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
-        expect(page).to have_content("Our personalized selection for Stella")
         expect(page).to have_content("package1")
         expect(page).to have_link("package1");
         click_link "package1"

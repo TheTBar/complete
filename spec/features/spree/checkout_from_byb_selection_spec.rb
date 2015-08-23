@@ -56,8 +56,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
       it "should save the babes id on the order when added from the BYB results page" do
 
-        visit "/"
-        click_link "The Lingerie Concierge"
+        visit "/build_your_babe"
         expect(current_path).to eql(spree.new_babe_path)
         fill_in_babe
         click_button "Show me the goods"
@@ -76,8 +75,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
       it "should save the babes id on the order when added from the package page" , js: true do
 
-        visit "/"
-        click_link "The Lingerie Concierge"
+        visit "/build_your_babe"
         expect(current_path).to eql(spree.new_babe_path)
         fill_in_babe
         click_button "Show me the goods"
