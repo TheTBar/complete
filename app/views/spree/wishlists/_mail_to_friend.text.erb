@@ -1,0 +1,14 @@
+<%= mail.recipient_name %>,
+<% Rails.logger.debug @object.inspect %>
+<%= Spree.t(:take_a_look_at_my_wishlist) %>
+
+  * <%= @object.name %>
+
+<% unless mail.message.blank? -%>
+<%= mail.message %>
+<% end -%>
+
+<%= mail.sender_name %>
+
+<%= Spree.t(:click_link_to_view_wishlist, name: @object.name) %>
+<%= wishlist_url(@object) %>

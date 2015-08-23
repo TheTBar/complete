@@ -90,3 +90,8 @@ gem 'spree_product_packages', :git => "https://github.com/radamnyc/spree_product
 
 #color choice thing
 gem 'spree_variant_options', :git => 'git://github.com/AgilTec/spree_variant_options.git', :branch => "3.0.0"
+
+#wishlist
+gem 'spree_wishlist', github: 'spree-contrib/spree_wishlist', branch: '3-0-stable'
+gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', branch: '3-0-stable'
+
