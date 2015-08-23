@@ -14,3 +14,4 @@
 //= require spree/frontend/spree_product_packages
 //= require spree/frontend/spree_variant_options
 //= require spree/frontend/spree_package_variant_options
+//= require spree/frontend/spree_wishlist
