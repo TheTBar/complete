@@ -16,7 +16,7 @@
       <nav>
         <ul id='account-links'>
           <li><a href=''>Contact us</a></li>
-          <% if cookies[:logged_in] %>
+          <% if spree_current_user %>
             <li><a href="/account">My Account</a></li>
             <li><a href="/logout">Logout</a></li>
           <% else %>
