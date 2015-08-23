@@ -16,10 +16,15 @@
       <nav>
         <ul id='account-links'>
           <li><a href=''>Contact us</a></li>
-          <li>
-            <a href=''>Have an account? <span>Sign in</span></a>
-            <%= link_to image_tag('user-icon.png') %>
-          </li>
+          <% if cookies[:logged_in] %>
+            <li><a href="/account">My Account</a></li>
+            <li><a href="/logout">Logout</a></li>
+          <% else %>
+            <li>
+              <a href='/login'>Have an account? <span>Sign in</span></a>
+              <%= link_to image_tag('user-icon.png') %>
+            </li>
+          <% end %>
           <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
         </ul>
         <ul id='store-links'>
