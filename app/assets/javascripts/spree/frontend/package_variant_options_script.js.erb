@@ -47,7 +47,8 @@ function PackageVariantOptions(params) {
   var allow_backorders = !params['track_inventory_levels'];
   var allow_select_outofstock = params['allow_select_outofstock'];
   var default_instock = params['default_instock'];
-  var item_number = params['item_number']
+  var item_number = params['item_number'];
+  var number_of_items = params['number_of_items_in_package'];
 
   var variant, divs, parent, index = 0;
   var selection = [];
@@ -203,6 +204,16 @@ function PackageVariantOptions(params) {
     }
   }
 
+  function is_form_ready_to_submit()
+  {
+    for ($i = 0; $i < number_of_items; $i++) {
+      if ($('#variant_id_'+$i).val() == '') {
+        return false;
+      }
+    }
+    return true;
+  }
+
   function toggle(variants) {
     //alert("starting toggle");
 
@@ -210,8 +221,12 @@ function PackageVariantOptions(params) {
       //alert("toggle variant");
       $('#variant_id_'+item_number+', form[data-form-type="variant"] input[name$="[variant_id]"]').val(variant.id);
       $('#product-price .price').removeClass('unselected').text(variant.price);
-      if (variant.in_stock)
-        $('#cart-form button[type=submit]').attr('disabled', false).fadeTo(100, 1);
+      if (variant.in_stock) {
+        if (is_form_ready_to_submit()) {
+          $('#cart-form button[type=submit]').attr('disabled', false).fadeTo(100, 1);
+        }
+      }
+
       $('form[data-form-type="variant"] button[type=submit]').attr('disabled', false).fadeTo(100, 1);
       try {
         show_variant_images(variant.id);
