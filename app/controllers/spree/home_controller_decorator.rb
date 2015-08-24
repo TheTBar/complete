@@ -4,5 +4,11 @@ module Spree
     def concierge_page
     end
 
+    def about
+    end
+
+    def ourstory
+    end
+
   end
 end

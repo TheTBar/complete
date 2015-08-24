@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get '/build_your_babe' => 'babes#access_concierge'
     get '/my_babes_package_list/:id' => 'taxons#my_babes_package_list', as: 'my_babes_package_list'
     get '/' => 'home#concierge_page'
+    get '/about' => 'home#about'
+    get '/ourstory' => 'home#ourstory'
   end
 
 
