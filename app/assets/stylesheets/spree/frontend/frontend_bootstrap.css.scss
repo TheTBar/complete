@@ -1,13 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.homegirl {
-  background-image: asset-url('tbarhome.png');
-  background-size: cover;
-  min-height: 100%;
-  height: 790px;
-}
-
 $body-background-color: #1a1919;
 $explanation-background-color: #2f231d;
 $extras-background-color: #135b61;
