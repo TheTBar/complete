@@ -1,9 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.homegirl {
-  background-image: asset-url('tbarhome.png');
-  background-size: cover;
-  min-height: 100%;
-  height: 790px;
+.lead {
+  color: black;
 }
