@@ -35,6 +35,10 @@ a {
   }
 }
 
+.well {
+  color: black;
+}
+
 header,
 main,
 footer {
@@ -319,6 +323,12 @@ footer {
 
     }
 
+  }
+
+  section#extras {
+    a {
+      color: white;
+    }
   }
 
   #introduction h3,
