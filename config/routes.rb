@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get '/' => 'home#concierge_page'
     get '/about' => 'home#about'
     get '/ourstory' => 'home#ourstory'
+    get '/returns_and_exchanges' => 'home#returns_and_exchanges'
+    get '/privacy_policy' => 'home#privacy_policy'
+    get '/terms_of_use' => 'home#terms_of_use'
   end
 
 

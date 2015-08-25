@@ -10,5 +10,14 @@ module Spree
     def ourstory
     end
 
+    def privacy_policy
+    end
+
+    def returns_and_exchanges
+    end
+
+    def terms_of_use
+    end
+
   end
 end
