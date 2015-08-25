@@ -15,3 +15,4 @@
 //= require spree/frontend/spree_variant_options
 //= require spree/frontend/spree_package_variant_options
 //= require spree/frontend/spree_wishlist
+//= require spree/frontend/spree_contact_us
