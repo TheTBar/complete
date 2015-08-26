@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/AgilTec/spree_variant_options.git
-  revision: 998730136f772321f04d1df3236d9ede24a549c0
+  remote: git://github.com/radamnyc/spree_variant_options.git
+  revision: 15b6ca66448b2789770e73e80b300b280a1b1260
   branch: 3.0.0
   specs:
     spree_variant_options (0.8.0)
@@ -78,7 +78,7 @@ GIT
 
 GIT
   remote: git://github.com/spree/spree_auth_devise.git
-  revision: b554f307e5aa887110a70d54f8967c284f881375
+  revision: 2e8e08759c4d51bb94065478aee53546d0f05f98
   branch: 3-0-stable
   specs:
     spree_auth_devise (3.0.0)
@@ -156,15 +156,15 @@ GEM
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
     addressable (2.3.8)
-    arel (6.0.2)
-    autoprefixer-rails (5.2.1.1)
+    arel (6.0.3)
+    autoprefixer-rails (5.2.1.2)
       execjs
       json
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
-    aws-sdk (1.64.0)
-      aws-sdk-v1 (= 1.64.0)
-    aws-sdk-v1 (1.64.0)
+    aws-sdk (1.65.0)
+      aws-sdk-v1 (= 1.65.0)
+    aws-sdk-v1 (1.65.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
@@ -174,13 +174,12 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
     builder (3.2.2)
-    byebug (5.0.0)
-      columnize (= 0.9.0)
+    byebug (6.0.2)
     camertron-eprun (1.1.0)
     cancancan (1.10.1)
-    canonical-rails (0.0.9)
+    canonical-rails (0.0.10)
       rails (>= 3.1, < 5.0)
-    capybara (2.4.4)
+    capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
@@ -202,7 +201,6 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     colorize (0.7.7)
-    columnize (0.9.0)
     css_parser (1.3.6)
       addressable
     database_cleaner (1.4.1)
@@ -223,7 +221,7 @@ GEM
       dotenv (= 2.0.2)
       railties (~> 4.0)
     erubis (2.7.0)
-    execjs (2.5.2)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -232,11 +230,11 @@ GEM
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     ffaker (1.32.1)
-    font-awesome-rails (4.3.0.0)
+    font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    globalid (0.3.5)
+    globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
     highline (1.6.21)
@@ -259,13 +257,13 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    loofah (2.0.2)
+    loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.6.1)
     mini_portile (0.6.2)
-    minitest (5.7.0)
+    minitest (5.8.0)
     monetize (1.3.1)
       money (~> 6.6)
     money (6.6.1)
@@ -303,7 +301,7 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    omniauth-twitter (1.2.0)
+    omniauth-twitter (1.2.1)
       json (~> 1.3)
       omniauth-oauth (~> 1.1)
     orm_adapter (0.5.0)
@@ -354,7 +352,7 @@ GEM
       sprockets-rails
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
-    rails-dom-testing (1.0.6)
+    rails-dom-testing (1.0.7)
       activesupport (>= 4.2.0.beta, < 5.0)
       nokogiri (~> 1.6.0)
       rails-deprecated_sanitizer (>= 1.0.1)
@@ -364,7 +362,7 @@ GEM
       rails_serve_static_assets
       rails_stdout_logging
     rails_serve_static_assets (0.0.4)
-    rails_stdout_logging (0.0.3)
+    rails_stdout_logging (0.0.4)
     railties (4.2.1)
       actionpack (= 4.2.1)
       activesupport (= 4.2.1)
@@ -398,7 +396,7 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    sass (3.4.16)
+    sass (3.4.18)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.1)
@@ -471,7 +469,7 @@ GEM
     spree_sample (3.0.1)
       spree_core (= 3.0.1)
     spring (1.3.6)
-    sprockets (3.2.0)
+    sprockets (3.3.3)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
