@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150823204057) do
+ActiveRecord::Schema.define(version: 20150826140404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -489,6 +489,7 @@ ActiveRecord::Schema.define(version: 20150823204057) do
     t.integer  "flirt_value",          default: 0
     t.integer  "sophisticate_value",   default: 0
     t.string   "brand"
+    t.boolean  "show_in_main_search",  default: true
   end
 
   add_index "spree_products", ["available_on"], name: "index_spree_products_on_available_on", using: :btree
