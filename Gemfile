@@ -98,5 +98,9 @@ gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', bran
 #contact us
 gem 'spree_contact_us', github: 'spree-contrib/spree_contact_us', branch: '3-0-stable'
 
+#page caching
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
+
 #new relic monitoring
 gem 'newrelic_rpm'

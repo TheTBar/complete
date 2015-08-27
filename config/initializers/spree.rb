@@ -15,7 +15,6 @@ Spree.config do |config|
   # config.track_inventory_levels = false
     config.products_per_page = 50
     config.admin_products_per_page = 50
-
 end
 
 SpreeVariantOptions::VariantConfig.main_option_type_id = 0
