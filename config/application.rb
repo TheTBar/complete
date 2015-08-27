@@ -37,6 +37,6 @@ module Thetbar
     config.active_record.raise_in_transactional_callbacks = true
 
     #page caching stuff
-    config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
+    config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"
   end
 end
