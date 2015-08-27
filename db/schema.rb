@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826140404) do
+ActiveRecord::Schema.define(version: 20150827152807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,8 @@ ActiveRecord::Schema.define(version: 20150826140404) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "active",     default: true
+    t.boolean  "active",            default: true
+    t.string   "question_verbiage", default: "Need Question Verbiage", null: false
   end
 
   create_table "spree_babe_trait_values", force: :cascade do |t|

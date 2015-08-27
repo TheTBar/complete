@@ -1,4 +1,4 @@
 <%= f.field_container "babe_trait_#{trait_type_counter + 1}", class:['form-group'] do %>
-  <%= f.label "babe_trait_#{trait_type_counter + 1}", Spree.t("#{trait_type.name}") %><p>
+  <%= f.label "babe_trait_#{trait_type_counter + 1}", Spree.t("#{trait_type.question_verbiage}") %><p>
   <%= select_tag("babe_trait_#{trait_type_counter + 1}", options_from_collection_for_select(Spree::BabeTraitValue.joins(:spree_babe_trait_type).where(spree_babe_trait_types: { name: "#{trait_type.name}"}).all, :id, :name) )%>
 <% end %>
