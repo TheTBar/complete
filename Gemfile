@@ -98,3 +98,5 @@ gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', bran
 #contact us
 gem 'spree_contact_us', github: 'spree-contrib/spree_contact_us', branch: '3-0-stable'
 
+#new relic monitoring
+gem 'newrelic_rpm'
