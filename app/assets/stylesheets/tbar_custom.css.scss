@@ -259,6 +259,27 @@ footer {
 
 }
 
+
+#contact-us {
+  font: normal 1.5rem 'Open Sans', sans-serif;
+  height: 830px;
+  background-image: image-url('rsz_angela_phone_big.jpg');
+  background-position: center top;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+
+  input, textarea {
+    color: black;
+  }
+
+  #contact-us-form {
+    padding-top: 50px;
+    padding-left: 25px;
+  }
+}
+
+
+
 [data-route='spree/home/concierge_page'] {
 
   h1,
