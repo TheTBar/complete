@@ -263,7 +263,7 @@ footer {
 #contact-us {
   font: normal 1.5rem 'Open Sans', sans-serif;
   height: 830px;
-  background-image: image-url('rsz_angela_phone_big.jpg');
+  background-image: url('https://tbar-general.s3.amazonaws.com/images/rsz_angela_phone_big.jpg');
   background-position: center top;
   background-size: auto 100%;
   background-repeat: no-repeat;
@@ -315,7 +315,8 @@ footer {
       position: absolute;
       top: -32px;
       left: 0;
-      background-image: image-url('star-separator.png');
+      //background-image: image-url('star-separator.png');
+      background-image: url('https://tbar-general.s3.amazonaws.com/images/star-separator.png');
       background-position: center center;
       background-repeat: no-repeat;
     }
@@ -365,7 +366,9 @@ footer {
     min-height: 90rem;
     padding-top: 15rem;
     padding-left: 40%;
-    background-image: image-url('woman-on-stairs.jpg');
+    //background-image: image-url('woman-on-stairs.jpg');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/woman-on-stairs.jpg');
+
     background-position: center top;
     background-size: auto 100%;
     background-repeat: no-repeat;
@@ -394,7 +397,8 @@ footer {
 
   #explanation {
     background-color: $explanation-background-color;
-    background-image: image-url('brown-gradient.png');
+    //background-image: image-url('brown-gradient.png');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/brown-gradient.png');
     background-position: center center;
     background-size: cover;
 
@@ -419,17 +423,17 @@ footer {
     }
 
     #step-1 {
-      background: image-url('star-background.png') center top, image-url('body-in-circle.png') center 2.7rem;
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/body-in-circle.png') center 2.7rem;
       background-repeat: no-repeat;
     }
 
     #step-2 {
-      background: image-url('star-background.png') center top, image-url('lingerie-in-circle.png') center 2.7rem;
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-circle.png') center 2.7rem;
       background-repeat: no-repeat;
     }
 
     #step-3 {
-      background: image-url('star-background.png') center top, image-url('couple-in-circle.png') center 2.7rem;
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/couple-in-circle.png') center 2.7rem;
       background-repeat: no-repeat;
     }
 
@@ -442,7 +446,7 @@ footer {
     article {
       width: 50%;
       padding-left: 15rem;
-      background-image: image-url('lingerie-hanging.png');
+      background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
       background-position: 2rem center;
       background-repeat: no-repeat;
       background-size: 100px;
@@ -472,7 +476,7 @@ footer {
     padding-top: 8rem;
     text-align: center;
     background-color: $extras-background-color;
-    background-image: image-url('blue-gradient.png');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/blue-gradient.png');
     background-position: center center;
     background-position: cover;
 
@@ -497,15 +501,15 @@ footer {
   }
 
   #the-panty-press {
-    background-image: image-url('lingerie-hanging.png');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
   }
 
   #our-story {
-    background-image: image-url('lingerie-in-window.png');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-window.png');
   }
 
   #subscriptions {
-    background-image: image-url('lingerie-gift.png');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-gift.png');
   }
 
   #press {
