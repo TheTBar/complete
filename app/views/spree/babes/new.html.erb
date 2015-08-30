@@ -81,14 +81,11 @@
   
   <fieldset id='cup'>
     <%= form.label :cup, "Bust" %>
-    <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'c' %>
+    <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'C' %>
     <%= link_to "▼", nil, class: 'previous' %>
-    <%= link_to "A" %>
-    <%= link_to "B" %>
-    <%= link_to "C" %>
-    <%= link_to "D" %>
-    <%= link_to "DD" %>
-    <%= link_to "F" %>
+    <% for size in Spree::Babe::CUP_SIZES do %>
+      <%= link_to size %>
+    <% end %>
     <%= link_to "▲", nil, class: 'next' %>
   </fieldset>
   
@@ -96,23 +93,19 @@
     <%= form.label :band, "Band" %>
     <%= form.select :band, Spree::Babe::BAND_SIZES, selected: '34' %>
     <%= link_to "▼", nil, class: 'previous' %>
-    <%= link_to "30" %>
-    <%= link_to "32" %>
-    <%= link_to "34" %>
-    <%= link_to "36" %>
-    <%= link_to "38" %>
+    <% for size in Spree::Babe::BAND_SIZES do %>
+      <%= link_to size %>
+    <% end %>
     <%= link_to "▲", nil, class: 'next' %>
   </fieldset>
   
   <fieldset id='bottoms'>
     <%= form.label :bottoms, "Bottoms" %>
-    <%= form.select :bottoms, Spree::Babe::BOTTOMS_SIZES, selected: 'm' %>
+    <%= form.select :bottoms, Spree::Babe::BOTTOMS_SIZES, selected: 'M' %>
     <%= link_to "▼", nil, class: 'previous' %>
-    <%= link_to "XS" %>
-    <%= link_to "S" %>
-    <%= link_to "M" %>
-    <%= link_to "L" %>
-    <%= link_to "XL" %>
+    <% for size in Spree::Babe::BOTTOMS_SIZES do %>
+      <%= link_to size %>
+    <% end %>
     <%= link_to "▲", nil, class: 'next' %>
   </fieldset>
   
@@ -141,7 +134,3 @@
   <% end %>
   
 <% end %>
-
-
-
-<%#= render 'form' %>
