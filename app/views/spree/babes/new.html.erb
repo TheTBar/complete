@@ -1,1 +1,147 @@
-<%= render 'form' %>
+<script>
+
+  var presets = {
+    small: {
+      cup: 'A',
+      band: '32',
+      bottoms: 'S'
+    },
+    medium: {
+      cup: 'C',
+      band: '34',
+      bottoms: 'M'
+    },
+    large: {
+      cup: 'DD',
+      band: '36',
+      bottoms: 'L'
+    }
+  }
+  
+  $(document).on('ready', function() {
+    
+    $('#body-type input').on('click', function() {
+      var preset = presets[$(this).val()];
+      $('#babe_cup').val(preset.cup).trigger('change');
+      $('#babe_band').val(preset.band).trigger('change');
+      $('#babe_bottoms').val(preset.bottoms).trigger('change');
+    });
+    
+    $('#new_babe select, #new_babe a').on('click', function() {
+      $('#body-type input').attr('checked', false);
+    });
+    
+    $('#new_babe select').on('change', function() {
+      var select = $(this)
+      var part = select.attr('id').replace('babe_', '');
+      var path = '/assets/' + part + '-' + select.val().toLowerCase() + '.png';
+      $('#body-' + part).css('background-image', 'url(' + path + ')');
+    })
+    
+    $('#new_babe a:not(.previous, .next)').on('click', function(event) {
+      event.preventDefault();
+      var link = $(this);
+      var value = link.data('value') || link.text();
+      link.siblings('select').val(value).trigger('change');
+    });
+    
+    $('#new_babe a.previous, #new_babe a.next').on('click', function(event) {
+      event.preventDefault();
+      var link = $(this);
+      var select = link.siblings('select');
+      var option = select.children('[value=' + select.val() + ']');
+      if (link.hasClass('previous') && option.is(':not(:first-child)')) {
+        select.val(option.prev().val()).trigger('change');
+      }
+      else if (link.hasClass('next') && option.is(':not(:last-child)')) {
+        select.val(option.next().val()).trigger('change');
+      }
+    });
+
+  });
+  
+</script>
+
+<h1>Build your babe</h1>
+
+<%= form_for @babe do |form| %>
+
+  <h2>Let's start with sizing</h2>
+  <p>Choose a body size to set standard proportions or modify the details to get a customized fit</p>
+  
+  <fieldset id='body-type'>
+    <h3>Body size</h3>
+    <%= form.radio_button :body_type, :small %>
+    <%= form.label :body_type_small, "S" %>
+    <%= form.radio_button :body_type, :medium, checked: true %>
+    <%= form.label :body_type_medium, "M" %>
+    <%= form.radio_button :body_type, :large %>
+    <%= form.label :body_type_large, "L" %>
+  </fieldset>
+  
+  <fieldset id='cup'>
+    <%= form.label :cup, "Bust" %>
+    <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'c' %>
+    <%= link_to "▼", nil, class: 'previous' %>
+    <%= link_to "A" %>
+    <%= link_to "B" %>
+    <%= link_to "C" %>
+    <%= link_to "D" %>
+    <%= link_to "DD" %>
+    <%= link_to "F" %>
+    <%= link_to "▲", nil, class: 'next' %>
+  </fieldset>
+  
+  <fieldset id='band'>
+    <%= form.label :band, "Band" %>
+    <%= form.select :band, Spree::Babe::BAND_SIZES, selected: '34' %>
+    <%= link_to "▼", nil, class: 'previous' %>
+    <%= link_to "30" %>
+    <%= link_to "32" %>
+    <%= link_to "34" %>
+    <%= link_to "36" %>
+    <%= link_to "38" %>
+    <%= link_to "▲", nil, class: 'next' %>
+  </fieldset>
+  
+  <fieldset id='bottoms'>
+    <%= form.label :bottoms, "Bottoms" %>
+    <%= form.select :bottoms, Spree::Babe::BOTTOMS_SIZES, selected: 'm' %>
+    <%= link_to "▼", nil, class: 'previous' %>
+    <%= link_to "XS" %>
+    <%= link_to "S" %>
+    <%= link_to "M" %>
+    <%= link_to "L" %>
+    <%= link_to "XL" %>
+    <%= link_to "▲", nil, class: 'next' %>
+  </fieldset>
+  
+  <fieldset id='name'>
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name %>
+  </fieldset>
+  
+  <div id='body-head'></div>
+  <div id='body-band'></div>
+  <div id='body-cup'></div>
+  <div id='body-bottoms'></div>
+  
+  <h2>Now let's talk personality</h2>
+  
+  <% @active_traits.each_with_index do |trait, index| %>
+    <% trait_values = Spree::BabeTraitValue.joins(:spree_babe_trait_type).where(spree_babe_trait_types: { name: trait.name }).all %>
+    <fieldset>
+      <%= form.label "babe_trait_#{ index + 1 }", trait.question_verbiage %>
+      <%= select_tag "babe_trait_#{ index + 1 }", options_from_collection_for_select(trait_values, :id, :name) %>
+      <h3><%= trait.question_verbiage %></h3>
+      <% for trait_value in trait_values do %>
+        <%= link_to trait_value.name, nil, data: { value: trait_value.id } %>
+      <% end %>
+    </fieldset>
+  <% end %>
+  
+<% end %>
+
+
+
+<%#= render 'form' %>

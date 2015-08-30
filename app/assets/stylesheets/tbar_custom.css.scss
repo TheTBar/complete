@@ -521,3 +521,47 @@ footer {
 
 }
 
+[data-route='spree/babes/new'] {
+    
+  #body-head,
+  #body-band,
+  #body-cup,
+  #body-bottoms {
+    position: relative;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  
+  #body-head {
+    z-index: 40;
+    min-width: 183px;
+    min-height: 379px;
+    background-image: image-url('head.png');
+  }
+  
+  #body-band {
+    z-index: 20;
+    min-width: 425px;
+    min-height: 628px;
+    margin-top: -220px;
+    background-image: image-url('band-34.png');
+  }
+  
+  #body-cup {
+    z-index: 30;
+    min-width: 288px;
+    min-height: 123px;
+    margin-top: -450px;
+    background-image: image-url('cup-c.png');
+  }
+  
+  #body-bottoms {
+    z-index: 10;
+    min-width: 346px;
+    min-height: 967px;
+    margin-top: 48px;
+    background-image: image-url('bottoms-m.png');
+  }
+  
+}
+

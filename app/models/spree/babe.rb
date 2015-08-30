@@ -1,5 +1,10 @@
 module Spree
   class Babe < ActiveRecord::Base
+    
+    CUP_SIZES = [ "A", "B", "C", "D", "DD", "F" ]
+    BAND_SIZES = [ "30", "32", "34", "36", "38" ]
+    BOTTOMS_SIZES = [ "XS", "S", "M", "L", "XL" ]
+    
     belongs_to :body_type
 
     def my_body_type
