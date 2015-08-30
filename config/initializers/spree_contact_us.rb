@@ -10,7 +10,7 @@ SpreeContactUs.setup do |config|
   config.mailer_from = nil
 
   # Configure the e-mail address which should receive the contact form email notifications.
-  config.mailer_to = "admin@thetbar.com"
+  config.mailer_to = "contact@thetbar.com"
 
   # ==> Form Configuration
 
