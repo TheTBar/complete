@@ -278,7 +278,37 @@ footer {
   }
 }
 
+[data-route='spree/orders/edit'] {
+  tr.active {
+    color: black;
+  }
 
+  tr.warning.cart-total {
+    color: black;
+
+    td.lead {
+      color: black;
+    }
+  }
+}
+
+[data-route="spree/checkout/edit"] {
+  #methods {
+    color: black;
+  }
+
+
+  #payment {
+
+    #payment-method-fields {
+      color: black;
+    }
+
+    .field {
+      color: black;
+    }
+  }
+}
 
 [data-route='spree/home/concierge_page'] {
 
