@@ -278,6 +278,18 @@ footer {
   }
 }
 
+[data-route='spree/products/show'] {
+  div.panel-body {
+    height: 272px;
+  }
+}
+
+[data-route='spree/products/index'] {
+  span.price.selling.lead {
+    color: black;
+  }
+}
+
 [data-route='spree/orders/edit'] {
   tr.active {
     color: black;
