@@ -291,6 +291,15 @@ footer {
     }
   }
 }
+[data-route="spree/users/show"] {
+  tbody {
+    color: black;
+
+    td.lead.text-primary.order-total {
+      color: black;
+    }
+  }
+}
 
 [data-route="spree/checkout/edit"] {
   #methods {
@@ -305,6 +314,24 @@ footer {
     }
 
     .field {
+      color: black;
+    }
+  }
+
+  .panel-body {
+    color: black;
+  }
+}
+
+[data-route="spree/orders/show"] {
+  tr.active {
+    color: black;
+  }
+
+  tr.warning.total {
+    color: black;
+
+    #order_total {
       color: black;
     }
   }
