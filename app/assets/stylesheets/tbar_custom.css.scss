@@ -290,6 +290,12 @@ footer {
   }
 }
 
+[data-route='spree/taxons/show'] {
+  span.price.selling.lead {
+    color: black;
+  }
+}
+
 [data-route='spree/orders/edit'] {
   tr.active {
     color: black;
@@ -331,6 +337,18 @@ footer {
   }
 
   .panel-body {
+    color: black;
+  }
+
+  td.lead.text-primary.price {
+    color: black;
+  }
+
+  td.lead.text-primary.total {
+    color: black;
+  }
+
+  span#order_total {
     color: black;
   }
 }
