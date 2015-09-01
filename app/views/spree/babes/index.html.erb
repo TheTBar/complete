@@ -1,11 +1,15 @@
 <h1>Your Babes</h1>
+<hr>
 <% @babes.each do |babe| %>
-        <h5><strong><%= babe.name %></strong></h5>
+  <p></p>
+        <h3><strong><%= babe.name.upcase %></strong></h3>
         <div class="babe-controls">
-          <span><%= link_to 'Show Me Her Goods', my_babes_package_list_path(babe) %></span>
-          <span><%= link_to 'Edit', edit_babe_path(babe) %></span>
+          &nbsp;&nbsp;<%= babe.bra_size %> <%=babe.bottoms%>&nbsp;&nbsp;<span><%= link_to 'Show Me Her Goods', my_babes_package_list_path(babe) %></span>
+          <!-- <span><%= link_to 'Edit', edit_babe_path(babe) %></span> -->|
           <span><%= link_to 'Delete', babe, method: :delete, data: { confirm: 'Are you sure?' } %></span>
         </div><p></p>
-
+<hr>
 <% end %>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <%= link_to 'Build A New Babe', new_babe_path %>

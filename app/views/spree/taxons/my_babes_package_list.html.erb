@@ -1,5 +1,8 @@
-<h1 class="taxon-title">Our personalized selection for <%= @babe.name %></h1>
-<!-- babe_id = <%= @babe.id %> -->
-<div data-hook="the_goods_list">
-  <%= render partial: 'package', collection: @taxons%>
-</div>
+<section id="babes-list-main">
+  <h1 class="taxon-title">Our personalized selection for <%= @babe.name %></h1>
+  <h3><%= @babe.bra_size %> Top, with <%= @babe.bottoms %> Bottoms</h3>
+  <!-- babe_id = <%= @babe.id %> -->
+  <div data-hook="the_goods_list">
+    <%= render partial: 'package', collection: @taxons%>
+  </div>
+</section>

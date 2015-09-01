@@ -259,6 +259,9 @@ footer {
 
 }
 
+#new_spree_user {
+  color: black;
+}
 
 #contact-us {
   font: normal 1.5rem 'Open Sans', sans-serif;
@@ -278,7 +281,94 @@ footer {
   }
 }
 
+[data-route='spree/products/show'] {
+  div.panel-body {
+    height: 272px;
+  }
+}
 
+[data-route='spree/products/index'] {
+  span.price.selling.lead {
+    color: black;
+  }
+}
+
+[data-route='spree/taxons/show'] {
+  span.price.selling.lead {
+    color: black;
+  }
+}
+
+[data-route='spree/orders/edit'] {
+  tr.active {
+    color: black;
+  }
+
+  tr.warning.cart-total {
+    color: black;
+
+    td.lead {
+      color: black;
+    }
+  }
+}
+[data-route="spree/users/show"] {
+  tbody {
+    color: black;
+
+    td.lead.text-primary.order-total {
+      color: black;
+    }
+  }
+}
+
+[data-route="spree/checkout/edit"] {
+  #methods {
+    color: black;
+  }
+
+
+  #payment {
+
+    #payment-method-fields {
+      color: black;
+    }
+
+    .field {
+      color: black;
+    }
+  }
+
+  .panel-body {
+    color: black;
+  }
+
+  td.lead.text-primary.price {
+    color: black;
+  }
+
+  td.lead.text-primary.total {
+    color: black;
+  }
+
+  span#order_total {
+    color: black;
+  }
+}
+
+[data-route="spree/orders/show"] {
+  tr.active {
+    color: black;
+  }
+
+  tr.warning.total {
+    color: black;
+
+    #order_total {
+      color: black;
+    }
+  }
+}
 
 [data-route='spree/home/concierge_page'] {
 
