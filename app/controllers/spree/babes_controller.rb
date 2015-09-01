@@ -1,6 +1,8 @@
 module Spree
   class BabesController < Spree::StoreController
 
+    before_action :set_babe, only: [:show, :edit, :update, :destroy]
+
     def index
       @babes = Babe.where("spree_user_id = #{spree_current_user.id}")
     end
