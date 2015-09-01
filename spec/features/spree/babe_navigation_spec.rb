@@ -89,8 +89,8 @@ describe "babes link", type: :feature do
       it "should show a list of the babes" do
         visit spree.babes_path
         expect(page).to have_content('Your Babes')
-        expect(page).to have_content('babe1')
-        expect(page).to have_content('babe2')
+        expect(page).to have_content('BABE1')
+        expect(page).to have_content('BABE2')
         expect(page).to have_content('Build A New Babe')
       end
 
