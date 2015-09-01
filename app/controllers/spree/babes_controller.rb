@@ -55,9 +55,11 @@ module Spree
     
     def setBottomSize(bottoms)
       bottom_hash = {'XS'=>'XSmall','S'=>'Small','M'=>'Medium','L'=>'Large','XL'=>'XLarge'}
+      number_size_hash = {'XSmall'=>'1','Small'=>'2','Medium'=>'3','Large'=>'4','XLarge'=>'5'}
       if bottom_hash[bottoms]
         @babe.bottoms = bottom_hash[bottoms]
       end
+      @babe.number_size = number_size_hash[@babe.bottoms]
     end
 
     def babe_params
