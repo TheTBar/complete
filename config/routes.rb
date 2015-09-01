@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  constraints subdomain: 'www' do
-    get ':any', to: redirect(subdomain: nil, path: '/%{any}'), any: /.*/
+  if Rails.env.production?
+    constraints subdomain: 'www' do
+      get ':any', to: redirect(subdomain: nil, path: '/%{any}'), any: /.*/
+    end
   end
-
 
   # This line mounts Spree's routes at the root of your application.
   # This means, any requests to URLs such as /products, will go to Spree::ProductsController.
