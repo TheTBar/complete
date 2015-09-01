@@ -151,7 +151,8 @@ t  </section>
   <section id='personality'>
   
     <h2>Now let's talk personality</h2>
-  
+
+    <%= hidden_field_tag(:number_of_active_traits, @active_traits.size) %>
     <% @active_traits.each_with_index do |trait, index| %>
       <% trait_values = Spree::BabeTraitValue.joins(:spree_babe_trait_type).where(spree_babe_trait_types: { name: trait.name }).all %>
       <fieldset>
