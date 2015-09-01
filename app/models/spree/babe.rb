@@ -4,6 +4,7 @@ module Spree
     CUP_SIZES = [ "A", "B", "C", "D", "DD", "F" ]
     BAND_SIZES = [ "30", "32", "34", "36", "38" ]
     BOTTOMS_SIZES = [ "XS", "S", "M", "L", "XL" ]
+    #BOTTOMS_SIZES = [ "XSmall", "Small", "Medium", "Large", "XLarge" ]
     
     belongs_to :body_type
 
