@@ -1,6 +1,8 @@
 module Spree
   class BabesController < Spree::StoreController
 
+    before_action :set_babe, only: [:show, :edit, :update, :destroy]
+
     def index
       @babes = Babe.where("spree_user_id = #{spree_current_user.id}")
     end
@@ -36,8 +38,18 @@ module Spree
     end
 
 
+    def destroy
+      @babe.destroy
+      respond_to do |format|
+        format.html { redirect_to build_your_babe_path, notice: 'Your babe was successfully deleted. Hopefully you will find plenty of new distractions.' }
+      end
+    end
 
     private
+
+    def set_babe
+      @babe = Babe.find(params[:id])
+    end
 
     def babe_params
       params.require(:babe).permit(:spree_user_id, :body_type_id, :name, :height, :band, :cup, :bottoms, :number_size, :vixen_value, :romantic_value, :flirt_value, :sophisticate_value)
