@@ -44,6 +44,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
       build_option_type_with_values("bra sizes", "Size", %w(34A))
     end
 
+    let (:babe) { create(:babe, name: 'Stella', band: 34, cup: 'A', bottoms: 'Small', number_size: 3, vixen_value: 4.1, flirt_value: 3.2 ) }
 
     context "there are sizes only" do
       let(:product1) { FactoryGirl.create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bra_option_type.id.to_s => bra_option_type.option_value_ids}, taxons: [taxon1]) }
@@ -56,12 +57,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
       it "should save the babes id on the order when added from the BYB results page" do
 
-        visit "/build_your_babe"
-        expect(current_path).to eql(spree.new_babe_path)
-        fill_in_babe
-        click_button "Show me the goods"
-        babe = Spree::Babe.last
-        expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
+        visit spree.my_babes_package_list_path(babe.id)
         click_button 'Add To Cart'
         expect(current_path).to eql(spree.cart_path)
         expect(page).to have_content("product1b")
@@ -75,12 +71,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
       it "should save the babes id on the order when added from the package page" , js: true do
 
-        visit "/build_your_babe"
-        expect(current_path).to eql(spree.new_babe_path)
-        fill_in_babe
-        click_button "Show me the goods"
-        babe = Spree::Babe.last
-        expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
+        visit spree.my_babes_package_list_path(babe.id)
         click_link "package1"
         click_button 'Add Package To Cart'
         expect(current_path).to eql(spree.cart_path)
@@ -111,11 +102,6 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
   def fill_in_babe
     fill_in "babe_name", :with => "Stella"
-    fill_in "babe_height", :with => "65"
-    fill_in "babe_band", :with => "34"
-    fill_in "babe_cup", :with => "A"
-    fill_in "babe_bottoms", :with => "Small"
-    fill_in "babe_number_size", :with => "3"
   end
 
   def set_count_on_hand(product,count)

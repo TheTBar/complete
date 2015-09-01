@@ -106,11 +106,6 @@ describe "Get Size pre selected", type: :feature do
 
   def fill_in_babe
     fill_in "babe_name", :with => "Stella"
-    fill_in "babe_height", :with => "65"
-    fill_in "babe_band", :with => "34"
-    fill_in "babe_cup", :with => "C"
-    fill_in "babe_bottoms", :with => "Medium"
-    fill_in "babe_number_size", :with => "3"
   end
 
   def set_count_on_hand(product,count)

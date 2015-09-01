@@ -61,6 +61,8 @@ describe "Getting Babe product results", type: :feature do
     let!(:product3b) { create(:product, name: 'product3b', vixen_value: 5, flirt_value: 4, sophisticate_value: 3, romantic_value:2, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon3]) }
     let!(:product4) { create(:product, name: 'product4', vixen_value: 5, flirt_value: 4, sophisticate_value: 4, romantic_value:1, option_values_hash: {number_size_option_type.id.to_s => number_size_option_type.option_value_ids}, taxons: [taxon4]) }
 
+    let (:weird_babe) { create(:babe, name: 'Bad Stella', band: 99, cup: 'Z', bottoms: 'Huge')}
+
     it "should return the availble packages" do
 
       #{master, "34a"=>1, "34b"=>0, "34c"=>0, "36a"=>0, "36b"=>0, "36c"=>0}
@@ -87,12 +89,8 @@ describe "Getting Babe product results", type: :feature do
     end
 
     it "should return the no results for babe page" do
-      visit spree.build_your_babe_path
-      fill_in_weird_babe
-      click_button "Show me the goods"
-      weird_babe = Spree::Babe.last
+      visit spree.my_babes_package_list_path(weird_babe.id)
       expect(weird_babe.name).to eq "Bad Stella"
-      expect(current_path).to eql(spree.my_babes_package_list_path(weird_babe.id))
       expect(page).to have_content("OH NO")
       expect(page).to have_content("Sorry we couldn't find any items for Bad Stella")
       last_failure_record = Spree::BabeProductSearchFailure.last
@@ -149,11 +147,6 @@ describe "Getting Babe product results", type: :feature do
 
   def fill_in_babe
     fill_in "babe_name", :with => "Stella"
-    fill_in "babe_height", :with => "65"
-    fill_in "babe_band", :with => "34"
-    fill_in "babe_cup", :with => "C"
-    fill_in "babe_bottoms", :with => "Medium"
-    fill_in "babe_number_size", :with => "3"
   end
 
 end
