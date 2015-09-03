@@ -29,6 +29,11 @@ body {
   font-size: 1.8rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+
+  span#copyrite {
+    color: $black-color;
+  }
+
 }
 
 a {
@@ -48,8 +53,13 @@ a {
 }
 
 .lead {
-  color: $white-color;
+  color: $black-color;
 }
+
+.cart-item-description {
+  color: $black-color;
+}
+
 
 header > div,
 main,
@@ -259,8 +269,12 @@ footer {
     margin-bottom: 0;
   }
 
+  span#copyright {
+    color: $black-color;
+  }
+
   a {
-    color: inherit;
+    color: $black-color;
 
     &:hover {
       color: inherit;
@@ -299,6 +313,16 @@ footer {
   #contact-us-form {
     padding-top: 50px;
     padding-left: 25px;
+  }
+}
+
+[data-route="spree/contact_us/contacts/new"] {
+  background-color: $body-dark-background-color;
+
+  footer {
+    a {
+      color: white;
+    }
   }
 }
 
@@ -366,6 +390,7 @@ footer {
     }
   }
 }
+
 [data-route="spree/users/show"] {
   tbody {
     color: $black-color;
@@ -377,6 +402,9 @@ footer {
 }
 
 [data-route="spree/checkout/edit"] {
+
+  color: $black-color;
+
   #methods {
     color: $black-color;
   }
@@ -411,18 +439,31 @@ footer {
 }
 
 [data-route="spree/orders/show"] {
-  tr.active {
-    color: $black-color;
-  }
-
-  tr.warning.total {
-    color: $black-color;
-
-    #order_total {
-      color: $black-color;
-    }
-  }
+  color: $black-color;
 }
+
+[data-route='spree/home/about'] {
+  color: $black-color;
+}
+
+[data-route='spree/home/ourstory'] {
+  color: $black-color;
+}
+
+[data-route='spree/home/returns_and_exchanges'] {
+  color: $black-color;
+}
+
+[data-route='spree/home/privacy_policy'] {
+  color: $black-color;
+}
+
+[data-route='spree/home/terms_of_use'] {
+  color: $black-color;
+}
+
+
+
 
 [data-route='spree/home/concierge_page'] {
   background-color: $body-dark-background-color;
@@ -494,6 +535,16 @@ footer {
 
     }
 
+  }
+
+  footer {
+    span#copyright {
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
   }
 
   section#extras {
@@ -668,6 +719,20 @@ footer {
 
   }
 
+}
+
+[data-route='spree/babes/index'] {
+  background-color: $body-dark-background-color;
+
+  footer {
+    span#copyright {
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+  }
 }
 
 [data-route='spree/babes/new'] {
