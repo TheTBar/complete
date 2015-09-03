@@ -58,7 +58,7 @@ Spree::Taxon.class_eval do
       end
     end
   end
-  
+
   def self.get_babes_package_list(babe)
     personality = babe.personality
     # puts personality[0][0]
