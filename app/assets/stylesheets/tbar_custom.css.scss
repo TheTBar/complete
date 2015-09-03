@@ -1,7 +1,8 @@
 //= require_tree .
 //= require_self
 
-$body-background-color: #1a1919;
+$body-light-background-color: white;
+$body-dark-background-color: #1a1919;
 $explanation-background-color: #2f231d;
 $extras-background-color: #135b61;
 $link-color: #156086;
@@ -23,15 +24,11 @@ $small-medium-breakpoint: 500px;
 
 body {
   color: white;
-  background-color: $body-background-color;
+  background-color: $body-light-background-color;
   font-family: 'roboto', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-}
-
-#main-container.main {
-  background-color: white;
 }
 
 a {
@@ -54,23 +51,28 @@ a {
   color: $white-color;
 }
 
-header,
+header > div,
 main,
 footer {
   @include clear;
+  position: relative;
   max-width: 1360px;
   margin: 0 auto;
 }
 
 header {
-  @include clear;
-  position: relative;
-  padding: 6rem;
   text-transform: uppercase;
+  background-color: $body-dark-background-color;
 
-  @media screen and (max-width: $medium-large-breakpoint) {
-    padding: 6rem 2rem 2rem 2rem;
-    text-align: center;
+  
+  > div {
+    padding: 6rem;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding: 6rem 2rem 2rem 2rem;
+      text-align: center;
+    }
+    
   }
 
   .logo {
@@ -241,18 +243,24 @@ header {
 
 }
 
+main {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 footer {
+  max-width: 1360px;
+  margin: 0 auto;
   padding: 4rem;
   text-transform: uppercase;
   font-size: 1.5rem;
-  background-color: white;
 
   p:last-child {
     margin-bottom: 0;
   }
 
   a {
-    color: #171617;
+    color: inherit;
 
     &:hover {
       color: inherit;
@@ -293,13 +301,6 @@ footer {
     padding-left: 25px;
   }
 }
-
-[data-route='spree/babes/new'] {
-  #main-container.main {
-    background-color: $body-background-color;
-  }
-}
-
 
 [data-route='spree/products/show'] {
 
@@ -424,20 +425,9 @@ footer {
 }
 
 [data-route='spree/home/concierge_page'] {
+  background-color: $body-dark-background-color;
 
-  #main-container.main {
-    background-color: $body-background-color;
-  }
-
-  footer {
-    background-color: $body-background-color;
-
-    a {
-      color: #CCCCCC;
-    }
-  }
-
-    h1,
+  h1,
   h2,
   h3 {
     text-align: center;
@@ -681,6 +671,7 @@ footer {
 }
 
 [data-route='spree/babes/new'] {
+  background-color: $body-dark-background-color;
   
   h1,
   h2,
@@ -1047,7 +1038,7 @@ footer {
       padding-top: 18rem;
       text-align: center;
       font-size: 2rem;
-      color: inherit;
+      color: white;
       box-shadow: 0 0 0 1px #ccc;
       border-radius: 12.5rem;
       
