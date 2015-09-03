@@ -34,34 +34,34 @@
   
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
     <header>
-      <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
-      <nav>
-        <ul id='account-links'>
-          <li><a href='/contact-us'>Contact us</a></li>
-          <span id="login-logout-links"></span>
-          <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
-        </ul>
-        <ul id='store-links'>
-          <li><a href='/build_your_babe'>Build your babe</a></li>
-          <li><a href='/products'>Shop</a></li>
-          <li><a href='/t/mens'>Men's</a></li>
-          <li><a href='/t/themes/gift-ideas'>Gift sets</a></li>
-        </ul>
-      </nav>
-      <div id='social-media-links'>
-        <%= link_to image_tag(getS3GeneralUrl('facebook-icon.png')) %>
-        <%= link_to image_tag(getS3GeneralUrl('twitter-icon.png')) %>
-        <%= link_to image_tag(getS3GeneralUrl('instagram-icon.png')) %>
-        <%= link_to image_tag(getS3GeneralUrl('tumblr-icon.png')) %>
-        <%= link_to image_tag(getS3GeneralUrl('pinterest-icon.png')) %>
+      <div>
+        <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
+        <nav>
+          <ul id='account-links'>
+            <li><a href='/contact-us'>Contact us</a></li>
+            <span id="login-logout-links"></span>
+            <li><%= link_to image_tag('cart-icon.png'), '/cart' %></li>
+          </ul>
+          <ul id='store-links'>
+            <li><a href='/build_your_babe'>Build your babe</a></li>
+            <li><a href='/products'>Shop</a></li>
+            <li><a href='/t/mens'>Men's</a></li>
+            <li><a href='/t/themes/gift-ideas'>Gift sets</a></li>
+          </ul>
+        </nav>
+        <div id='social-media-links'>
+          <%= link_to image_tag(getS3GeneralUrl('facebook-icon.png')) %>
+          <%= link_to image_tag(getS3GeneralUrl('twitter-icon.png')) %>
+          <%= link_to image_tag(getS3GeneralUrl('instagram-icon.png')) %>
+          <%= link_to image_tag(getS3GeneralUrl('tumblr-icon.png')) %>
+          <%= link_to image_tag(getS3GeneralUrl('pinterest-icon.png')) %>
+        </div>
       </div>
     </header>
       
     <main>
-      <div id="main-container" class="main">
-        <%= flash_messages %>
-        <%= yield %>
-      </div>
+      <%= flash_messages %>
+      <%= yield %>
     </main>
     
     <footer>

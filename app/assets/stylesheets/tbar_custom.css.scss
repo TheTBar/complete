@@ -1,14 +1,12 @@
 //= require_tree .
 //= require_self
 
-$body-background-color: #1a1919;
+$body-light-background-color: white;
+$body-dark-background-color: #1a1919;
 $explanation-background-color: #2f231d;
 $extras-background-color: #135b61;
 $link-color: #156086;
 $nav-separator-color: #666;
-
-$black-color: #1a1919;
-$white-color: #CCCCCC;
 
 $medium-large-breakpoint: 1000px;
 $small-medium-breakpoint: 500px;
@@ -23,15 +21,11 @@ $small-medium-breakpoint: 500px;
 
 body {
   color: white;
-  background-color: $body-background-color;
+  background-color: $body-light-background-color;
   font-family: 'roboto', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
-}
-
-#main-container.main {
-  background-color: white;
 }
 
 a {
@@ -43,34 +37,35 @@ a {
 }
 
 .well {
-  color: $black-color;
-  background-color: white;
-  border: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  color: black;
 }
 
 .lead {
-  color: $white-color;
+  color: white;
 }
 
-header,
+header > div,
 main,
 footer {
   @include clear;
+  position: relative;
   max-width: 1360px;
   margin: 0 auto;
 }
 
 header {
-  @include clear;
-  position: relative;
-  padding: 6rem;
   text-transform: uppercase;
+  background-color: $body-dark-background-color;
 
-  @media screen and (max-width: $medium-large-breakpoint) {
-    padding: 6rem 2rem 2rem 2rem;
-    text-align: center;
+  
+  > div {
+    padding: 6rem;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding: 6rem 2rem 2rem 2rem;
+      text-align: center;
+    }
+    
   }
 
   .logo {
@@ -241,18 +236,24 @@ header {
 
 }
 
+main {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 footer {
+  max-width: 1360px;
+  margin: 0 auto;
   padding: 4rem;
   text-transform: uppercase;
   font-size: 1.5rem;
-  background-color: white;
 
   p:last-child {
     margin-bottom: 0;
   }
 
   a {
-    color: #171617;
+    color: inherit;
 
     &:hover {
       color: inherit;
@@ -273,7 +274,7 @@ footer {
 }
 
 #new_spree_user {
-  color: $black-color;
+  color: black;
 }
 
 #contact-us {
@@ -285,7 +286,7 @@ footer {
   background-repeat: no-repeat;
 
   input, textarea {
-    color: $black-color;
+    color: black;
   }
 
   #contact-us-form {
@@ -294,145 +295,99 @@ footer {
   }
 }
 
-[data-route='spree/babes/new'] {
-  #main-container.main {
-    background-color: $body-background-color;
-  }
-}
-
-
 [data-route='spree/products/show'] {
-
-  div.product-brand {
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 30px;
-  }
-
-  div.product-title {
-    text-transform: capitalize;
-    font-size: 24px;
-    font-weight: 200;
-  }
-
   div.panel-body {
     height: 272px;
-  }
-
-  .panel-default {
-    border: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  color: $black-color;
-
-  .variant-option-values li a.option-value {
-    padding: 0px;
-  }
-
-  .lead {
-    color: $black-color;
   }
 }
 
 [data-route='spree/products/index'] {
   span.price.selling.lead {
-    color: $black-color;
+    color: black;
   }
 }
 
 [data-route='spree/taxons/show'] {
   span.price.selling.lead {
-    color: $black-color;
+    color: black;
   }
 }
 
 [data-route='spree/orders/edit'] {
   tr.active {
-    color: $black-color;
+    color: black;
   }
 
   tr.warning.cart-total {
-    color: $black-color;
+    color: black;
 
     td.lead {
-      color: $black-color;
+      color: black;
     }
   }
 }
 [data-route="spree/users/show"] {
   tbody {
-    color: $black-color;
+    color: black;
 
     td.lead.text-primary.order-total {
-      color: $black-color;
+      color: black;
     }
   }
 }
 
 [data-route="spree/checkout/edit"] {
   #methods {
-    color: $black-color;
+    color: black;
   }
 
 
   #payment {
 
     #payment-method-fields {
-      color: $black-color;
+      color: black;
     }
 
     .field {
-      color: $black-color;
+      color: black;
     }
   }
 
   .panel-body {
-    color: $black-color;
+    color: black;
   }
 
   td.lead.text-primary.price {
-    color: $black-color;
+    color: black;
   }
 
   td.lead.text-primary.total {
-    color: $black-color;
+    color: black;
   }
 
   span#order_total {
-    color: $black-color;
+    color: black;
   }
 }
 
 [data-route="spree/orders/show"] {
   tr.active {
-    color: $black-color;
+    color: black;
   }
 
   tr.warning.total {
-    color: $black-color;
+    color: black;
 
     #order_total {
-      color: $black-color;
+      color: black;
     }
   }
 }
 
 [data-route='spree/home/concierge_page'] {
+  background-color: $body-dark-background-color;
 
-  #main-container.main {
-    background-color: $body-background-color;
-  }
-
-  footer {
-    background-color: $body-background-color;
-
-    a {
-      color: #CCCCCC;
-    }
-  }
-
-    h1,
+  h1,
   h2,
   h3 {
     text-align: center;
@@ -676,6 +631,7 @@ footer {
 }
 
 [data-route='spree/babes/new'] {
+  background-color: $body-dark-background-color;
   
   h1,
   h2,
@@ -1042,7 +998,7 @@ footer {
       padding-top: 18rem;
       text-align: center;
       font-size: 2rem;
-      color: inherit;
+      color: white;
       box-shadow: 0 0 0 1px #ccc;
       border-radius: 12.5rem;
       
