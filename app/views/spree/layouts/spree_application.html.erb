@@ -58,8 +58,10 @@
     </header>
       
     <main>
-      <%= flash_messages %>
-      <%= yield %>
+      <div id="main-container" class="main">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
     </main>
     
     <footer>

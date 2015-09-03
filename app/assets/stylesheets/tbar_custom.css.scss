@@ -7,6 +7,9 @@ $extras-background-color: #135b61;
 $link-color: #156086;
 $nav-separator-color: #666;
 
+$black-color: #1a1919;
+$white-color: #CCCCCC;
+
 $medium-large-breakpoint: 1000px;
 $small-medium-breakpoint: 500px;
 
@@ -27,6 +30,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+#main-container.main {
+  background-color: white;
+}
+
 a {
   color: $link-color;
 
@@ -36,11 +43,15 @@ a {
 }
 
 .well {
-  color: black;
+  color: $black-color;
+  background-color: white;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .lead {
-  color: white;
+  color: $white-color;
 }
 
 header,
@@ -233,13 +244,14 @@ footer {
   padding: 4rem;
   text-transform: uppercase;
   font-size: 1.5rem;
+  background-color: white;
 
   p:last-child {
     margin-bottom: 0;
   }
 
   a {
-    color: inherit;
+    color: #171617;
 
     &:hover {
       color: inherit;
@@ -260,7 +272,7 @@ footer {
 }
 
 #new_spree_user {
-  color: black;
+  color: $black-color;
 }
 
 #contact-us {
@@ -272,7 +284,7 @@ footer {
   background-repeat: no-repeat;
 
   input, textarea {
-    color: black;
+    color: $black-color;
   }
 
   #contact-us-form {
@@ -281,98 +293,145 @@ footer {
   }
 }
 
+[data-route='spree/babes/new'] {
+  #main-container.main {
+    background-color: $body-background-color;
+  }
+}
+
+
 [data-route='spree/products/show'] {
+
+  div.product-brand {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 30px;
+  }
+
+  div.product-title {
+    text-transform: capitalize;
+    font-size: 24px;
+    font-weight: 200;
+  }
+
   div.panel-body {
     height: 272px;
+  }
+
+  .panel-default {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  color: $black-color;
+
+  .variant-option-values li a.option-value {
+    padding: 0px;
+  }
+
+  .lead {
+    color: $black-color;
   }
 }
 
 [data-route='spree/products/index'] {
   span.price.selling.lead {
-    color: black;
+    color: $black-color;
   }
 }
 
 [data-route='spree/taxons/show'] {
   span.price.selling.lead {
-    color: black;
+    color: $black-color;
   }
 }
 
 [data-route='spree/orders/edit'] {
   tr.active {
-    color: black;
+    color: $black-color;
   }
 
   tr.warning.cart-total {
-    color: black;
+    color: $black-color;
 
     td.lead {
-      color: black;
+      color: $black-color;
     }
   }
 }
 [data-route="spree/users/show"] {
   tbody {
-    color: black;
+    color: $black-color;
 
     td.lead.text-primary.order-total {
-      color: black;
+      color: $black-color;
     }
   }
 }
 
 [data-route="spree/checkout/edit"] {
   #methods {
-    color: black;
+    color: $black-color;
   }
 
 
   #payment {
 
     #payment-method-fields {
-      color: black;
+      color: $black-color;
     }
 
     .field {
-      color: black;
+      color: $black-color;
     }
   }
 
   .panel-body {
-    color: black;
+    color: $black-color;
   }
 
   td.lead.text-primary.price {
-    color: black;
+    color: $black-color;
   }
 
   td.lead.text-primary.total {
-    color: black;
+    color: $black-color;
   }
 
   span#order_total {
-    color: black;
+    color: $black-color;
   }
 }
 
 [data-route="spree/orders/show"] {
   tr.active {
-    color: black;
+    color: $black-color;
   }
 
   tr.warning.total {
-    color: black;
+    color: $black-color;
 
     #order_total {
-      color: black;
+      color: $black-color;
     }
   }
 }
 
 [data-route='spree/home/concierge_page'] {
 
-  h1,
+  #main-container.main {
+    background-color: $body-background-color;
+  }
+
+  footer {
+    background-color: $body-background-color;
+
+    a {
+      color: #CCCCCC;
+    }
+  }
+
+    h1,
   h2,
   h3 {
     text-align: center;
