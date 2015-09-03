@@ -333,6 +333,11 @@ footer {
   .lead {
     color: $black-color;
   }
+
+  a.option-value {
+    min-width: 50px;
+    text-align: center;
+  }
 }
 
 [data-route='spree/products/index'] {
