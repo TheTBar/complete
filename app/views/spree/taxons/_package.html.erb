@@ -17,5 +17,7 @@
         <% end %>
       <% end %>
     </div>
+  <% else %>
+    <%= button_to "Choose Options", show_package_path(package,babe_id: @babe.id), :method => "get", :class => 'btn btn-success', :id => 'choose-options-button' %>
   <% end %>
 </div>
