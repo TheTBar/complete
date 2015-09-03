@@ -59,7 +59,7 @@
       </div>
     </header>
       
-    <main>
+    <main controller-type='<%= params[:controller] %>'>
       <%= flash_messages %>
       <%= yield %>
     </main>
