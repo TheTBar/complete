@@ -31,7 +31,10 @@
 
       <%= hidden_field_tag "products[#{@product.id}]", "", :id => "product_#{index}", :class => "hidden" %>
       <%= hidden_field_tag "variant_id_#{index}", "", :class => "hidden" %>
-      <%= hidden_field_tag "quantity_#{index}", "1", :class => "hidden" %>
+      <div class="input-group">
+        Quantity: <%= number_field_tag "quantity_#{index}", 1, :class => 'title form-control', :min => 1 %>
+      </div>
+
 
       <script type="text/javascript">
         //<![CDATA[
