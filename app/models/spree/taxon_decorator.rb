@@ -4,7 +4,7 @@ Spree::Taxon.class_eval do
 
   validate :check_for_package_node
 
-  attr_accessor :babes_variants_for_taxons_products
+  attr_accessor :babes_variants_for_taxons_products, :package_price
 
   has_attached_file :icon,
                     styles: { mini: '32x32>', normal: '128x128>', display: '240x240>', large: '600x600'},
@@ -58,7 +58,7 @@ Spree::Taxon.class_eval do
       end
     end
   end
-
+  
   def self.get_babes_package_list(babe)
     personality = babe.personality
     # puts personality[0][0]
