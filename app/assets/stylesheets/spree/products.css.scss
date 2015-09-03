@@ -1,0 +1,47 @@
+[controller-type='spree/products']  {
+  color: #1a1919;
+
+  div.product-brand {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 30px;
+  }
+
+  div.product-title {
+    text-transform: capitalize;
+    font-size: 24px;
+    font-weight: 200;
+  }
+
+  div.panel-body {
+    height: 272px;
+  }
+
+  .panel-default {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .variant-option-values li a.option-value {
+    padding: 0px;
+  }
+
+  .lead {
+    color: #1a1919;
+  }
+
+  a.option-value {
+    min-width: 50px;
+    text-align: center;
+  }
+
+
+
+}
+
+[data-route="spree/products/show_package"] {
+  .col-md-4 {
+    min-height: 600px;
+  }
+}

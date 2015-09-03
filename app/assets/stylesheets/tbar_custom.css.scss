@@ -326,44 +326,6 @@ footer {
   }
 }
 
-[data-route='spree/products/show'] {
-
-  div.product-brand {
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 30px;
-  }
-
-  div.product-title {
-    text-transform: capitalize;
-    font-size: 24px;
-    font-weight: 200;
-  }
-
-  div.panel-body {
-    height: 272px;
-  }
-
-  .panel-default {
-    border: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  color: $black-color;
-
-  .variant-option-values li a.option-value {
-    padding: 0px;
-  }
-
-  .lead {
-    color: $black-color;
-  }
-
-  a.option-value {
-    min-width: 50px;
-    text-align: center;
-  }
-}
 
 [data-route='spree/products/index'] {
   span.price.selling.lead {
@@ -723,6 +685,8 @@ footer {
 
 [data-route='spree/babes/index'] {
   background-color: $body-dark-background-color;
+
+  color: white;
 
   footer {
     span#copyright {
