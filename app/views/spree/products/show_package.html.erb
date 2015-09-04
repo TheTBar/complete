@@ -1,15 +1,15 @@
 <div class="col-md-4" data-hook="product_left_part">
   <div data-hook="package_left_part_wrap">
     <h1 class="taxon-title"><%= @taxon.name %></h1>
-    <div id="package_image" data-hook="package_image">
+    <div id="product-images" data-hook="product-images">
       <div id="main-image" class="panel panel-default" data-hook>
         <div class="panel-body text-center">
           <%= image_tag(@taxon.icon(:display)) unless @taxon.icon_file_name.nil? %>
         </div>
       </div>
-    </div>
-    <div id="thumbnails" data-hook>
-      <%= render :partial => 'package_thumbnails' %>
+      <div id="thumbnails" data-hook>
+        <%= render :partial => 'package_thumbnails' %>
+      </div>
     </div>
   </div>
 </div>
