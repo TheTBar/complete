@@ -1,4 +1,10 @@
 <ul id="product-thumbnails" class="thumbnails list-inline" data-hook>
+  <% unless @taxon.icon_file_name.nil? %>
+    <li class='tmb-all tmb-888888 %>'>
+      <%= link_to(image_tag(@taxon.icon(:mini), class: "thumbnail"),@taxon.icon.url(:display) ) %>
+      <%#= image_tag(@taxon.icon(:mini))  %>
+    </li>
+  <% end %>
   <% @products.each do |p| %>
     <% p.images.each do |i| %>
       <li class='tmb-all tmb-<%= i.viewable.id %>'>
