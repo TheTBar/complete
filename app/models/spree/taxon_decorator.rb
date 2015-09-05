@@ -65,7 +65,8 @@ Spree::Taxon.class_eval do
     # puts personality[0][1]
     # personality.each {|name,value| puts "#{name} = #{value}" }
     # puts Spree::Taxon.where(is_package_node: true).where("\"spree_taxons\".\"#{personality[0][0]}\" >= #{personality[0][1].floor}").order("#{personality[0][0]} DESC, #{personality[1][0]} DESC").to_sql
-    Spree::Taxon.where(is_package_node: true).where("\"spree_taxons\".\"#{personality[0][0]}\" >= #{personality[0][1].floor}").order("#{personality[0][0]} DESC, #{personality[1][0]} DESC")
+    primary_personality_limit = personality[0][1].floor - 1
+    Spree::Taxon.where(is_package_node: true).where("\"spree_taxons\".\"#{personality[0][0]}\" >= #{primary_personality_limit}").order("#{personality[0][0]} DESC, #{personality[1][0]} DESC")
   end
 
   def self.get_babes_available_package_list(babe)

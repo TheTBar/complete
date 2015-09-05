@@ -29,14 +29,16 @@ describe "Getting Babe product results limited to 4 and then 8", type: :feature 
   context "there lots of packages for the babe" do
 
     before do
-      for i in 1..10
+      for i in 1..12
         create(:taxon, name: "package#{i}", is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id )
         if i < 5
           v = 5
         elsif i < 9
           v = 4
-        else
+        elsif i < 11
           v = 3
+        else
+          v = 2
         end
         create(:product, :name => "product#{i}", vixen_value: v, flirt_value: 4, sophisticate_value: 3, romantic_value:1, option_values_hash: {onesize_option_type.id.to_s => onesize_option_type.option_value_ids}, taxons: [Spree::Taxon.last])
         set_count_on_hand_for_size(Spree::Product.last,'One Size',1)
@@ -44,7 +46,7 @@ describe "Getting Babe product results limited to 4 and then 8", type: :feature 
     end
 
 
-    let (:babe) { create(:babe, name: 'Stella', band: 34, cup: 'A', bottoms: 'Small', number_size: 3, vixen_value: 3.8, flirt_value: 3.2 ) }
+    let (:babe) { create(:babe, name: 'Stella', band: 34, cup: 'A', bottoms: 'Small', number_size: 3, vixen_value: 4.2, flirt_value: 3.2 ) }
 
     # it "should show all the products" do
     #   visit "/products"
@@ -53,9 +55,15 @@ describe "Getting Babe product results limited to 4 and then 8", type: :feature 
     #   expect(page).to have_content "product10"
     # end
 
-
+    it "shoudl only return 10 items" do
+      # i know this isn't a feature test but who wants to set all this up twice
+      expect(Spree::Taxon.where(is_package_node: true).count).to eq 12
+      expect(Spree::Taxon.get_babes_package_list(babe).count).to eq 10
+    end
 
     it "should return the top 4 matches only" do
+
+
 
       visit spree.my_babes_package_list_path(babe.id)
       expect(page).to have_content("Our personalized selection for Stella")
