@@ -1,3 +1,5 @@
+@import 'colors', 'breakpoints', 'mixins';
+
 [controller-type='spree/products']  {
   color: #1a1919;
 
@@ -15,6 +17,10 @@
 
   div.panel-body {
     height: 272px;
+  }
+
+  .panel-body.text-center.product-body.product-list-panel {
+    height: 320px;
   }
 
   .panel-default {
@@ -36,7 +42,9 @@
     text-align: center;
   }
 
-
+  img.product-list-image {
+    height: 240px;
+  }
 
 }
 
