@@ -29,7 +29,7 @@
         <div class="panel panel-default">
           <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
             <div class="panel-body text-center product-body product-list-panel">
-              <%= link_to product_image(product, itemprop: "image", class: "product-list-image"), url, itemprop: 'url' %><br/>
+              <div class="product-list-image-panel"><%= link_to product_image(product, itemprop: "image", class: "product-list-image"), url, itemprop: 'url' %></div>
               <div class="info" itemprop="brand" id="product-brand"><%= product.brand.upcase unless product.brand.nil? %></div>
               <%= link_to truncate(product.name.capitalize, length: 50), url, class: 'info', itemprop: "name", title: product.name %><br>
               <span class="price selling lead" itemprop="price"><%= display_price(product) %></span>
