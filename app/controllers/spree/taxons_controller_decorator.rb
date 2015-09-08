@@ -17,15 +17,16 @@ module Spree
       @babe = Spree::Babe.find(params[:id])
       #set babe_id on session
       session[:babe_id] = @babe.id
-      @taxons = Taxon.get_babes_available_package_list(@babe)
-      if @taxons.count < 1
+      taxons = Taxon.get_babes_available_package_list(@babe)
+      if taxons.count < 1
         # here we would want to log the failure to find items so that we can reach out to the customer
         # if its a guest the page should ask for email so we can contact them.
         Spree::BabeProductSearchFailure.new(spree_user_id: current_spree_user.id,spree_babe_id: @babe.id).save if current_spree_user
         render 'no_matching_packages_for_babe'
+      else
+        @total_matches = taxons.count
+        @taxons = (params["see_more_selections"] == "1") ? (taxons.first 8) : (taxons.first 4)
       end
-
     end
-
   end
 end

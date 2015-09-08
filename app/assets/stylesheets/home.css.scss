@@ -1,0 +1,257 @@
+@import 'colors', 'breakpoints', 'mixins';
+
+[data-route='spree/home/concierge_page'] {
+  background-color: $body-dark-background-color;
+
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: 4rem;
+
+    @media screen and (max-width: $medium-large-breakpoint) {
+      font-size: 3.5rem;
+    }
+
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  section {
+    @include clear;
+    position: relative;
+    padding: 6rem;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 63px;
+      position: absolute;
+      top: -32px;
+      left: 0;
+      //background-image: image-url('star-separator.png');
+      background-image: url('https://tbar-general.s3.amazonaws.com/images/star-separator.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    article {
+      box-sizing: border-box;
+      float: left;
+      padding: 2rem;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        float: none;
+      }
+
+    }
+
+    a {
+      text-transform: uppercase;
+
+      span {
+        display: inline-block;
+        width: 1.3em;
+        height: 1.3em;
+        line-height: 1.2em;
+        margin-left: .5em;
+        text-align: center;
+        border: solid 3px $link-color;
+        border-radius: 1em;
+        box-shadow: 0 0 2px 1px rgba(255, 255, 255, .8), inset 0 0 2px 1px rgba(255, 255, 255, .8);
+      }
+
+    }
+
+  }
+
+  footer {
+    span#copyright {
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+  }
+
+  section#extras {
+    a {
+      color: white;
+    }
+  }
+
+  #introduction h3,
+  #explanation h3 {
+    font-size: 4rem;
+  }
+
+  #introduction {
+    min-height: 90rem;
+    padding-top: 15rem;
+    padding-left: 40%;
+    //background-image: image-url('woman-on-stairs.jpg');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/woman-on-stairs.jpg');
+
+    background-position: center top;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: $medium-large-breakpoint) {
+      background-position: -20rem center;
+      padding-left: 35%;
+    }
+
+    h1 {
+      text-align: left;
+    }
+
+    a {
+      font-size: 5rem;
+      font-weight: bold;
+      text-shadow: 0 0 2px white, 0 0 2px white;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        font-size: 3rem;
+      }
+
+    }
+
+  }
+
+  #explanation {
+    background-color: $explanation-background-color;
+    //background-image: image-url('brown-gradient.png');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/brown-gradient.png');
+    background-position: center center;
+    background-size: cover;
+
+    article {
+      width: 33.333%;
+      padding-top: 30rem;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        width: 100%;
+      }
+
+    }
+
+    a {
+      text-shadow: 0 0 2px white, 0 0 2px white;
+      font-weight: bold;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        font-size: 3rem;
+      }
+
+    }
+
+    #step-1 {
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/body-in-circle.png') center 2.7rem;
+      background-repeat: no-repeat;
+    }
+
+    #step-2 {
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-circle.png') center 2.7rem;
+      background-repeat: no-repeat;
+    }
+
+    #step-3 {
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/couple-in-circle.png') center 2.7rem;
+      background-repeat: no-repeat;
+    }
+
+  }
+
+  #testimonials {
+    color: black;
+    background-color: white;
+
+    article {
+      width: 50%;
+      padding-left: 15rem;
+      background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
+      background-position: 2rem center;
+      background-repeat: no-repeat;
+      background-size: 100px;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        width: 100%;
+      }
+
+    }
+
+    q {
+      display: block;
+      margin-bottom: 1em;
+    }
+
+    h3 {
+      text-align: right;
+    }
+
+    a span {
+      border-width: 2px;
+    }
+
+  }
+
+  #extras {
+    padding-top: 8rem;
+    text-align: center;
+    background-color: $extras-background-color;
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/blue-gradient.png');
+    background-position: center center;
+    background-position: cover;
+
+    article {
+      width: 33.333%;
+      padding-top: 30rem;
+      background-position: center top;
+      background-repeat: no-repeat;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        width: 100%;
+        padding-top: 25rem;
+
+        &:not(:first-child) {
+          margin-top: 5rem;
+        }
+
+      }
+
+    }
+
+  }
+
+  #the-panty-press {
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
+  }
+
+  #our-story {
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-window.png');
+  }
+
+  #subscriptions {
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-gift.png');
+  }
+
+  #press {
+    text-align: center;
+    color: black;
+    background-color: white;
+
+    a {
+      margin: 0 1rem;
+    }
+
+  }
+
+}

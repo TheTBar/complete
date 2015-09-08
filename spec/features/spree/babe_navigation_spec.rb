@@ -70,7 +70,7 @@ describe "babes link", type: :feature do
 
     it "should allow the user to load the build a babe page" do
       visit spree.build_your_babe_path
-      expect(page).to have_content('Body Type')
+      expect(page).to have_content("Let's start with sizing")
     end
 
     it "should allow the user to save a babe" do
@@ -119,11 +119,6 @@ describe "babes link", type: :feature do
 
   def fill_in_babe
     fill_in "babe_name", :with => "Stella"
-    fill_in "babe_height", :with => "65"
-    fill_in "babe_band", :with => "34"
-    fill_in "babe_cup", :with => "D"
-    fill_in "babe_bottoms", :with => "Medium"
-    fill_in "babe_number_size", :with => "3"
   end
 
 end

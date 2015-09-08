@@ -1,30 +1,20 @@
 //= require_tree .
 //= require_self
 
-$body-background-color: #1a1919;
-$explanation-background-color: #2f231d;
-$extras-background-color: #135b61;
-$link-color: #156086;
-$nav-separator-color: #666;
-
-$medium-large-breakpoint: 1000px;
-$small-medium-breakpoint: 500px;
-
-@mixin clear {
-  &:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
+@import 'colors', 'breakpoints', 'mixins';
 
 body {
   color: white;
-  background-color: $body-background-color;
+  background-color: $body-light-background-color;
   font-family: 'roboto', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
+
+  span#copyrite {
+    color: $black-color;
+  }
+
 }
 
 a {
@@ -36,29 +26,44 @@ a {
 }
 
 .well {
-  color: black;
+  color: $black-color;
+  background-color: white;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .lead {
-  color: white;
+  color: $black-color;
 }
 
-header,
+.cart-item-description {
+  color: $black-color;
+}
+
+
+header > div,
 main,
 footer {
+  @include clear;
+  position: relative;
   max-width: 1360px;
   margin: 0 auto;
 }
 
 header {
-  @include clear;
-  position: relative;
-  padding: 6rem;
   text-transform: uppercase;
+  background-color: $body-dark-background-color;
 
-  @media screen and (max-width: $medium-large-breakpoint) {
-    padding: 6rem 2rem 2rem 2rem;
-    text-align: center;
+  
+  > div {
+    padding: 6rem;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding: 6rem 2rem 2rem 2rem;
+      text-align: center;
+    }
+    
   }
 
   .logo {
@@ -229,7 +234,14 @@ header {
 
 }
 
+main {
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
 footer {
+  max-width: 1360px;
+  margin: 0 auto;
   padding: 4rem;
   text-transform: uppercase;
   font-size: 1.5rem;
@@ -238,8 +250,12 @@ footer {
     margin-bottom: 0;
   }
 
+  span#copyright {
+    color: $black-color;
+  }
+
   a {
-    color: inherit;
+    color: $black-color;
 
     &:hover {
       color: inherit;
@@ -260,7 +276,7 @@ footer {
 }
 
 #new_spree_user {
-  color: black;
+  color: $black-color;
 }
 
 #contact-us {
@@ -272,7 +288,7 @@ footer {
   background-repeat: no-repeat;
 
   input, textarea {
-    color: black;
+    color: $black-color;
   }
 
   #contact-us-form {
@@ -281,337 +297,127 @@ footer {
   }
 }
 
-[data-route='spree/products/show'] {
-  div.panel-body {
-    height: 272px;
+[data-route="spree/contact_us/contacts/new"] {
+  background-color: $body-dark-background-color;
+
+  footer {
+    a {
+      color: white;
+    }
   }
 }
 
+
 [data-route='spree/products/index'] {
   span.price.selling.lead {
-    color: black;
+    color: $black-color;
   }
 }
 
 [data-route='spree/taxons/show'] {
   span.price.selling.lead {
-    color: black;
+    color: $black-color;
   }
 }
 
 [data-route='spree/orders/edit'] {
   tr.active {
-    color: black;
+    color: $black-color;
   }
 
   tr.warning.cart-total {
-    color: black;
+    color: $black-color;
 
     td.lead {
-      color: black;
+      color: $black-color;
     }
   }
 }
+
 [data-route="spree/users/show"] {
   tbody {
-    color: black;
+    color: $black-color;
 
     td.lead.text-primary.order-total {
-      color: black;
+      color: $black-color;
     }
   }
 }
 
 [data-route="spree/checkout/edit"] {
+
+  color: $black-color;
+
   #methods {
-    color: black;
+    color: $black-color;
   }
 
 
   #payment {
 
     #payment-method-fields {
-      color: black;
+      color: $black-color;
     }
 
     .field {
-      color: black;
+      color: $black-color;
     }
   }
 
   .panel-body {
-    color: black;
+    color: $black-color;
   }
 
   td.lead.text-primary.price {
-    color: black;
+    color: $black-color;
   }
 
   td.lead.text-primary.total {
-    color: black;
+    color: $black-color;
   }
 
   span#order_total {
-    color: black;
+    color: $black-color;
   }
 }
 
 [data-route="spree/orders/show"] {
-  tr.active {
-    color: black;
-  }
-
-  tr.warning.total {
-    color: black;
-
-    #order_total {
-      color: black;
-    }
-  }
+  color: $black-color;
 }
 
-[data-route='spree/home/concierge_page'] {
+[data-route='spree/home/about'] {
+  color: $black-color;
+}
 
-  h1,
-  h2,
-  h3 {
-    text-align: center;
-    text-transform: uppercase;
-  }
+[data-route='spree/home/ourstory'] {
+  color: $black-color;
+}
 
-  h1 {
-    font-size: 4rem;
+[data-route='spree/home/returns_and_exchanges'] {
+  color: $black-color;
+}
 
-    @media screen and (max-width: $medium-large-breakpoint) {
-      font-size: 3.5rem;
+[data-route='spree/home/privacy_policy'] {
+  color: $black-color;
+}
+
+[data-route='spree/home/terms_of_use'] {
+  color: $black-color;
+}
+
+[data-route='spree/babes/index'] {
+  background-color: $body-dark-background-color;
+
+  color: white;
+
+  footer {
+    span#copyright {
+      color: white;
     }
 
-  }
-
-  h2 {
-    font-size: 2.5rem;
-  }
-
-  section {
-    @include clear;
-    position: relative;
-    padding: 6rem;
-
-    &::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 63px;
-      position: absolute;
-      top: -32px;
-      left: 0;
-      //background-image: image-url('star-separator.png');
-      background-image: url('https://tbar-general.s3.amazonaws.com/images/star-separator.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
-
-    article {
-      box-sizing: border-box;
-      float: left;
-      padding: 2rem;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        float: none;
-      }
-
-    }
-
-    a {
-      text-transform: uppercase;
-
-      span {
-        display: inline-block;
-        width: 1.3em;
-        height: 1.3em;
-        line-height: 1.2em;
-        margin-left: .5em;
-        text-align: center;
-        border: solid 3px $link-color;
-        border-radius: 1em;
-        box-shadow: 0 0 2px 1px rgba(255, 255, 255, .8), inset 0 0 2px 1px rgba(255, 255, 255, .8);
-      }
-
-    }
-
-  }
-
-  section#extras {
     a {
       color: white;
     }
   }
-
-  #introduction h3,
-  #explanation h3 {
-    font-size: 4rem;
-  }
-
-  #introduction {
-    min-height: 90rem;
-    padding-top: 15rem;
-    padding-left: 40%;
-    //background-image: image-url('woman-on-stairs.jpg');
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/woman-on-stairs.jpg');
-
-    background-position: center top;
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-
-    @media screen and (max-width: $medium-large-breakpoint) {
-      background-position: -20rem center;
-      padding-left: 35%;
-    }
-
-    h1 {
-      text-align: left;
-    }
-
-    a {
-      font-size: 5rem;
-      font-weight: bold;
-      text-shadow: 0 0 2px white, 0 0 2px white;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        font-size: 3rem;
-      }
-
-    }
-
-  }
-
-  #explanation {
-    background-color: $explanation-background-color;
-    //background-image: image-url('brown-gradient.png');
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/brown-gradient.png');
-    background-position: center center;
-    background-size: cover;
-
-    article {
-      width: 33.333%;
-      padding-top: 30rem;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        width: 100%;
-      }
-
-    }
-
-    a {
-      text-shadow: 0 0 2px white, 0 0 2px white;
-      font-weight: bold;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        font-size: 3rem;
-      }
-
-    }
-
-    #step-1 {
-      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/body-in-circle.png') center 2.7rem;
-      background-repeat: no-repeat;
-    }
-
-    #step-2 {
-      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-circle.png') center 2.7rem;
-      background-repeat: no-repeat;
-    }
-
-    #step-3 {
-      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/couple-in-circle.png') center 2.7rem;
-      background-repeat: no-repeat;
-    }
-
-  }
-
-  #testimonials {
-    color: black;
-    background-color: white;
-
-    article {
-      width: 50%;
-      padding-left: 15rem;
-      background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
-      background-position: 2rem center;
-      background-repeat: no-repeat;
-      background-size: 100px;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        width: 100%;
-      }
-
-    }
-
-    q {
-      display: block;
-      margin-bottom: 1em;
-    }
-
-    h3 {
-      text-align: right;
-    }
-
-    a span {
-      border-width: 2px;
-    }
-
-  }
-
-  #extras {
-    padding-top: 8rem;
-    text-align: center;
-    background-color: $extras-background-color;
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/blue-gradient.png');
-    background-position: center center;
-    background-position: cover;
-
-    article {
-      width: 33.333%;
-      padding-top: 30rem;
-      background-position: center top;
-      background-repeat: no-repeat;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        width: 100%;
-        padding-top: 25rem;
-
-        &:not(:first-child) {
-          margin-top: 5rem;
-        }
-
-      }
-
-    }
-
-  }
-
-  #the-panty-press {
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
-  }
-
-  #our-story {
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-window.png');
-  }
-
-  #subscriptions {
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-gift.png');
-  }
-
-  #press {
-    text-align: center;
-    color: black;
-    background-color: white;
-
-    a {
-      margin: 0 1rem;
-    }
-
-  }
-
 }
 

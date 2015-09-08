@@ -26,6 +26,7 @@ module Spree
         babe_personality_traits.push(Spree::BabeTraitValue.find(params["babe_trait_#{i}"]))
       end
       @babe = Spree::Babe.new(babe_params)
+      setBottomSize(@babe.bottoms);
       @babe.spree_user_id = spree_current_user.id if spree_current_user
       @babe.set_personality_from_trait_array(babe_personality_traits) if babe_personality_traits.size > 0
       respond_to do |format|
@@ -50,6 +51,15 @@ module Spree
 
     def set_babe
       @babe = Babe.find(params[:id])
+    end
+    
+    def setBottomSize(bottoms)
+      bottom_hash = {'XS'=>'XSmall','S'=>'Small','M'=>'Medium','L'=>'Large','XL'=>'XLarge'}
+      number_size_hash = {'XSmall'=>'1','Small'=>'2','Medium'=>'3','Large'=>'4','XLarge'=>'5'}
+      if bottom_hash[bottoms]
+        @babe.bottoms = bottom_hash[bottoms]
+      end
+      @babe.number_size = number_size_hash[@babe.bottoms]
     end
 
     def babe_params

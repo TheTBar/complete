@@ -1,0 +1,546 @@
+@import 'colors', 'breakpoints', 'mixins';
+
+[data-route='spree/babes/new'] {
+  background-color: $body-dark-background-color;
+  
+  h1,
+  h2,
+  h3 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  p {
+    text-align: center;
+  }
+  
+  #babe-container {
+    max-width: 900px;
+    position: relative;
+    margin: 0 auto;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding: 0 2rem;
+    }
+    
+  }
+  
+  #body-type {
+    z-index: 20;
+    position: relative;
+    margin-left: -3rem;
+    text-align: center;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      margin-left: 0;
+    }
+    
+  }
+  
+  #body-type input {
+    width: 6rem;
+    height: 6rem;
+    margin: 0 3rem;
+    background-color: #222;
+    border: 1px dashed #ddd;
+    border-radius: 3rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    &:checked {
+      background-color: #ddd;
+    }
+    
+    & + label {
+      display: inline-block;
+      width: 6rem;
+      position: relative;
+      top: -1.7rem;
+      margin-left: -9.45rem;
+      line-height: 6rem;
+      text-align: center;
+      font-size: 4rem;
+      color: #ddd;
+    }
+    
+    &:checked + label {
+      color: #222;
+    }
+    
+  }
+  
+  #cup,
+  #band,
+  #bottoms {
+    z-index: 20;
+    display: inline-block;
+    position: absolute;
+    
+    label {
+      margin: 0;
+      padding: 0 4rem;
+      width: 30rem;
+      line-height: 4.5rem;
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      font-weight: normal;
+      background-color: #333;
+      border-radius: 1rem;
+      border: 1px dashed #ddd;
+    }
+    
+    select {
+      display: none;
+      
+      & + span {
+        width: 12rem;
+        line-height: 12rem;
+        position: absolute;
+        top: -3.75rem;
+        text-align: center;
+        font-size: 5rem;
+        font-weight: bold;
+        border-radius: 7rem;
+        border: 1px dashed #ddd;
+      }
+      
+    }
+    
+    a {
+      color: inherit;
+      
+      &.size {
+        display: inline-block;
+        width: 2rem;
+        line-height: 2rem;
+        position: absolute;
+        text-align: center;
+        font-size: 1.1rem;
+        color: #ddd;
+        background-color: #333;
+        border: 1px solid #ddd;
+        border-radius: 1rem;
+        
+        &:hover,
+        &.selected {
+          color: #222;
+          background-color: #ddd;
+        }
+        
+      }
+    
+      &.previous,
+      &.next {
+        display: block;
+        position: absolute;
+        font-size: 3rem;
+        color: #222;
+        text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+        
+        &:hover {
+          background-color: none;
+          color: #444;
+        }
+        
+      }
+      
+    }
+    
+  }
+  
+  #cup {
+    top: 195px;
+    left: 0;
+    
+    label {
+      text-align: left;
+      border-top-right-radius: 1.4rem;
+      border-bottom-right-radius: 1.4rem;
+      border-right-width: 0;
+    }
+    
+    select + span {
+      right: 0;
+    }
+    
+    a.previous {
+      right: 4.5rem;
+      bottom: -6.5rem;
+    }
+    
+    a.size-1 {
+      top: -5.1rem;
+      right: 2rem;
+    }
+    
+    a.size-2 {
+      top: -3.1rem;
+      right: -.4rem;
+    }
+
+    a.size-3 {
+      top: -.3rem;
+      right: -1.8rem;
+    }
+
+    a.size-4 {
+      top: 2.8rem;
+      right: -1.8rem;
+    }
+
+    a.size-5 {
+      top: 5.6rem;
+      right: -.5rem;
+    }
+    
+    a.size-6 {
+      top: 7.7rem;
+      right: 2rem;
+    }
+    
+    a.next {
+      top: -6rem;
+      right: 4.5rem;
+    }
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+
+      label {
+        text-align: right;
+        border-top-left-radius: 1.4rem;
+        border-bottom-left-radius: 1.4rem;
+        border-left-width: 0;
+        border-right-width: 1px;
+      }
+    
+      select + span {
+        left: 0;
+      }
+    
+      a.previous {
+        bottom: -6.5rem;
+        left: 4.5rem;
+      }
+    
+      a.size-1 {
+        top: -5.1rem;
+        left: 2rem;
+      }
+    
+      a.size-2 {
+        top: -3.1rem;
+        left: -.4rem;
+      }
+
+      a.size-3 {
+        top: -.3rem;
+        left: -1.8rem;
+      }
+
+      a.size-4 {
+        top: 2.8rem;
+        left: -1.8rem;
+      }
+
+      a.size-5 {
+        top: 5.6rem;
+        left: -.5rem;
+      }
+    
+      a.size-6 {
+        top: 7.7rem;
+        left: 2rem;
+      }
+    
+      a.next {
+        top: -6rem;
+        left: 4.5rem;
+      }
+      
+    }
+    
+  }
+  
+  #band,
+  #bottoms {
+    
+    label {
+      text-align: right;
+      border-top-left-radius: 1.4rem;
+      border-bottom-left-radius: 1.4rem;
+      border-left-width: 0;
+    }
+    
+    select + span {
+      left: 0;
+    }
+    
+    a.previous {
+      bottom: -6.5rem;
+      left: 4.5rem;
+    }
+    
+    a.size-1 {
+      top: -5.1rem;
+      left: 2rem;
+    }
+    
+    a.size-2 {
+      top: -3.1rem;
+      left: -.4rem;
+    }
+
+    a.size-3 {
+      top: -.3rem;
+      left: -1.8rem;
+    }
+
+    a.size-4 {
+      top: 2.8rem;
+      left: -1.8rem;
+    }
+
+    a.size-5 {
+      top: 5.6rem;
+      left: -.5rem;
+    }
+    
+    a.size-6 {
+      top: 7.7rem;
+      left: 2rem;
+    }
+    
+    a.next {
+      top: -6rem;
+      left: 4.5rem;
+    }
+    
+  }
+  
+  #band {
+    top: 150px;
+    right: 0;
+  }
+  
+  #bottoms {
+    top: 330px;
+    right: 0;
+  }
+  
+  @media screen and (max-width: $medium-large-breakpoint) {
+    
+    #cup,
+    #band,
+    #bottoms {
+      display: block;
+      width: 30rem;
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      margin: 0 auto 13rem auto;
+    }
+    
+    #cup {
+      margin-top: 7rem;
+    }
+    
+  }
+  
+  #name {
+    position: relative;
+    z-index: 20;
+    margin-top: -3rem;
+    text-align: center;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      margin-left: 0;
+    }
+    
+    label {
+      display: none;
+    }
+    
+    input[type=text] {
+      width: 40rem;
+      padding: .5rem 1rem;
+      text-align: center;
+      font-size: 2.5rem;
+      background-color: #222;
+      border: 1px dashed #ddd;
+      border-radius: 1rem;
+      -webkit-appearance: none;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        box-sizing: border-box;
+        width: 80%;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+    }
+    
+  }
+  
+  #babe-body {
+    z-index: 10;
+    position: relative;
+    max-width: 690px;
+    padding: 8rem;
+    margin: -5rem auto 0 auto;
+    border: 1px dashed #ddd;
+    border-radius: 50%;
+    // background-color: rgba(255, 0, 0, .3);
+  }
+    
+  #body-head,
+  #body-band,
+  #body-cup,
+  #body-bottoms {
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+    background-position: center top;
+    background-repeat: no-repeat;
+  }
+  
+  #body-head {
+    z-index: 40;
+    height: 136px;
+    background-image: image-url('head.png');
+    background-size: auto 100%;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 68px;
+//    }
+    
+  }
+  
+  #body-band {
+    z-index: 20;
+    height: 226px;
+    margin-top: -80px;
+    background-image: image-url('band-34.png');
+    background-size: auto 100%;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 113px;
+//    }
+    
+  }
+  
+  #body-cup {
+    z-index: 30;
+    height: 44px;
+    margin-top: -160px;
+    background-image: image-url('cup-c.png');
+    background-size: auto;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 22px;
+//    }
+    
+  }
+  
+  #body-bottoms {
+    z-index: 10;
+    height: 348px;
+    margin-top: 16px;
+    background-image: image-url('bottoms-m.png');
+    background-size: auto 100%;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 174px;
+//    }
+    
+  }
+  
+  #sizing {
+    
+    h2 {
+      margin-top: 5rem;
+    }
+    
+    h3 {
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+    }
+    
+  }
+  
+  #personality {
+    
+    margin-top: 8rem;
+    padding-top: 8rem;
+    color: black;
+    background-color: white;
+    
+    label,
+    select {
+      display: none;
+    }
+    
+    fieldset {
+      padding: 4rem;
+    }
+    
+    fieldset:nth-of-type(even) {
+      background-color: #eee;
+    }
+    
+    fieldset:nth-of-type(odd) {
+      background-color: white;
+    }
+    
+    a {
+      display: block;
+      float: left;
+      width: 25rem;
+      height: 25rem;
+      margin: 3rem;
+      padding-top: 18rem;
+      text-align: center;
+      font-size: 2rem;
+      color: white;
+      box-shadow: 0 0 0 1px #ccc;
+      border-radius: 12.5rem;
+      
+      &:hover,
+      &.selected {
+        box-shadow: 0 0 0 4px #666;
+      }
+      
+      &.selected {
+        font-weight: bold;
+      }
+      
+      @media screen and (max-width: $small-medium-breakpoint) {
+        float: none;
+        margin: 3rem auto;
+      }
+      
+    }
+    
+  }
+  
+  #finish {
+    padding: 6rem 0;
+    font-size: 5rem;
+    text-align: center;
+    background-color: white;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      font-size: 3rem;
+    }
+    
+    input[type=submit] {
+      text-transform: uppercase;
+      color: $link-color;
+      background: none;
+      border: none;
+      -webkit-appearance: none;
+    }
+  }
+  
+}

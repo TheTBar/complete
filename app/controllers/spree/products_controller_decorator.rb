@@ -6,6 +6,11 @@ module Spree
       return unless @taxon
       @searcher = build_searcher(params.merge(taxon: @taxon.id, include_images: true))
       @products = @searcher.retrieve_products.sort_by { |p| p.product_size_type.name} # makes sure bras are always displayed first
+      package_price = 0.00
+      @products.each do |p|
+        package_price = package_price + p.price_in(current_currency).amount
+      end
+      @taxon.package_price = sprintf('%.0f', package_price)
       @pre_selected_sizes = []
       if session.key?(:babe_id)
         @products.each do |product|
