@@ -2,6 +2,13 @@
 
 [data-route='spree/babes/new'] {
   background-color: $body-dark-background-color;
+
+  main {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+  }
   
   h1,
   h2,
