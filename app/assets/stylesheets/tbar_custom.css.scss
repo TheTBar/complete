@@ -237,6 +237,10 @@ header {
 main {
   max-width: 1360px;
   margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+  padding-bottom: 20px;
 }
 
 footer {
@@ -272,7 +276,6 @@ footer {
       margin: 0 .75em 0 .5em;
     }
   }
-
 }
 
 #new_spree_user {
