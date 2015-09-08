@@ -10,7 +10,7 @@ module Spree
       @products.each do |p|
         package_price = package_price + p.price_in(current_currency).amount
       end
-      @taxon.package_price = package_price
+      @taxon.package_price = sprintf('%.0f', package_price)
       @pre_selected_sizes = []
       if session.key?(:babe_id)
         @products.each do |product|
