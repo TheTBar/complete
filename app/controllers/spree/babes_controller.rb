@@ -3,6 +3,8 @@ module Spree
 
     before_action :set_babe, only: [:show, :edit, :update, :destroy]
 
+    caches_page :new
+
     def index
       @babes = Babe.where("spree_user_id = #{spree_current_user.id}")
     end
