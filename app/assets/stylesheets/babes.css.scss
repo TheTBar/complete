@@ -18,6 +18,11 @@
     max-width: 900px;
     position: relative;
     margin: 0 auto;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding: 0 2rem;
+    }
+    
   }
   
   #body-type {
@@ -25,6 +30,11 @@
     position: relative;
     margin-left: -3rem;
     text-align: center;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      margin-left: 0;
+    }
+    
   }
   
   #body-type input {
@@ -35,6 +45,7 @@
     border: 1px dashed #ddd;
     border-radius: 3rem;
     -webkit-appearance: none;
+    -moz-appearance: none;
     
     &:checked {
       background-color: #ddd;
@@ -98,7 +109,7 @@
     a {
       color: inherit;
       
-      &:not(.previous, .next) {
+      &.size {
         display: inline-block;
         width: 2rem;
         line-height: 2rem;
@@ -145,51 +156,107 @@
       text-align: left;
       border-top-right-radius: 1.4rem;
       border-bottom-right-radius: 1.4rem;
-      border-right: none;
+      border-right-width: 0;
     }
     
     select + span {
       right: 0;
     }
     
-    a:first-of-type {
+    a.previous {
       right: 4.5rem;
       bottom: -6.5rem;
     }
     
-    a:nth-of-type(2) {
+    a.size-1 {
       top: -5.1rem;
       right: 2rem;
     }
     
-    a:nth-of-type(3) {
+    a.size-2 {
       top: -3.1rem;
       right: -.4rem;
     }
 
-    a:nth-of-type(4) {
+    a.size-3 {
       top: -.3rem;
       right: -1.8rem;
     }
 
-    a:nth-of-type(5) {
+    a.size-4 {
       top: 2.8rem;
       right: -1.8rem;
     }
 
-    a:nth-of-type(6) {
+    a.size-5 {
       top: 5.6rem;
       right: -.5rem;
     }
     
-    a:nth-of-type(7) {
+    a.size-6 {
       top: 7.7rem;
       right: 2rem;
     }
     
-    a:last-of-type {
+    a.next {
       top: -6rem;
       right: 4.5rem;
+    }
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+
+      label {
+        text-align: right;
+        border-top-left-radius: 1.4rem;
+        border-bottom-left-radius: 1.4rem;
+        border-left-width: 0;
+        border-right-width: 1px;
+      }
+    
+      select + span {
+        left: 0;
+      }
+    
+      a.previous {
+        bottom: -6.5rem;
+        left: 4.5rem;
+      }
+    
+      a.size-1 {
+        top: -5.1rem;
+        left: 2rem;
+      }
+    
+      a.size-2 {
+        top: -3.1rem;
+        left: -.4rem;
+      }
+
+      a.size-3 {
+        top: -.3rem;
+        left: -1.8rem;
+      }
+
+      a.size-4 {
+        top: 2.8rem;
+        left: -1.8rem;
+      }
+
+      a.size-5 {
+        top: 5.6rem;
+        left: -.5rem;
+      }
+    
+      a.size-6 {
+        top: 7.7rem;
+        left: 2rem;
+      }
+    
+      a.next {
+        top: -6rem;
+        left: 4.5rem;
+      }
+      
     }
     
   }
@@ -201,49 +268,49 @@
       text-align: right;
       border-top-left-radius: 1.4rem;
       border-bottom-left-radius: 1.4rem;
-      border-left: none;
+      border-left-width: 0;
     }
     
     select + span {
       left: 0;
     }
     
-    a:first-of-type {
+    a.previous {
       bottom: -6.5rem;
       left: 4.5rem;
     }
     
-    a:nth-of-type(2) {
+    a.size-1 {
       top: -5.1rem;
       left: 2rem;
     }
     
-    a:nth-of-type(3) {
+    a.size-2 {
       top: -3.1rem;
       left: -.4rem;
     }
 
-    a:nth-of-type(4) {
+    a.size-3 {
       top: -.3rem;
       left: -1.8rem;
     }
 
-    a:nth-of-type(5) {
+    a.size-4 {
       top: 2.8rem;
       left: -1.8rem;
     }
 
-    a:nth-of-type(6) {
+    a.size-5 {
       top: 5.6rem;
       left: -.5rem;
     }
     
-    a:nth-of-type(7) {
+    a.size-6 {
       top: 7.7rem;
       left: 2rem;
     }
     
-    a:last-of-type {
+    a.next {
       top: -6rem;
       left: 4.5rem;
     }
@@ -260,11 +327,35 @@
     right: 0;
   }
   
+  @media screen and (max-width: $medium-large-breakpoint) {
+    
+    #cup,
+    #band,
+    #bottoms {
+      display: block;
+      width: 30rem;
+      position: relative;
+      top: auto;
+      right: auto;
+      left: auto;
+      margin: 0 auto 13rem auto;
+    }
+    
+    #cup {
+      margin-top: 7rem;
+    }
+    
+  }
+  
   #name {
     position: relative;
     z-index: 20;
-    margin: -3rem;
+    margin-top: -3rem;
     text-align: center;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      margin-left: 0;
+    }
     
     label {
       display: none;
@@ -279,6 +370,15 @@
       border: 1px dashed #ddd;
       border-radius: 1rem;
       -webkit-appearance: none;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        box-sizing: border-box;
+        width: 80%;
+        max-width: 40rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
     }
     
   }
@@ -286,11 +386,12 @@
   #babe-body {
     z-index: 10;
     position: relative;
-    width: 690px;
+    max-width: 690px;
     padding: 8rem;
     margin: -5rem auto 0 auto;
     border: 1px dashed #ddd;
-    border-radius: 345px;
+    border-radius: 50%;
+    // background-color: rgba(255, 0, 0, .3);
   }
     
   #body-head,
@@ -309,6 +410,11 @@
     height: 136px;
     background-image: image-url('head.png');
     background-size: auto 100%;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 68px;
+//    }
+    
   }
   
   #body-band {
@@ -317,6 +423,11 @@
     margin-top: -80px;
     background-image: image-url('band-34.png');
     background-size: auto 100%;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 113px;
+//    }
+    
   }
   
   #body-cup {
@@ -325,6 +436,11 @@
     margin-top: -160px;
     background-image: image-url('cup-c.png');
     background-size: auto;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 22px;
+//    }
+    
   }
   
   #body-bottoms {
@@ -333,6 +449,24 @@
     margin-top: 16px;
     background-image: image-url('bottoms-m.png');
     background-size: auto 100%;
+    
+//    @media screen and (max-width: $medium-large-breakpoint) {
+//      height: 174px;
+//    }
+    
+  }
+  
+  #sizing {
+    
+    h2 {
+      margin-top: 5rem;
+    }
+    
+    h3 {
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+    }
+    
   }
   
   #personality {
@@ -381,15 +515,24 @@
         font-weight: bold;
       }
       
+      @media screen and (max-width: $small-medium-breakpoint) {
+        float: none;
+        margin: 3rem auto;
+      }
+      
     }
     
   }
   
   #finish {
-    padding: 6rem;
+    padding: 6rem 0;
     font-size: 5rem;
     text-align: center;
     background-color: white;
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      font-size: 3rem;
+    }
     
     input[type=submit] {
       text-transform: uppercase;

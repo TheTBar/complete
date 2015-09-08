@@ -104,8 +104,8 @@
         <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'C' %>
         <span>C</span>
         <%= link_to "▼", nil, class: 'previous' %>
-        <% for size in Spree::Babe::CUP_SIZES do %>
-          <%= link_to size %>
+        <% Spree::Babe::CUP_SIZES.each_with_index do |size, index| %>
+          <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
         <% end %>
         <%= link_to "▲", nil, class: 'next' %>
       </fieldset>
@@ -115,8 +115,8 @@
         <%= form.select :band, Spree::Babe::BAND_SIZES, selected: '34' %>
         <span>34</span>
         <%= link_to "▼", nil, class: 'previous' %>
-        <% for size in Spree::Babe::BAND_SIZES do %>
-          <%= link_to size %>
+        <% Spree::Babe::BAND_SIZES.each_with_index do |size, index| %>
+          <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
         <% end %>
         <%= link_to "▲", nil, class: 'next' %>
       </fieldset>
@@ -126,8 +126,8 @@
         <%= form.select :bottoms, Spree::Babe::BOTTOMS_SIZES, selected: 'M' %>
         <span>M</span>
         <%= link_to "▼", nil, class: 'previous' %>
-        <% for size in Spree::Babe::BOTTOMS_SIZES do %>
-          <%= link_to size %>
+        <% Spree::Babe::BOTTOMS_SIZES.each_with_index do |size, index| %>
+          <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
         <% end %>
         <%= link_to "▲", nil, class: 'next' %>
       </fieldset>
@@ -146,7 +146,7 @@
 
     </div>
   
-t  </section>
+  </section>
   
   <section id='personality'>
   
