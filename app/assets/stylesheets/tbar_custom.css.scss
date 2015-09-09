@@ -131,7 +131,7 @@ header {
     }
 
     li {
-      &:last-child {
+      &.cart {
         position: relative;
 
         &::before,
