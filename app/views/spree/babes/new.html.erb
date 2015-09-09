@@ -103,22 +103,22 @@
         <%= form.label :cup, "Bust" %>
         <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'C' %>
         <span>C</span>
-        <%= link_to "▼", nil, class: 'previous' %>
+        <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
         <% Spree::Babe::CUP_SIZES.each_with_index do |size, index| %>
           <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
         <% end %>
-        <%= link_to "▲", nil, class: 'next' %>
+        <%= link_to "&#x25B2;".html_safe, nil, class: 'next' %>
       </fieldset>
   
       <fieldset id='band'>
         <%= form.label :band, "Band" %>
         <%= form.select :band, Spree::Babe::BAND_SIZES, selected: '34' %>
         <span>34</span>
-        <%= link_to "▼", nil, class: 'previous' %>
+        <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
         <% Spree::Babe::BAND_SIZES.each_with_index do |size, index| %>
           <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
         <% end %>
-        <%= link_to "▲", nil, class: 'next' %>
+        <%= link_to "&#x25B2;".html_safe, nil, class: 'next' %>
       </fieldset>
   
       <fieldset id='bottoms'>
