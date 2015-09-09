@@ -5,7 +5,7 @@ module Spree
     after_action :destroy_auth_cookie, only: [:destroy]
 
     def set_auth_cookie
-      Rails.logger.debug "WE ARE SETTING THE COOKIE ***************************"
+      Rails.logger.debug "WE ARE SETTING THE COOKIE UserSessionsController***************************"
       if spree_user_signed_in?
         cookies[:logged_in] = 'true'
       end
