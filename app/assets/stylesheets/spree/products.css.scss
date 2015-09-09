@@ -54,3 +54,14 @@
     min-height: 600px;
   }
 }
+
+[data-route="spree/products/show"] {
+  .col-md-8 {
+    padding-top: 5px;
+    padding-left: 30px;
+  }
+
+  .well {
+    max-width: 650px;
+  }
+}
