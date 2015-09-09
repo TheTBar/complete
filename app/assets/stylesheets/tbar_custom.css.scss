@@ -425,3 +425,15 @@ footer {
   }
 }
 
+[data-route='spree/products/show'],
+[data-route='spree/products/show_package'] {
+  
+  #inside-product-cart-form {
+    margin-left: 0;
+  }
+  
+  [data-hook='product_price'] {
+    padding-left: 0;
+  }
+  
+}
