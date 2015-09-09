@@ -5,7 +5,7 @@ Warden.test_mode!
 
 describe "Get user wants to purchase through BYB", type: :feature do
 
-  let(:user) {FactoryGirl.create(:user)}
+  let!(:admin_user) {FactoryGirl.create(:user)}
   let!(:country) { create(:country, :name => "United States", :states_required => true) }
   let!(:state) { create(:state, :name => "Colorado", :country => country) }
   let!(:shipping_method) { create(:shipping_method) }
@@ -13,50 +13,40 @@ describe "Get user wants to purchase through BYB", type: :feature do
   let!(:payment_method) { create(:check_payment_method) }
   let!(:zone) { create(:zone) }
 
+  let(:sets_taxon) { FactoryGirl.create(:taxon, name: 'sets')}
+  let!(:taxon1) { FactoryGirl.create(:taxon, name: 'package1', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
 
-  before (:each) do
-    login_as(user, scope: :spree_user)
+  let!(:bottom_option_type) do
+    build_option_type_with_values("named sizes", "Size", %w(Small Medium))
   end
 
-  context "user gets selection for their babe" do
+  let!(:bra_option_type) do
+    build_option_type_with_values("bra sizes", "Size", %w(34A 34C))
+  end
 
-    let(:sets_taxon) { FactoryGirl.create(:taxon, name: 'sets')}
-    let!(:taxon1) { FactoryGirl.create(:taxon, name: 'package1', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
+  let(:product1) { FactoryGirl.create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bra_option_type.id.to_s => bra_option_type.option_value_ids}, taxons: [taxon1]) }
+  let(:product1b) { FactoryGirl.create(:product, name: 'product1b', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
 
-    def build_option_type_with_values(name, presentation, values)
-      ot = FactoryGirl.create(:option_type, :name => name, :presentation => presentation)
-      values.each do |val|
-        value_presentation = ot.name == 'named sizes' ? val[0].upcase : val
-        ot.option_values.create(:name => val.downcase, :presentation => value_presentation)
+  before do
+    set_count_on_hand(product1,1)
+    set_count_on_hand(product1b,1)
+  end
+
+
+
+    context "user is logged in and creates babe" do
+
+      let(:user) {create(:user)}
+
+      before (:each) do
+        login_as(user, scope: :spree_user)
       end
-      ot
-    end
 
-    def build_options_values_hash_from_option_type(option_type,hash)
-      hash[option_type.id.to_s] = option_type.option_value_ids
-    end
+      let (:babe) { create(:babe, spree_user_id: user.id, name: 'Stella', band: 34, cup: 'A', bottoms: 'Small', number_size: 3, vixen_value: 4.1, flirt_value: 3.2 ) }
 
-    let!(:bottom_option_type) do
-      build_option_type_with_values("named sizes", "Size", %w(Small))
-    end
-
-    let!(:bra_option_type) do
-      build_option_type_with_values("bra sizes", "Size", %w(34A))
-    end
-
-    let (:babe) { create(:babe, name: 'Stella', band: 34, cup: 'A', bottoms: 'Small', number_size: 3, vixen_value: 4.1, flirt_value: 3.2 ) }
-
-    context "there are sizes only" do
-      let(:product1) { FactoryGirl.create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bra_option_type.id.to_s => bra_option_type.option_value_ids}, taxons: [taxon1]) }
-      let(:product1b) { FactoryGirl.create(:product, name: 'product1b', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
-
-      before do
-        set_count_on_hand(product1,1)
-        set_count_on_hand(product1b,1)
-      end
 
       it "should save the babes id on the order when added from the BYB results page" do
-
+        puts (user.inspect)
         visit spree.my_babes_package_list_path(babe.id)
         click_button 'Add To Cart'
         expect(current_path).to eql(spree.cart_path)
@@ -98,6 +88,58 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
       end
     end
+
+    context "user starts out as guest and creates babe" do
+      before do
+        @city_trait = create(:babe_trait_type, name: 'city')
+        create(:babe_trait_value, name: 'city 1', spree_babe_trait_type_id: @city_trait.id, vixen_value: 5, flirt_value: 4, romantic_value: 3, sophisticate_value: 2)
+        @date_trait = create(:babe_trait_type, name: 'date')
+        create(:babe_trait_value, name: "date 1", spree_babe_trait_type_id: @date_trait.id, vixen_value: 4, flirt_value: 3, romantic_value: 2, sophisticate_value: 1)
+        @shoe_trait = create(:babe_trait_type, name: 'shoe', active: false)
+        create(:babe_trait_value, name: "shoe 1", spree_babe_trait_type_id: @shoe_trait.id, vixen_value: 4, flirt_value: 2, romantic_value: 5, sophisticate_value: 5)
+      end
+
+      let(:user) { create(:user) }
+
+      it "should assign the babe to the user on checkout" , js: true  do
+        visit '/build_your_babe'
+        fill_in_babe
+        click_button "Show me the goods"
+        babe = Spree::Babe.last
+        expect(babe.id).to eq 1
+        click_button "Add To Cart"
+        expect(current_path).to eql(spree.cart_path)
+        click_button 'Checkout'
+        fill_in_new_user
+        click_button 'Create'
+        user2 = Spree::User.last
+        puts user2.inspect
+        fill_in_address
+        click_button "Save and Continue"
+        expect(current_path).to eql(spree.checkout_state_path("delivery"))
+        click_button "Save and Continue"
+        expect(current_path).to eql(spree.checkout_state_path("payment"))
+        click_button "Save and Continue"
+        order = Spree::Order.last
+        expect(current_path).to eql(spree.order_path(order))
+        babe = Spree::Babe.last
+        lines = Spree::LineItem.where("order_id = #{order.id}")
+        expect(lines.first.babe_id).to eq babe.id
+        expect(lines.second.babe_id).to eq babe.id
+
+        expect(babe.spree_user_id).to eq user2.id
+
+
+
+      end
+
+    end
+
+  def fill_in_new_user
+    fill_in "spree_user_email", :with => "bobroberts@example.com"
+    fill_in "spree_user_name", :with => "bob roberts"
+    fill_in "spree_user_password", :with => "welcome1"
+    fill_in "spree_user_password_confirmation", :with => "welcome1"
   end
 
   def fill_in_babe
@@ -122,6 +164,20 @@ describe "Get user wants to purchase through BYB", type: :feature do
     fill_in "#{address}_zipcode", :with => "80302"
     fill_in "#{address}_phone", :with => "(555) 555-5555"
   end
+
+  def build_option_type_with_values(name, presentation, values)
+    ot = FactoryGirl.create(:option_type, :name => name, :presentation => presentation)
+    values.each do |val|
+      value_presentation = ot.name == 'named sizes' ? val[0].upcase : val
+      ot.option_values.create(:name => val.downcase, :presentation => value_presentation)
+    end
+    ot
+  end
+
+  def build_options_values_hash_from_option_type(option_type,hash)
+    hash[option_type.id.to_s] = option_type.option_value_ids
+  end
+
 
 
 end
