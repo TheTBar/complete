@@ -4,7 +4,7 @@ module Spree
     before_action :set_babe, only: [:show, :edit, :update, :destroy]
 
     # need to figure out how to get the session token onto the form for submission if the page is cached
-    #caches_page :new
+    caches_page :new
 
     def index
       @babes = Babe.where("spree_user_id = #{spree_current_user.id}")
