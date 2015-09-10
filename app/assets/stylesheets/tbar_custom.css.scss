@@ -324,20 +324,6 @@ footer {
   }
 }
 
-[data-route='spree/orders/edit'] {
-  tr.active {
-    color: $black-color;
-  }
-
-  tr.warning.cart-total {
-    color: $black-color;
-
-    td.lead {
-      color: $black-color;
-    }
-  }
-}
-
 [data-route="spree/users/show"] {
   tbody {
     color: $black-color;
@@ -348,7 +334,7 @@ footer {
   }
 }
 
-[data-route="spree/checkout/edit"] {
+[controller-type="spree/checkout"] {
 
   color: $black-color;
 

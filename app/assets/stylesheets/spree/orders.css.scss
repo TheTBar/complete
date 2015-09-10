@@ -1,0 +1,20 @@
+@import 'colors', 'breakpoints', 'mixins';
+
+[data-route='spree/orders/edit'] {
+
+  color: $black-color;
+
+  tr.active {
+    color: $black-color;
+  }
+
+  tr.warning.cart-total {
+    color: $black-color;
+
+    td.lead {
+      color: $black-color;
+    }
+  }
+
+
+}
