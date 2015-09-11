@@ -8,7 +8,11 @@
   <% @products.each do |p| %>
     <% p.images.each do |i| %>
       <li class='tmb-all tmb-<%= i.viewable.id %>'>
-        <%= link_to(image_tag(i.attachment.url(:mini), class: "thumbnail"), i.attachment.url(:product2)) %>
+        <%# if i.attachment.product2.file.exists? %>
+          <%= link_to(image_tag(i.attachment.url(:mini), class: "thumbnail"), i.attachment.url(:product2)) %>
+        <%# else %>
+          <%#= link_to(image_tag(i.attachment.url(:mini), class: "thumbnail"), i.attachment.url(:product)) %>
+        <%# end %>
       </li>
     <% end %>
   <% end %>
