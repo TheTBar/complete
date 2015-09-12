@@ -1,4 +1,4 @@
-<div class="col-md-4" data-hook="product_left_part">
+<div class="col-md-5" data-hook="product_left_part">
   <div data-hook="package_left_part_wrap">
     <h1 class="taxon-title"><%= @taxon.name %></h1>
     <div id="product-images" data-hook="product-images">
@@ -34,7 +34,7 @@
         <% @product_properties = product.product_properties.includes(:property) %>
 
         <div data-hook="product_show" itemscope itemtype="https://schema.org/Product">
-          <div class="col-md-8" data-hook="product_right_part">
+          <div class="col-md-7" data-hook="product_right_part">
             <div data-hook="product_right_part_wrap">
               <!-- <div id="product-images" data-hook="product_images">
                 <div id="main-image" class="panel panel-default" data-hook>
