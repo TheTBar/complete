@@ -1,5 +1,26 @@
 @import 'colors', 'breakpoints', 'mixins';
 
+[data-route="spree/home/sizing"] {
+  color: $black-color;
+
+  table, td {
+    border: 1px solid #e8e8e8;
+    border-collapse: collapse;
+    color: #222222;
+    margin: 1.5em 0;
+    padding: 5px 10px;
+  }
+
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  h2,h3,h4,h5 {
+    text-transform: uppercase;
+  }
+}
+
 [data-route='spree/home/concierge_page'] {
   background-color: $body-dark-background-color;
 
