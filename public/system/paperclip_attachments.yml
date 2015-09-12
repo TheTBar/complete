@@ -4,6 +4,7 @@
   - :large
   - :mini
   - :product
+  - :product2
   - :small
 :Spree::OptionValue:
   :image:

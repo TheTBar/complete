@@ -8,6 +8,7 @@ capybara-*.html
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
+!/public/system/paperclip_attachments.yml
 /public/spree
 /public/deploy
 /coverage/
