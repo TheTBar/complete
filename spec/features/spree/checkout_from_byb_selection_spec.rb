@@ -46,7 +46,7 @@ describe "Get user wants to purchase through BYB", type: :feature do
 
 
       it "should save the babes id on the order when added from the BYB results page" do
-        puts (user.inspect)
+        #puts (user.inspect)
         visit spree.my_babes_package_list_path(babe.id)
         click_button 'Add To Cart'
         expect(current_path).to eql(spree.cart_path)
@@ -113,7 +113,6 @@ describe "Get user wants to purchase through BYB", type: :feature do
         fill_in_new_user
         click_button 'Create'
         user2 = Spree::User.last
-        puts user2.inspect
         fill_in_address
         click_button "Save and Continue"
         expect(current_path).to eql(spree.checkout_state_path("delivery"))
