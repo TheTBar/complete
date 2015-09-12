@@ -165,7 +165,7 @@
   }
   
   #cup {
-    top: 195px;
+    top: 196px;
     left: 0;
     
     label {
@@ -339,7 +339,7 @@
   }
   
   #bottoms {
-    top: 330px;
+    top: 334px;
     right: 0;
   }
   
@@ -407,7 +407,6 @@
     margin: -5rem auto 0 auto;
     border: 1px dashed #ddd;
     border-radius: 50%;
-    // background-color: rgba(255, 0, 0, .3);
   }
     
   #body-head,
@@ -426,11 +425,6 @@
     height: 136px;
     background-image: image-url('head.png');
     background-size: auto 100%;
-    
-//    @media screen and (max-width: $medium-large-breakpoint) {
-//      height: 68px;
-//    }
-    
   }
   
   #body-band {
@@ -439,11 +433,6 @@
     margin-top: -80px;
     background-image: image-url('band-34.png');
     background-size: auto 100%;
-    
-//    @media screen and (max-width: $medium-large-breakpoint) {
-//      height: 113px;
-//    }
-    
   }
   
   #body-cup {
@@ -452,11 +441,6 @@
     margin-top: -160px;
     background-image: image-url('cup-c.png');
     background-size: auto;
-    
-//    @media screen and (max-width: $medium-large-breakpoint) {
-//      height: 22px;
-//    }
-    
   }
   
   #body-bottoms {
@@ -465,11 +449,25 @@
     margin-top: 16px;
     background-image: image-url('bottoms-m.png');
     background-size: auto 100%;
-    
-//    @media screen and (max-width: $medium-large-breakpoint) {
-//      height: 174px;
-//    }
-    
+  }
+  
+  div.line {
+    width: calc(100% - 8rem);
+    position: absolute;
+    left: 4rem;
+    border-top: 1px dashed #333;
+    // 4.6 rem line height
+    &#line-1 { top: 12.7rem; }
+    &#line-2 { top: 17.3rem; }
+    &#line-3 { top: 21.9rem; }
+    &#line-4 { top: 26.5rem; }
+    &#line-5 { top: 31.1rem; }
+    &#line-6 { top: 35.7rem; }
+    &#line-7 { top: 40.3rem; }
+    &#line-8 { top: 44.9rem; }
+    &#line-9 { top: 49.5rem; }
+    &#line-10 { top: 54.1rem; }
+    &#line-11 { top: 58.7rem; }
   }
   
   #sizing {
