@@ -134,6 +134,15 @@
           background-color: #ddd;
         }
         
+        &.disabled {
+          opacity: .2;
+          cursor: default;
+          &:hover {
+            color: inherit;
+            background-color: #333;
+          }
+        }
+        
       }
     
       &.previous,

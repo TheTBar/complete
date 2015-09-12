@@ -21,6 +21,9 @@ module Spree
     def terms_of_use
     end
 
+    def sizing
+    end
+
     def csrf_meta_tags
       render layout: false
     end
