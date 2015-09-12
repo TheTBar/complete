@@ -34,7 +34,7 @@
   </head>
   
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
-  <% cache do %>
+  <% cache('header') do %>
     <header>
       <div>
         <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
@@ -67,7 +67,7 @@
       <%= yield %>
     </main>
 
-  <% cache do %>
+  <% cache('footer') do %>
     <footer>
       <p>
         <a href='/about'>About us</a>
