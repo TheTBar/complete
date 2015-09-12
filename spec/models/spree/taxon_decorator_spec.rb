@@ -19,29 +19,34 @@ describe Spree::Taxon, :type => :model do
       expect(Spree::Taxon.friendly.where(is_package_node: true).count).to eq 8
     end
 
-    it "should return all the packages 1's" do
+    it "should return all the packages 1's with sophisticate second" do
       my_babe = create(:babe, name: 'my babe 1', vixen_value: 5, flirt_value: 2, sophisticate_value: 3, romantic_value:1)
       @taxons = Spree::Taxon.get_babes_package_list(my_babe)
-      expect(@taxons.count).to eq 2
+      expect(@taxons.count).to eq 3
       expect(@taxons[0].name).to eq 'package1'
       expect(@taxons[1].name).to eq 'package1b'
+      expect(@taxons[2].name).to eq 'package2'
+
     end
 
-    it "should return all the packages 1's reverse ordered" do
+    it "should return all the packages 1's with romantic second ordered" do
       my_babe = create(:babe, name: 'my babe 1', vixen_value: 5, flirt_value: 2, sophisticate_value: 3, romantic_value:4)
       @taxons = Spree::Taxon.get_babes_package_list(my_babe)
-      expect(@taxons.count).to eq 2
+      expect(@taxons.count).to eq 3
       expect(@taxons[0].name).to eq 'package1b'
       expect(@taxons[1].name).to eq 'package1'
+      expect(@taxons[2].name).to eq 'package2'
     end
 
     it "should return all the package 2's" do
       my_babe = create(:babe, name: 'my babe 1', vixen_value: 2, flirt_value: 5, sophisticate_value: 1, romantic_value:1)
       @taxons = Spree::Taxon.get_babes_package_list(my_babe)
-      expect(@taxons.count).to eq 3
+      expect(@taxons.count).to eq 5
       expect(@taxons[0].name).to eq 'package2'
       expect(@taxons[1].name).to eq 'package2b'
       expect(@taxons[2].name).to eq 'package2c'
+      expect(@taxons[3].name).to eq 'package1'
+      expect(@taxons[4].name).to eq 'package3'
     end
 
   end
@@ -138,9 +143,10 @@ describe Spree::Taxon, :type => :model do
       it "should return all sets matching babes flirt value ordered from high to low romantic value" do
         my_babe = create(:babe, name: 'my babe', vixen_value: 1, flirt_value: 4, sophisticate_value: 2, romantic_value:3)
         @taxons = Spree::Taxon.get_babes_package_list(my_babe)
-        expect(@taxons.count).to eq 2
+        expect(@taxons.count).to eq 3
         expect(@taxons[0].name).to eq 'package3'
         expect(@taxons[1].name).to eq 'package4'
+        expect(@taxons[2].name).to eq 'package1'
       end
 
       context "there is only stock availability in certain sizes" do
