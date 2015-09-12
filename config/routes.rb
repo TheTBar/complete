@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get '/returns_and_exchanges' => 'home#returns_and_exchanges'
     get '/privacy_policy' => 'home#privacy_policy'
     get '/terms_of_use' => 'home#terms_of_use'
+    get '/sizing' => 'home#sizing'
   end
 
 

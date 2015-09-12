@@ -21,5 +21,8 @@ module Spree
     def terms_of_use
     end
 
+    def sizing
+    end
+
   end
 end
