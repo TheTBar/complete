@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$('input[name=authenticity_token]').val($('meta[name=csrf-token]').attr('content'))
+
+
+
+
