@@ -2,19 +2,19 @@
 
   var presets = {
     small: {
-      cup: 'A',
-      band: '32',
-      bottoms: 'S'
+      cup: { value: 'B', range: [ 'A', 'B', 'C', 'D', 'DD', 'F' ] },
+      band: { value: '32', range: [ '30', '32', '34' ] },
+      bottoms: { value: 'S', range: [ 'XS', 'S', 'M' ] }
     },
     medium: {
-      cup: 'C',
-      band: '34',
-      bottoms: 'M'
+      cup: { value: 'C', range: [ 'A', 'B', 'C', 'D', 'DD', 'F' ] },
+      band: { value: '34', range: [ '32', '34', '36' ] },
+      bottoms: { value: 'M', range: [ 'S', 'M', 'L' ] }
     },
     large: {
-      cup: 'DD',
-      band: '36',
-      bottoms: 'L'
+      cup: { value: 'D', range: [ 'A', 'B', 'C', 'D', 'DD', 'F' ] },
+      band: { value: '36', range: [ '34', '36', '38' ] },
+      bottoms: { value: 'L', range: [ 'M', 'L', 'XL' ] }
     }
   }
   
@@ -22,14 +22,20 @@
     
     $('#body-type input').on('click', function() {
       var preset = presets[$(this).val()];
-      $('#babe_cup').val(preset.cup).trigger('change');
-      $('#babe_band').val(preset.band).trigger('change');
-      $('#babe_bottoms').val(preset.bottoms).trigger('change');
+      [ 'cup', 'band', 'bottoms' ].forEach(function (piece) {
+        var select = $('#babe_' + piece);
+        var options = select.children();
+        var container = $('#' + piece);
+        var sizes = container.find('[data-size]');
+        select.val(preset[piece].value).trigger('change');
+        sizes.addClass('disabled');
+        options.attr('disabled', true);
+        preset[piece].range.forEach(function(size) {
+          sizes.filter('[data-size=' + size + ']').removeClass('disabled');
+          options.filter('[value=' + size + ']').removeAttr('disabled')
+        });
+      });
     });
-    
-    // $('#new_babe select, #new_babe a').on('click', function() {
-    //   $('#body-type input').attr('checked', false);
-    // });
     
     $('#new_babe select').on('change', function() {
       var select = $(this)
@@ -37,9 +43,8 @@
       var path = '/babeparts/' + part + '-' + select.val().toLowerCase() + '.png';
       $('#body-' + part).css('background-image', 'url(' + path + ')');
       select.siblings('span').text(select.val());
-      
       select.siblings('a').removeClass('selected');
-      select.siblings('a').filter(function() {
+      select.siblings('a:not(.disabled)').filter(function() {
         return $(this).text() == select.val();
       }).addClass('selected');
       
@@ -55,6 +60,9 @@
       event.preventDefault();
       var link = $(this);
       var value = link.data('value') || link.text();
+      if (link.hasClass('disabled')) {
+        return;
+      }
       link.siblings('select').val(value).trigger('change');
     });
     
@@ -63,15 +71,16 @@
       var link = $(this);
       var select = link.siblings('select');
       var option = select.children('[value=' + select.val() + ']');
-      if (link.hasClass('previous') && option.is(':not(:first-child)')) {
+      if (link.hasClass('previous') && option.prev().is(':not([disabled])') && option.is(':not(:first-child)')) {
         select.val(option.prev().val()).trigger('change');
       }
-      else if (link.hasClass('next') && option.is(':not(:last-child)')) {
+      else if (link.hasClass('next') && option.next().is(':not([disabled])') && option.is(':not(:last-child)')) {
         select.val(option.next().val()).trigger('change');
       }
     });
     
     $('#new_babe select').trigger('change');
+    $('#babe_body_type_medium').trigger('click');
 
   });
   
@@ -104,8 +113,8 @@
         <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'C' %>
         <span>C</span>
         <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
-        <% Spree::Babe::CUP_SIZES.each_with_index do |size, index| %>
-          <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
+        <% Spree::Babe::CUP_SIZES.reverse.each_with_index do |size, index| %>
+          <%= link_to size, nil, class: "size size-#{ index + 1 }", data: { size: size } %>
         <% end %>
         <%= link_to "&#x25B2;".html_safe, nil, class: 'next' %>
       </fieldset>
@@ -115,8 +124,8 @@
         <%= form.select :band, Spree::Babe::BAND_SIZES, selected: '34' %>
         <span>34</span>
         <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
-        <% Spree::Babe::BAND_SIZES.each_with_index do |size, index| %>
-          <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
+        <% Spree::Babe::BAND_SIZES.reverse.each_with_index do |size, index| %>
+          <%= link_to size, nil, class: "size size-#{ index + 1 }", data: { size: size } %>
         <% end %>
         <%= link_to "&#x25B2;".html_safe, nil, class: 'next' %>
       </fieldset>
@@ -125,11 +134,11 @@
         <%= form.label :bottoms, "Bottom" %>
         <%= form.select :bottoms, Spree::Babe::BOTTOMS_SIZES, selected: 'M' %>
         <span>M</span>
-        <%= link_to "▼", nil, class: 'previous' %>
-        <% Spree::Babe::BOTTOMS_SIZES.each_with_index do |size, index| %>
-          <%= link_to size, nil, class: "size size-#{ index + 1 }" %>
+        <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
+        <% Spree::Babe::BOTTOMS_SIZES.reverse.each_with_index do |size, index| %>
+          <%= link_to size, nil, class: "size size-#{ index + 1 }", data: { size: size } %>
         <% end %>
-        <%= link_to "▲", nil, class: 'next' %>
+        <%= link_to "&#x25B2;".html_safe, nil, class: 'next' %>
       </fieldset>
   
       <div id='babe-body'>
