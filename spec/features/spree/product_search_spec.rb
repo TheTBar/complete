@@ -30,7 +30,6 @@ describe "Product results", type: :feature do
       set_count_on_hand_for_size(product1,'3',1)
       set_count_on_hand_for_size(product2,'3',1)
       visit "/products"
-      puts page.body
       expect(page).to have_content(/Girl Product/i)
       expect(page).to_not have_content(/Boy Product/i)
     end
