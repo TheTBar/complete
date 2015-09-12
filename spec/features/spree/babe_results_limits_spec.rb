@@ -73,7 +73,7 @@ describe "Getting Babe product results limited to 4 and then 8", type: :feature 
       for i in 5..10
         expect(page).to_not have_content("package#{i}")
       end
-      click_button "See More Selections"
+      click_link "See More Selections"
       for j in 1..8
         expect(page).to have_content("package#{j}")
       end
@@ -103,7 +103,7 @@ describe "Getting Babe product results limited to 4 and then 8", type: :feature 
       for i in 1..4
         expect(page).to have_content("package#{i}")
       end
-      expect(page).to_not have_button("See More Selections")
+      expect(page).to_not have_link("See More Selections")
     end
 
   end

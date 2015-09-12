@@ -56,13 +56,13 @@ describe "Get Size pre selected", type: :feature do
         babe = Spree::Babe.last
         expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
         expect(page.body.downcase).to have_content("Our personalized selection for Stella".downcase)
-        expect(page).to have_content("package1")
+        expect(page).to have_content(/package1/i)
         expect(page).to have_link("package1");
         click_link "package1"
         click_button 'Add Package To Cart'
         expect(current_path).to eql(spree.cart_path)
-        expect(page).to have_content("product1 34C")
-        expect(page).to have_content("product1b M")
+        expect(page).to have_content(/product1 34C/i)
+        expect(page).to have_content(/product1b M/i)
 
       end
 
@@ -89,7 +89,7 @@ describe "Get Size pre selected", type: :feature do
         click_button "Show me the goods"
         babe = Spree::Babe.last
         expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
-        expect(page).to have_content("package1")
+        expect(page).to have_content(/package1/i)
         expect(page).to have_link("package1");
         click_link "package1"
         click_link "namedsizes-red"
