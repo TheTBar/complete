@@ -34,6 +34,7 @@
   </head>
   
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
+  <% cache do %>
     <header>
       <div>
         <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
@@ -59,12 +60,14 @@
         </div>
       </div>
     </header>
+  <% end %>
       
     <main controller-type='<%= params[:controller] %>'>
       <%= flash_messages %>
       <%= yield %>
     </main>
-    
+
+  <% cache do %>
     <footer>
       <p>
         <a href='/about'>About us</a>
@@ -81,6 +84,7 @@
         <a href='/terms_of_use'>Terms of use</a>
       </p>
     </footer>
+  <% end %>
   </body>
   <script type="text/javascript">
     if (readCookie('logged_in') == 'true') {
