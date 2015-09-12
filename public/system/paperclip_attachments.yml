@@ -1,0 +1,18 @@
+---
+:Spree::Image:
+  :attachment:
+  - :large
+  - :mini
+  - :product
+  - :small
+:Spree::OptionValue:
+  :image:
+  - :mini
+  - :normal
+:Spree::Taxon:
+  :icon:
+  - :display
+  - :display2
+  - :large
+  - :mini
+  - :small
