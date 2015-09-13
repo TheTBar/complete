@@ -81,11 +81,11 @@ describe "Getting Babe product results", type: :feature do
       click_button "Show me the goods"
       last_babe = Spree::Babe.last
       expect(current_path).to eql(spree.my_babes_package_list_path(last_babe.id))
-      expect(page).to have_content("Our personalized selection for Stella")
-      expect(page).to have_content("package1")
-      expect(page).to have_content("package3")
-      expect(page).to_not have_content("package2")
-      expect(page).to_not have_content("package4")
+      expect(page).to have_content(/Our personalized selection for Stella/i)
+      expect(page).to have_content(/package1/i)
+      expect(page).to have_content(/package3/i)
+      expect(page).to_not have_content(/package2/i)
+      expect(page).to_not have_content(/package4/i)
     end
 
     it "should return the no results for babe page" do
