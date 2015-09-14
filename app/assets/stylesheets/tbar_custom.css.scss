@@ -428,7 +428,6 @@ footer {
   
   .babes-list-taxon {
     text-align: center;
-//    font-size: 2rem;
 
     p {
       margin: 0;
@@ -437,6 +436,13 @@ footer {
     div.photo {
       width: 240px;
       height: 240px;
+      margin: 0 auto;
+      
+      img {
+        max-width: 240px;
+        max-height: 240px;
+      }
+      
     }
     
     button,
