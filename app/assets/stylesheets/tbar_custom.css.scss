@@ -423,3 +423,27 @@ footer {
   }
   
 }
+
+[data-route='spree/taxons/my_babes_package_list'] {
+  
+  .babes-list-taxon {
+    text-align: center;
+//    font-size: 2rem;
+
+    p {
+      margin: 0;
+    }
+    
+    div.photo {
+      width: 240px;
+      height: 240px;
+    }
+    
+    button,
+    input[type=submit] {
+      margin-top: 1rem;
+    }
+    
+  }
+  
+}

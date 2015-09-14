@@ -1,6 +1,10 @@
 <div class="col-md-3 col-sm-6 babes-list-taxon" data-hook="taxon-<%=package_counter%>">
-  <h5 class="subtaxon-title"><%= link_to package.name, show_package_path(package,babe_id: @babe.id), class: 'breadcrumbs' %></h5>
-  <%= link_to(image_tag(package.icon(:display)), show_package_path(package,babe_id: @babe.id)) unless package.icon_file_name.nil? %>
+  <div class='photo'>
+    <%= link_to(image_tag(package.icon(:display)), show_package_path(package,babe_id: @babe.id)) unless package.icon_file_name.nil? %>
+  </div>
+  <p>BRAND NAME</p>
+  <p class="subtaxon-title"><%= link_to package.name, show_package_path(package,babe_id: @babe.id), class: 'breadcrumbs' %></p>
+  <p>$100</p>
   <% if !package.babes_variants_for_taxons_products.nil? %>
     <div id="cart-form" data-hook="cart_form">
       <%= form_for :order, :url => populate_from_package_path do |f| %>
