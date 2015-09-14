@@ -22,7 +22,7 @@ module Spree
     def index
       @searcher = build_searcher(params.merge(include_images: true))
       @products = @searcher.retrieve_products
-      @products = @products.where("spree_products.show_in_main_search" => true)
+      @products = @products.where("spree_products.show_in_main_search" => true).order('priority asc')
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
 
