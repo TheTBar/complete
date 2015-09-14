@@ -4,7 +4,7 @@
   </div>
   <p>BRAND NAME</p>
   <p class="subtaxon-title"><%= link_to package.name, show_package_path(package,babe_id: @babe.id), class: 'breadcrumbs' %></p>
-  <p>$100</p>
+  <p>$<%= package.package_price %></p>
   <% if !package.babes_variants_for_taxons_products.nil? %>
     <div id="cart-form" data-hook="cart_form">
       <%= form_for :order, :url => populate_from_package_path do |f| %>
