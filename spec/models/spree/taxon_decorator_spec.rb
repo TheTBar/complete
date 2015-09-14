@@ -149,6 +149,42 @@ describe Spree::Taxon, :type => :model do
         expect(@taxons[2].name).to eq 'package1'
       end
 
+      context "named sizes for top and bottom" do
+        let!(:taxon6) { create(:taxon, name: 'package5', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
+
+        let(:soonik_bra_option_type) do
+          build_option_type_with_values("soonik bra named sizes", ['Soonik Bra Small','Soonik Bra Medium','Soonik Bra Large'])
+        end
+
+        let(:product6) { create(:product, name: 'product6', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {soonik_bra_option_type.id.to_s => soonik_bra_option_type.option_value_ids}, taxons: [taxon6]) }
+        let(:product6b) { create(:product, name: 'product6b', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon6]) }
+
+        context "no top in babes size" do
+          before do
+            product6.stock_items.second.set_count_on_hand 1
+            product6b.stock_items.second.set_count_on_hand 1
+          end
+
+          it "should not return a package" do
+            my_babe = create(:babe, name: 'my babe 1', band: 38, cup: 'b', bottoms: 'small', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+            @taxons = Spree::Taxon.get_babes_available_package_list(my_babe)
+            expect(@taxons.count).to eq 0
+          end
+
+
+          it "should return a package if we add the size" do
+            my_babe = create(:babe, name: 'my babe 1', band: 38, cup: 'b', bottoms: 'small', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+            @taxons = Spree::Taxon.get_babes_available_package_list(my_babe)
+            expect(@taxons.count).to eq 0
+            product6.stock_items.fourth.set_count_on_hand 1
+            @taxons = Spree::Taxon.get_babes_available_package_list(my_babe)
+            expect(@taxons.count).to eq 1
+          end
+
+        end
+
+      end
+
       context "there is only stock availability in certain sizes" do
 
         let!(:taxon5) { create(:taxon, name: 'package5', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }

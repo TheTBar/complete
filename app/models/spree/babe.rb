@@ -43,6 +43,20 @@ module Spree
       "#{self.band}#{self.cup}".upcase
     end
 
+    def soonik_bra_size
+      if self.band < 32 && self.cup.downcase == 'a'
+        return 'soonik bra xsmall'
+      elsif self.band < 33 && self.cup.downcase == 'a'
+        return 'soonik bra small'
+      elsif self.band > 33 && self.band < 37 && (self.cup.downcase == 'a' || self.cup.downcase == 'b')
+        return 'soonik bra medium'
+      elsif self.band > 37  && (self.cup.downcase == 'a' || self.cup.downcase == 'b')
+        return 'soonik bra large'
+      else
+        return 'NOSOONIK'
+      end
+    end
+
     def size_value_for_size_option_type_name(size_type_name)
       if size_type_name.downcase == 'named sizes'
         return self.bottoms
@@ -50,6 +64,8 @@ module Spree
         return self.bra_size
       elsif size_type_name.downcase == 'number sizes'
         return self.number_size
+      elsif size_type_name.downcase == 'soonik named sizes'
+        return self.soonik_bra_size
       elsif size_type_name.downcase == 'one size'
         return 'one size'
       end

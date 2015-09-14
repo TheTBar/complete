@@ -11,7 +11,7 @@ describe "Get Size pre selected", type: :feature do
     login_as(user, scope: :spree_user)
   end
 
-  context "user gets selection for their babe" do
+  context "there are products and sets" do
 
     let(:sets_taxon) { FactoryGirl.create(:taxon, name: 'sets')}
     let!(:taxon1) { FactoryGirl.create(:taxon, name: 'package1', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
@@ -36,6 +36,8 @@ describe "Get Size pre selected", type: :feature do
     let!(:bra_option_type) do
       build_option_type_with_values("bra sizes", "Size", %w(34A 34B 34C 36A 36B 36C))
     end
+
+
 
 
     context "there are sizes only" do
@@ -64,6 +66,43 @@ describe "Get Size pre selected", type: :feature do
         expect(page).to have_content(/product1 34C/i)
         expect(page).to have_content(/product1b M/i)
 
+      end
+
+    end
+
+    context "there are named sizes only for top and bottom", js: true do
+
+      let(:soonik_bra_option_type) do
+        build_option_type_with_values("soonik named sizes", 'Size', ['Soonik Bra Small','Soonik Bra Medium','Soonik Bra Large'])
+      end
+
+      let(:product1) { FactoryGirl.create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {soonik_bra_option_type.id.to_s => soonik_bra_option_type.option_value_ids}, taxons: [taxon1]) }
+      let(:product1b) { FactoryGirl.create(:product, name: 'product1b', vixen_value: 5, flirt_value: 2, sophisticate_value: 3, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
+
+      before do
+        set_count_on_hand(product1,1)
+        set_count_on_hand(product1b,1)
+      end
+
+      let(:babe) { create(:babe, name: 'babe1', band: 38, cup: 'A', bottoms: 'medium', number_size: '3', spree_user_id: user.id)}
+
+      it "should be able to add to cart from the babe results page" do
+        visit "/my_babes_package_list/#{babe.id}"
+        click_button "Add To Cart"
+        puts page.body
+        expect(current_path).to eq(spree.cart_path)
+        expect(page).to have_content(/product1 Soonik Bra Large/i)
+        expect(page).to have_content(/product1b M/i)
+      end
+
+      it "should preselect both the top and the bottom for the babe" do
+        visit "/my_babes_package_list/#{babe.id}"
+        click_link "package1"
+        puts page.body
+        click_button 'Add Package To Cart'
+        expect(current_path).to eql(spree.cart_path)
+        expect(page).to have_content(/product1 Soonik Bra Large/i)
+        expect(page).to have_content(/product1b M/i)
       end
 
     end
