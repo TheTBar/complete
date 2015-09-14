@@ -79,6 +79,7 @@ Spree::Taxon.class_eval do
     get_babes_package_list(babe).each do |taxon|
       taxon_is_available = true
       size_matched_variants = []
+      package_price = 0.00
       taxon.products.each do |product|
         product_variant = product_variants_in_babes_sizes.detect{|pv| pv.product_id == product.id}
         taxon_is_available = product_variant != nil
@@ -86,7 +87,9 @@ Spree::Taxon.class_eval do
         if product.is_size_only_variant?
            size_matched_variants.push(product_variant.id)
         end
+        package_price = package_price + product.price_in("USD").amount
       end
+      taxon.package_price = sprintf('%.0f', package_price)
       if taxon_is_available
         taxon.babes_variants_for_taxons_products = size_matched_variants if size_matched_variants.count > 0
         available_taxons.push(taxon)
