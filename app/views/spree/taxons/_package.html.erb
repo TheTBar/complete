@@ -2,7 +2,7 @@
   <div class='photo'>
     <%= link_to(image_tag(package.icon(:display)), show_package_path(package,babe_id: @babe.id)) unless package.icon_file_name.nil? %>
   </div>
-  <p>BRAND NAME</p>
+  <p><%= package.package_brand %></p>
   <p class="subtaxon-title"><%= link_to package.name, show_package_path(package,babe_id: @babe.id), class: 'breadcrumbs' %></p>
   <p>$<%= package.package_price %></p>
   <% if !package.babes_variants_for_taxons_products.nil? %>

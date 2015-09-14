@@ -4,7 +4,7 @@ Spree::Taxon.class_eval do
 
   validate :check_for_package_node
 
-  attr_accessor :babes_variants_for_taxons_products, :package_price
+  attr_accessor :babes_variants_for_taxons_products, :package_price, :package_brand
 
   has_attached_file :icon,
                     styles: { mini: '32x32>', normal: '128x128>', display: '240x240>', large: '600x600'},
@@ -88,6 +88,7 @@ Spree::Taxon.class_eval do
            size_matched_variants.push(product_variant.id)
         end
         package_price = package_price + product.price_in("USD").amount
+        taxon.package_brand = product.brand
       end
       taxon.package_price = sprintf('%.0f', package_price)
       if taxon_is_available
