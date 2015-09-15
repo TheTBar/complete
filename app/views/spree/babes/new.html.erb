@@ -182,11 +182,7 @@
         <%= select_tag "babe_trait_#{ index + 1 }", options_from_collection_for_select(trait_values, :id, :name) %>
         <h3><%= trait.question_verbiage %></h3>
         <% for trait_value in trait_values do %>
-          <% if trait.name.downcase != 'shoe' %>
-            <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase.gsub(/ /,'-')}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.png)" %>
-          <% else %>
-            <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase.gsub(/ /,'-')}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.jpg); background-color: black; background-repeat: no-repeat; background-position: center;" %>
-          <% end %>
+          <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase.gsub(/ /,'-')}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.png)" %>
         <% end %>
       </fieldset>
     <% end %>
