@@ -63,7 +63,7 @@
   <% end %>
       
     <main controller-type='<%= params[:controller] %>'>
-      <%= flash_messages %>
+      <%= flash_messages unless params[:action] == 'concierge_page'%>
       <%= yield %>
     </main>
 
