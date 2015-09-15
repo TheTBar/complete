@@ -9,8 +9,8 @@
     <%= render partial: 'package', collection: @taxons%>
   </div>
   <% if @taxons.count == 4 && @total_matches > 4 %>
-    <div id="see-more-container">
+    <span id="see-more-container">
       <%= link_to "See More Selections", my_babes_package_list_path(@babe,"see_more_selections" => "1"), :class => "btn btn-success", :id => 'see-more-selections' %>
-    </div>
+    </span>
   <% end %>
 </section>
