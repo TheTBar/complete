@@ -8,6 +8,10 @@ module Spree
 
     def index
       @babes = Babe.where("spree_user_id = #{spree_current_user.id}")
+      if spree_current_user.id == 1
+        @babes = @babes.last(5)
+      end
+      @babes
     end
 
     def access_concierge
