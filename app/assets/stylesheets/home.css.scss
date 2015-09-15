@@ -88,10 +88,18 @@
         border-radius: 1em;
         box-shadow: 0 0 2px 1px rgba(255, 255, 255, .8), inset 0 0 2px 1px rgba(255, 255, 255, .8);
       }
-
     }
 
   }
+
+  section a.home-page-byb-link {
+    color: #006472;
+  }
+
+  section .home-statement {
+    text-align: left;
+  }
+
 
   footer {
     span#copyright {
