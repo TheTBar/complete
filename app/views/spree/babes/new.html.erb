@@ -185,7 +185,11 @@
           <% if trait.name.downcase != 'shoe' %>
             <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase.gsub(/ /,'-')}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.png)" %>
           <% else %>
-            <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase.gsub(/ /,'-')}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.jpg); background-repeat: no-repeat; background-position: center;" %>
+            <% if trait_value.name == 'Flip Flops' %>
+              <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://thetbar.com/TBAR_FlipFlops.jpg); background-repeat: no-repeat; background-position: center;" %>
+            <% else %>
+              <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase.gsub(/ /,'-')}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.jpg); background-repeat: no-repeat; background-position: center;" %>
+            <% end %>
           <% end %>
         <% end %>
       </fieldset>
