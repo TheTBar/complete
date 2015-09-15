@@ -30,6 +30,22 @@ module Spree
       self.sophisticate_value = (self.sophisticate_value / chosen_traits.length).round(2)
     end
 
+    def words(trait)
+      if trait.downcase == 'vixen_value'
+        return 'sassy'
+      elsif trait.downcase == 'flirt_value'
+        return 'flirty'
+      elsif trait.downcase == 'sophisticate_value'
+        return 'sophisticated'
+      elsif trait.downcase == 'romantic_value'
+        return 'romantic'
+      end
+    end
+
+    def personality_statement
+      "She's really #{self.words(self.personality[0][0])}, and pretty #{self.words(self.personality[1][0])}."
+    end
+
     def personality
       personality = Hash.new
       personality['vixen_value'] = self.vixen_value
