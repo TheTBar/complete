@@ -182,7 +182,11 @@
         <%= select_tag "babe_trait_#{ index + 1 }", options_from_collection_for_select(trait_values, :id, :name) %>
         <h3><%= trait.question_verbiage %></h3>
         <% for trait_value in trait_values do %>
-          <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(http://imgc.allpostersimages.com/images/P-473-488-90/60/6090/77FF100Z/poster/new-york-skyline.jpg)" %>
+          <% if trait.name.downcase == 'city' %>
+            <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(https://s3-us-west-2.amazonaws.com/tbar-personality-traits/images/#{trait.name.downcase}/TBAR_#{trait_value.name.gsub(/ /,'').gsub(/\'/,'')}.png)" %>
+          <% else %>
+            <%= link_to trait_value.name, nil, data: { value: trait_value.id }, style: "background: url(http://imgc.allpostersimages.com/images/P-473-488-90/60/6090/77FF100Z/poster/new-york-skyline.jpg)" %>
+          <% end %>
         <% end %>
       </fieldset>
     <% end %>
