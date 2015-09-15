@@ -301,6 +301,12 @@ footer {
   }
 }
 
+[data-route="spree/wishlists/show"] {
+  color: $black-color;
+}
+
+
+
 [data-route="spree/contact_us/contacts/new"] {
   background-color: $body-dark-background-color;
 
