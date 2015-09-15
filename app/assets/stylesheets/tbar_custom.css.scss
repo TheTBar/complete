@@ -490,5 +490,9 @@ footer {
     }
     
   }
+
+  div[data-hook="the_goods_list"] {
+    @include clear;
+  }
   
 }
