@@ -3,6 +3,10 @@
 [controller-type='spree/products']  {
   color: #1a1919;
 
+  .more-colors-available {
+    padding-bottom: 3px;
+  }
+
   div.product-brand {
     text-transform: uppercase;
     font-weight: 400;
