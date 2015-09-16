@@ -37,7 +37,6 @@
   <% cache('header') do %>
     <header>
       <div>
-        <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
         <nav>
           <ul id='account-links'>
             <li><a href='/contact-us'>Contact us</a></li>
@@ -47,6 +46,7 @@
           <ul id='store-links'>
             <li><a href='/build_your_babe'>Build your babe</a></li>
             <li><a href='/products'>Shop</a></li>
+            <li class='logo'><%= link_to image_tag('logo.png'), root_path, class: 'logo' %></li>
             <li><a href='/t/mens'>Men's</a></li>
             <li><a href='/t/giftideas'>Gift Ideas</a></li>
           </ul>

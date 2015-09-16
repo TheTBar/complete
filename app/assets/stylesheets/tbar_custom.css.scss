@@ -85,28 +85,21 @@ footer {
 }
 
 header {
+  height: 100px;
   text-transform: uppercase;
   background-color: $body-dark-background-color;
-
+  
+  @media screen and (max-width: $medium-large-breakpoint) {
+    height: auto;
+  }
   
   > div {
-    padding: 6rem;
+    padding: 4rem 2rem 2rem 2rem;
     
     @media screen and (max-width: $medium-large-breakpoint) {
-      padding: 6rem 2rem 2rem 2rem;
       text-align: center;
     }
     
-  }
-
-  .logo {
-    display: inline-block;
-    float: left;
-
-    @media screen and (max-width: $medium-large-breakpoint) {
-      float: none;
-    }
-
   }
 
   a {
@@ -122,21 +115,17 @@ header {
   li {
     display: inline;
 
-    @media screen and (max-width: $small-medium-breakpoint) {
+    @media screen and (max-width: $medium-large-breakpoint) {
       display: block;
     }
 
   }
 
   nav {
-    float: right;
-    text-align: right;
     font-weight: bold;
     color: #ccc;
 
     @media screen and (max-width: $medium-large-breakpoint) {
-      margin-top: 3rem;
-      float: none;
       text-align: center;
     }
 
@@ -152,29 +141,33 @@ header {
   }
 
   #account-links {
+    z-index: 10;
     position: absolute;
-    top: 3rem;
+    top: 1.2rem;
     right: 6rem;
     font-size: 1.2rem;
-
+    
     @media screen and (max-width: $medium-large-breakpoint) {
       position: static;
-      top: auto;
-      left: auto;
+      
+      li {
+        margin: .1em 0;
+      }
+      
     }
-
+    
     li {
+      
       &.cart {
         position: relative;
 
-        &::before,
-        &::after {
+        &::before {
           content: '';
           display: block;
           width: 1px;
           height: 10rem;
           position: absolute;
-          top: -7rem;
+          top: -7.5rem;
           background-color: $nav-separator-color;
 
           @media screen and (max-width: $medium-large-breakpoint) {
@@ -187,11 +180,7 @@ header {
           left: 0;
         }
 
-        &::after {
-          right: 0;
-        }
-
-        @media screen and (max-width: $small-medium-breakpoint) {
+        @media screen and (max-width: $medium-large-breakpoint) {
           a::before {
             content: "My cart";
             margin-right: 1em;
@@ -202,12 +191,7 @@ header {
 
       > a {
         display: inline-block;
-        padding: 0 2rem;
-
-        @media screen and (max-width: $medium-large-breakpoint) {
-          padding: 0 1rem;
-        }
-
+        padding: 0 1rem;
       }
 
       a + a {
@@ -226,41 +210,65 @@ header {
   }
 
   #store-links {
-    line-height: 76px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+
+    @media screen and (max-width: $medium-large-breakpoint) {
+      position: static;
+      margin-top: 11rem;
+      
+      li.logo {
+        width: 100%;
+        position: absolute;
+        top: 11rem;
+        left: 0;
+        text-align: center;
+      }
+      
+    }
 
     a {
-      padding: 0 4rem;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        padding: 0 2rem;
+      display: inline-block;
+      width: 160px;
+      padding: 1rem 0;
+      
+      &:not(.logo) {
+        position: relative;
+        top: .2rem;
       }
-
-      @media screen and (max-width: $small-medium-breakpoint) {
-        padding: 0 .5rem;
+      
+      @media screen and (max-width: $medium-large-breakpoint) {
+        display: block;
+        width: auto;
+        margin: 0 auto;
+        padding: .5rem 2rem;
       }
 
     }
-
+    
   }
 
   #social-media-links {
     position: absolute;
-    top: 1rem;
+    top: .6rem;
     left: 5.2rem;
-
-    @media screen and (max-width: $medium-large-breakpoint) {
-      width: 100%;
-      text-align: center;
-      left: 0;
-    }
 
     a {
       padding: 1rem .9rem;
     }
 
     img {
-      max-width: 14px;
-      max-height: 14px;
+      max-width: 12px;
+      max-height: 12px;
+    }
+    
+    @media screen and (max-width: $medium-large-breakpoint) {
+      width: 100%;
+      left: 0;
+      text-align: center;
     }
 
   }
@@ -272,7 +280,6 @@ main {
   margin: 0 auto;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 25px;
   padding-bottom: 20px;
 }
 
