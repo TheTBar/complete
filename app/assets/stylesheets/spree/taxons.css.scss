@@ -1,14 +1,22 @@
 @import 'colors', 'breakpoints', 'mixins';
 
 [controller-type='spree/taxons']  {
-    color: #1a1919;
-    text-transform: capitalize;
+  color: #1a1919;
+  text-transform: capitalize;
+
+  footer {
+    span#copyright {
+      color: $black-color;
+    }
+  }
+
 
 
   [data-route='spree/taxons/show'] {
     span.price.selling.lead {
       color: $black-color;
     }
+
   }
 
   #see-more-container {
