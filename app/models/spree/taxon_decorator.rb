@@ -89,7 +89,7 @@ Spree::Taxon.class_eval do
         end
         package_price = package_price + product.price_in("USD").amount
         taxon.package_brand = product.brand
-        taxon.has_color_options = true if product.option_types.pluck(:name).include? 'Colors'
+        taxon.has_color_options = true if there_are_color_options(product)
       end
       taxon.package_price = sprintf('%.0f', package_price)
       if taxon_is_available
@@ -98,6 +98,15 @@ Spree::Taxon.class_eval do
       end
     end
     available_taxons
+  end
+
+  private
+
+  def self.there_are_color_options(product)
+    product.option_types.each do |ot|
+      return true if ot.name == 'Colors'
+    end
+    return false
   end
 
 
