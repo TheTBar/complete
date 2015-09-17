@@ -21,8 +21,9 @@ module Spree
 
     def index
       @searcher = build_searcher(params.merge(include_images: true))
-      @products = @searcher.retrieve_products
-      @products = @products.where("spree_products.show_in_main_search" => true).order('priority asc')
+      @products = @searcher.retrieve_products.includes(:option_types)
+      @products = @products.includes(:option_types).where("spree_products.show_in_main_search" => true).order('priority asc')
+      Rails.logger.debug "ARE WE HERE ****************************"
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
 

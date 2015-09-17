@@ -32,7 +32,7 @@
               <div class="product-list-image-panel"><%= link_to product_image(product, itemprop: "image", class: "product-list-image"), url, itemprop: 'url' %></div>
               <div class="info" itemprop="brand" id="product-brand"><%= product.brand.upcase unless product.brand.nil? %></div>
               <%= link_to truncate(product.name.capitalize, length: 50), url, class: 'info', itemprop: "name", title: product.name %><br>
-              <span class="price selling lead" itemprop="price">$<%= sprintf('%.0f', product.price_in(current_currency).amount ) %></span>
+              <span class="price selling lead" itemprop="price">$<%= sprintf('%.0f', product.price_in(current_currency).amount ) %><% if product.option_types.pluck(:name).include? 'Colors' %>&nbsp;<%= image_tag getS3GeneralUrl('color_swatch.png'), height: 15, alt: 'more colors', class: 'more-colors-available' %><% end %></span>
             </div>
           <% end %>
         </div>

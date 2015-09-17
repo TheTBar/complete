@@ -44,6 +44,11 @@ module Spree
       self.product_size_type.name.downcase.gsub(/\s+/, "")
     end
 
+    def color
+      colors = Spree::ProductProperty.joins(:property).where('spree_properties.name' => 'Color').where(:product_id => self.id)
+      return colors.first.value if colors.count == 1
+    end
+
     def does_product_have_stock_on_hand_for_option_value?(name)
       self.stock_items.each do |stock_item|
         if !stock_item.variant.is_master?

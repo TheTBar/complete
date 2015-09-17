@@ -4,7 +4,7 @@
   </div>
   <p><%= package.package_brand %></p>
   <p class="subtaxon-title"><%= link_to package.name, show_package_path(package,babe_id: @babe.id), class: 'breadcrumbs' %></p>
-  <p>$<%= package.package_price %></p>
+  <p>$<%= package.package_price %><% if package.has_color_options %>&nbsp;<%= image_tag getS3GeneralUrl('color_swatch.png'), height: 15, alt: 'more colors', class: 'more-colors-available' %><% end %></p>
   <% if !package.babes_variants_for_taxons_products.nil? %>
     <div id="cart-form" data-hook="cart_form">
       <%= form_for :order, :url => populate_from_package_path do |f| %>
