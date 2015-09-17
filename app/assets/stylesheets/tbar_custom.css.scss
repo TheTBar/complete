@@ -338,7 +338,9 @@ footer {
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, .3);
-  background-image: image-url('spreadsheet.png');
+  //background-image: image-url('spreadsheet.png');
+  background-image: url('https://tbar-general.s3.amazonaws.com/images/spreadsheet.jpg');
+  //background-image: url('/spreadsheet.jpg');
   background-size: cover;
 }
 
