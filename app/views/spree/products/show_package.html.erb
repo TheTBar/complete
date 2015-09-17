@@ -28,7 +28,10 @@
     <div class="product-brand" itemprop="brand"><%= @products[0].brand %>: <%= @taxon.name %></div>
     Total Price: <span class="lead price selling" itemprop="price">$<%= @taxon.package_price %></span>
     <% @products.each_with_index do |product, index| %>
-      <% cache [I18n.locale, current_currency, product] do %>
+      <% if index > 0 %>
+        -----------------------------
+      <% end %>
+      <% cache [I18n.locale, current_currency, 'package', product] do %>
         <% @product = product %>
         <% @variants = product.variants_including_master.active(current_currency).includes([:option_values, :images]) %>
         <% @product_properties = product.product_properties.includes(:property) %>
