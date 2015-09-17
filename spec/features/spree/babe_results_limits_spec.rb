@@ -55,12 +55,6 @@ describe "Getting Babe product results limited to 4 and then 8", type: :feature 
     #   expect(page).to have_content "product10"
     # end
 
-    it "shoudl only return 10 items" do
-      # i know this isn't a feature test but who wants to set all this up twice
-      expect(Spree::Taxon.where(is_package_node: true).count).to eq 12
-      expect(Spree::Taxon.get_babes_package_list(babe).count).to eq 10
-    end
-
     it "should return the top 4 matches only" do
 
 

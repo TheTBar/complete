@@ -62,7 +62,8 @@ Spree::Taxon.class_eval do
   def self.get_babes_package_list(babe)
     personality = babe.personality
     primary_personality_limit = personality[0][1].floor - 1
-    Spree::Taxon.where(is_package_node: true).where("\"spree_taxons\".\"#{personality[0][0]}\" >= #{primary_personality_limit}").includes({:products => :option_types}).order("#{personality[0][0]} DESC, #{personality[1][0]} DESC")
+    #Spree::Taxon.where(is_package_node: true).where("\"spree_taxons\".\"#{personality[0][0]}\" >= #{primary_personality_limit}").includes({:products => :option_types}).order("#{personality[0][0]} DESC, #{personality[1][0]} DESC")
+    Spree::Taxon.where(is_package_node: true).includes({:products => :option_types}).order("#{personality[0][0]} DESC, #{personality[1][0]} DESC")
   end
 
   def self.get_babes_available_package_list(babe)
