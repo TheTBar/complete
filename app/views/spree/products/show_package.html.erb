@@ -17,7 +17,7 @@
 
 <% @body_id = 'package-details' %>
 
-<div id="cart-form" data-hook="cart_form">
+<div id="cart-form" class="col-md-7" data-hook="cart_form">
   <%= form_for :order, :url => populate_from_package_path do |f| %>
     <span class="input-group-btn">
               <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
@@ -37,7 +37,7 @@
         <% @product_properties = product.product_properties.includes(:property) %>
 
         <div data-hook="product_show" itemscope itemtype="https://schema.org/Product">
-          <div class="col-md-7" data-hook="product_right_part">
+          <div data-hook="product_right_part">
             <div data-hook="product_right_part_wrap">
               <!-- <div id="product-images" data-hook="product_images">
                 <div id="main-image" class="panel panel-default" data-hook>
