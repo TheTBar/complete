@@ -13,8 +13,8 @@ module Spree
       @taxon.package_price = sprintf('%.0f', package_price)
       @pre_selected_sizes = []
       if session.key?(:babe_id)
-        @products.each do |product|
-          @pre_selected_sizes.push(Spree::Babe.find(session[:babe_id]).size_value_for_size_option_type_name(product.product_size_type.name))
+        @products.each_with_index do |product,index|
+          @pre_selected_sizes.push(index.to_s+'-'+Spree::Babe.find(session[:babe_id]).size_value_for_size_option_type_name(product.product_size_type.name))
         end
       end
     end
@@ -23,7 +23,6 @@ module Spree
       @searcher = build_searcher(params.merge(include_images: true))
       @products = @searcher.retrieve_products.includes(:option_types)
       @products = @products.includes(:option_types).where("spree_products.show_in_main_search" => true).order('priority asc')
-      Rails.logger.debug "ARE WE HERE ****************************"
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
 

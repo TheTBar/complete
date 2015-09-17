@@ -20,7 +20,7 @@
                 <% classes << ( variants.any? { |v| v.in_stock? } ? "in-stock" : "out-of-stock" ) if v_index == 0 %>
                 <% classes << 'with-image' if value.has_image? %>
                 <% id = type.isSizeOptionType? ? value.name.downcase.gsub(/ /,"-") : "#{@product.product_size_type_name_string}-#{value.name.downcase}" %>
-                <li><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" "), :id => "#{id}" ,:rel => "#{type.id}-#{value.id}" %></li>
+                <li><%= link_to value.has_image? ? image_tag(value.image.url, :alt => value.presentation) : content_tag(:span, value.presentation), "#", :title => value.presentation, :class => classes.join(" "), :id => "#{index}-#{id}" ,:rel => "#{type.id}-#{value.id}" %></li>
               <% end %>
             <% end %>
             <li class="clear"></li>

@@ -68,6 +68,39 @@ describe "Get Size pre selected", type: :feature do
 
     end
 
+    context "there are multiple bottoms for a set", js: true do
+      let(:product1) { FactoryGirl.create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bra_option_type.id.to_s => bra_option_type.option_value_ids}, taxons: [taxon1]) }
+      let(:product1b) { FactoryGirl.create(:product, name: 'product1b', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
+      let(:product1c) { FactoryGirl.create(:product, name: 'product1c', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
+
+      before do
+        set_count_on_hand(product1,1)
+        set_count_on_hand(product1b,1)
+        set_count_on_hand(product1c,1)
+      end
+
+      it "should preselect the size values" , js: true  do
+
+        visit "/build_your_babe"
+        expect(current_path).to eql(spree.new_babe_path)
+        fill_in_babe
+        click_button "Show me the goods"
+        babe = Spree::Babe.last
+        expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
+        expect(page.body.downcase).to have_content("Our personalized selection for Stella".downcase)
+        expect(page).to have_content(/package1/i)
+        expect(page).to have_link("package1");
+        click_link "package1"
+        #puts page.body
+        click_button 'Add Package To Cart'
+        expect(current_path).to eql(spree.cart_path)
+        expect(page).to have_content(/product1 34C/i)
+        expect(page).to have_content(/product1b M/i)
+        expect(page).to have_content(/product1c M/i)
+      end
+
+    end
+
     context "there are sizes and colors" , js: true do
 
       let(:color_option_type) do
@@ -92,8 +125,8 @@ describe "Get Size pre selected", type: :feature do
         expect(page).to have_content(/package1/i)
         expect(page).to have_link("package1");
         click_link "package1"
-        click_link "namedsizes-red"
-        click_link "brasizes-red"
+        click_link "1-namedsizes-red"
+        click_link "0-brasizes-red"
         click_button 'Add Package To Cart'
         expect(current_path).to eql(spree.cart_path)
         expect(page).to have_content("34C, Red")
