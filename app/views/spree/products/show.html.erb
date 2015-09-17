@@ -34,6 +34,9 @@
           <div class="well" itemprop="description" data-hook="description">
             <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
           </div>
+          <div>
+            <%= "Color: #{@product.color}" if !@product.color.nil? %>
+          </div>
 
           <div id="cart-form" data-hook="cart_form">
             <%= render :partial => 'cart_form' %>
