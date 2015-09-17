@@ -31,11 +31,21 @@
       ga('send', 'pageview');
 
     </script>
+      
+    <script>
+      $(document).on('ready', function() {
+        $('#panic').on('click', function(event) {
+          event.preventDefault();
+          $('#panic-overlay').toggle();
+        });
+      });
+    </script>
   </head>
   
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
   <% cache('header') do %>
     <header>
+      <%= link_to image_tag('panic-button.png'), nil, id: 'panic' %>
       <div>
         <nav>
           <ul id='account-links'>
@@ -85,6 +95,9 @@
       </p>
     </footer>
   <% end %>
+  
+  <div id='panic-overlay'></div>
+  
   </body>
   <script type="text/javascript">
     if (readCookie('logged_in') == 'true') {
