@@ -3,6 +3,7 @@
 [controller-type='spree/products']  {
   color: #1a1919;
 
+
   .more-colors-available {
     padding-bottom: 3px;
   }
@@ -58,6 +59,10 @@
   .col-md-4 {
     min-height: 600px;
   }
+
+  main {
+    padding-top: 30px;
+  }
 }
 
 [data-route="spree/products/show"] {
@@ -72,5 +77,9 @@
 
   .well {
     max-width: 650px;
+  }
+
+  main {
+    padding-top: 30px;
   }
 }
