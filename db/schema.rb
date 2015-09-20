@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914194019) do
+ActiveRecord::Schema.define(version: 20150920164203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,15 @@ ActiveRecord::Schema.define(version: 20150914194019) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
+
+  create_table "spree_effective_sizes", force: :cascade do |t|
+    t.integer  "variant_id"
+    t.string   "effective_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spree_effective_sizes", ["variant_id"], name: "index_spree_effective_sizes_on_variant_id", using: :btree
 
   create_table "spree_gateways", force: :cascade do |t|
     t.string   "type"
