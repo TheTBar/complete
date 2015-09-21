@@ -123,11 +123,8 @@ describe Spree::Taxon, :type => :model do
 
     context "full compliment" do
 
-      before do
-        products = [product1,product1b,product2,product2b,product3,product3b,product4]
-      end
-
       it "should return all the sets matching babes vixen value ordered from high to low sophisticate value " do
+        products = [product1,product1b,product2,product2b,product3,product3b,product4]
         my_babe = create(:babe, name: 'my babe 1', vixen_value: 5, flirt_value: 2, sophisticate_value: 3, romantic_value:1)
         @taxons = Spree::Taxon.get_babes_package_list(my_babe)
         expect(@taxons.count).to eq 4
@@ -138,12 +135,71 @@ describe Spree::Taxon, :type => :model do
       end
 
       it "should return all sets matching babes flirt value ordered from high to low romantic value" do
+        products = [product1,product1b,product2,product2b,product3,product3b,product4]
         my_babe = create(:babe, name: 'my babe', vixen_value: 1, flirt_value: 4, sophisticate_value: 2, romantic_value:3)
         @taxons = Spree::Taxon.get_babes_package_list(my_babe)
         expect(@taxons[0].name).to eq 'package3'
         expect(@taxons[1].name).to eq 'package4'
         expect(@taxons[2].name).to eq 'package1'
       end
+
+      context "named sizes for top and bottom" do
+        let!(:taxon6) { create(:taxon, name: 'package6', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
+
+        let!(:product6) { create(:product, name: 'product6', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon6]) }
+        let!(:product6b) { create(:product, name: 'product6b', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon6]) }
+
+        context "soonik sizes" do
+          before do
+            set_count_on_hand_for_all_variants(product6,1)
+            set_count_on_hand_for_all_variants(product6b,1)
+            variants = Spree::Variant.where(:product_id => product6.id)
+            variants.each do |v|
+              v.option_values.each do |ov|
+                if ov.option_type.presentation.downcase == 'size'
+                  effective_size = ov.presentation
+                  es = Spree::EffectiveSize.find_by_variant_id(v.id)
+                  if (effective_size.downcase == 'small')
+                    @small_top_variant = v
+                    es.effective_size = '30A'
+                    es.save
+                    Spree::EffectiveSize.create_new_record(v.id,'28A')
+                  elsif (effective_size.downcase == 'medium')
+                    @medium_top_variant = v
+                    es.effective_size = '32A'
+                    es.save
+                    Spree::EffectiveSize.create_new_record(v.id,'32B')
+                  elsif (effective_size.downcase == 'large')
+                    @large_top_variant = v
+                    es.effective_size = '34A'
+                    es.save
+                    Spree::EffectiveSize.create_new_record(v.id,'34B')
+                  end
+                end
+              end
+            end
+          end
+
+          it "should not return a package" do
+            my_babe = create(:babe, name: 'my babe 1', band: 34, cup: 'c', bottoms: 'small', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+            @taxons = Spree::Taxon.get_babes_available_package_list(my_babe)
+            expect(@taxons.count).to eq 0
+          end
+
+
+          it "should return a package with the correct variants" do
+
+            my_babe = create(:babe, name: 'my babe 1', band: 32, cup: 'b', bottoms: 'large', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+            @taxons = Spree::Taxon.get_babes_available_package_list(my_babe)
+            expect(@taxons.count).to eq 1
+            variants = @taxons.first.babes_variants_for_taxons_products
+            expect(variants).to include @medium_top_variant.id
+          end
+
+        end
+
+      end
+
 
       context "there is only stock availability in certain sizes" do
 
