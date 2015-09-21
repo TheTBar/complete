@@ -102,7 +102,7 @@ module Spree
     end
 
     def is_size_only_variant?
-      return self.option_types.count == 1 && self.option_types.first.presentation.downcase == 'size'
+      return self.option_types.size == 1 && self.option_types.first.presentation.downcase == 'size'
     end
 
     # def product_count_on_hand_hash_by_option_value_id

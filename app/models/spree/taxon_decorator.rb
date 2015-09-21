@@ -77,6 +77,7 @@ Spree::Taxon.class_eval do
 
     available_taxons = []
     product_variants_in_babes_sizes = Spree::Variant.select("spree_products.id as product_id,spree_variants.id as id").joins(:product).joins(:option_values).joins(:stock_items).where("LOWER(spree_option_values.name) in ('#{babe.bottoms.downcase}','#{babe.bra_size.downcase}','one size') AND spree_stock_items.count_on_hand > 0")
+    product_prices = Spree::Product.find_by_sql("select a.id,c.amount From spree_products a JOIN spree_variants b ON a.id = b.product_id JOIN spree_prices c ON b.id = c.variant_id WHERE b.is_master = 't'");
     get_babes_package_list(babe).each do |taxon|
       taxon_is_available = true
       size_matched_variants = []
@@ -88,13 +89,14 @@ Spree::Taxon.class_eval do
         if product.is_size_only_variant?
            size_matched_variants.push(product_variant.id)
         end
-        package_price = package_price + product.price_in("USD").amount
+        product_price = product_prices.detect{|price| price.id == product.id}
+        package_price = package_price + product_price.amount
         taxon.package_brand = product.brand
         taxon.has_color_options = true if there_are_color_options(product)
       end
       taxon.package_price = sprintf('%.0f', package_price)
       if taxon_is_available
-        taxon.babes_variants_for_taxons_products = size_matched_variants if size_matched_variants.count > 0
+        taxon.babes_variants_for_taxons_products = size_matched_variants if size_matched_variants.size > 0
         available_taxons.push(taxon)
       end
     end
