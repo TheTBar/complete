@@ -18,7 +18,7 @@ describe Spree::Variant, :type => :model do
 
       effective_size_records = Spree::EffectiveSize.all
       expect(effective_size_records.count).to eq count-1
-      expect(effective_size_records[0].effective_size).to eq '34A'
+      expect(effective_size_records[0].effective_size).to eq '34a'
     end
 
   end
@@ -42,8 +42,8 @@ describe Spree::Variant, :type => :model do
 
       effective_size_records = Spree::EffectiveSize.all
       expect(effective_size_records.count).to eq count-1
-      expect(effective_size_records[0].effective_size).to eq '34A'
-      expect(effective_size_records[1].effective_size).to eq '34A'
+      expect(effective_size_records[0].effective_size).to eq '34a'
+      expect(effective_size_records[1].effective_size).to eq '34a'
     end
 
   end

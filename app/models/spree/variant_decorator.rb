@@ -32,7 +32,7 @@ Spree::Variant.class_eval do
     if self.is_master == false
       self.option_values.each do |ov|
         if ov.option_type.presentation.downcase == 'size'
-            default_effective_size = ov.presentation
+            default_effective_size = ov.name
             es = Spree::EffectiveSize.new()
             es.effective_size = default_effective_size
             es.variant_id = self.id
@@ -48,6 +48,10 @@ Spree::Variant.class_eval do
         v.create_effective_size_record
       end
     end
+  end
+
+  def self.assign_custom_effective_size_value_to_variant(product_id,current_effective_size,new_effective_size)
+    Spree::EffectiveSize.joins(:variant => :option_values).where("spree_variants.product_id = #{product_id}").where("spree_option_values.name = '#{current_effective_size}'").update_all(:effective_size => new_effective_size)
   end
 
 end
