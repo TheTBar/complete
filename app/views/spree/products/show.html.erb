@@ -45,6 +45,15 @@
 
         <!-- look for similar items partial -->
         <%#= render :partial => 'taxons' %>
+        <% if !@additional_products.blank? %>
+          <div id="taxon-crumbs" data-hook class=" five ">
+            <h3 class="product-section-title">Other Items</h3>
+                <% @additional_products.each do |additional_product| %>
+                  <div class="additional_item_image"><%= link_to small_image(additional_product, itemprop: "image", class: "product-list-image"), spree.product_url(additional_product), itemprop: 'url', title: additional_product.name %></div>
+                <% end %>
+          </div>
+        <% end %>
+
       </div>
     </div>
   </div>

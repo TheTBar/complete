@@ -26,5 +26,26 @@ module Spree
       @taxonomies = Spree::Taxonomy.includes(root: :children)
     end
 
+    def show
+      @variants = @product.variants_including_master.active(current_currency).includes([:option_values, :images])
+      @product_properties = @product.product_properties.includes(:property)
+      @taxon = Spree::Taxon.find(params[:taxon_id]) if params[:taxon_id]
+      @additional_products = load_additional_products
+    end
+
+    def load_additional_products
+      additional_products = []
+      @product.taxons.each do |taxon|
+        if taxon.is_package_node
+          taxon.products.each do |taxon_product|
+            if taxon_product.id != @product.id
+              additional_products.push(taxon_product);
+            end
+          end
+        end
+      end
+      return additional_products
+    end
+
   end
 end
