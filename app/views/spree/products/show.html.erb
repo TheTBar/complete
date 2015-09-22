@@ -45,6 +45,7 @@
 
         <!-- look for similar items partial -->
         <%#= render :partial => 'taxons' %>
+        <div class="additional-products-container">
         <% if !@additional_products.blank? %>
           <div id="taxon-crumbs" data-hook class=" five ">
             <h3 class="product-section-title">Other Items</h3>
@@ -53,7 +54,7 @@
                 <% end %>
           </div>
         <% end %>
-
+        </div>
       </div>
     </div>
   </div>
