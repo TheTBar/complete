@@ -51,7 +51,17 @@ Spree::Variant.class_eval do
   end
 
   def self.assign_custom_effective_size_value_to_variant(product_id,current_effective_size,new_effective_size)
-    Spree::EffectiveSize.joins(:variant => :option_values).where("spree_variants.product_id = #{product_id}").where("spree_option_values.name = '#{current_effective_size}'").update_all(:effective_size => new_effective_size)
+    Spree::EffectiveSize.joins(:variant => :option_values).where("spree_variants.product_id = #{product_id}").where("LOWER(spree_option_values.name) = '#{current_effective_size.downcase}'").update_all(:effective_size => new_effective_size)
+  end
+
+  def self.add_custom_effective_size_value_to_variant(product_id,option_value_name,effective_size)
+    variants = Spree::Variant.joins(:option_values).where("spree_variants.product_id = #{product_id}").where("LOWER(spree_option_values.name) = '#{option_value_name.downcase}'")
+    variants.each do |v|
+      es = Spree::EffectiveSize.new()
+      es.effective_size = effective_size
+      es.variant_id = v.id
+      es.save
+    end
   end
 
 end
