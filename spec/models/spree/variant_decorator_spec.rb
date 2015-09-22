@@ -85,6 +85,17 @@ describe Spree::Variant, :type => :model do
       expect(es.grep('28a').size).to eq 2
     end
 
+    it "should get the option value size name associated with the effective size record" do
+      set_count_on_hand(product1,1)
+      Spree::Variant.assign_custom_effective_size_value_to_variant(product1.id,'large','34a')
+      Spree::Variant.assign_custom_effective_size_value_to_variant(product1.id,'medium','32a')
+      Spree::Variant.assign_custom_effective_size_value_to_variant(product1.id,'small','30a')
+      Spree::Variant.add_custom_effective_size_value_to_variant(product1.id,'small','28a')
+      babe = create(:babe, name: 'my babe 1', band: 28, cup: 'a', bottoms: 'Medium', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+      # options_value_size = Spree::Variant.actual_option_value_size(product1.id,babe)
+      expect(Spree::Variant.size_matching_in_stock_option_value_for_babe(product1.id,babe)).to eq "small"
+    end
+
   end
 
   def build_option_type_with_values(name, presentation, values)
@@ -94,6 +105,14 @@ describe Spree::Variant, :type => :model do
       ot.option_values.create(:name => val.downcase, :presentation => value_presentation)
     end
     ot
+  end
+
+  def set_count_on_hand(product,count)
+    product.stock_items.each do |si|
+      if !si.variant.is_master?
+        si.set_count_on_hand count
+      end
+    end
   end
 
 

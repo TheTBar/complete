@@ -64,4 +64,14 @@ Spree::Variant.class_eval do
     end
   end
 
+  def self.size_matching_in_stock_option_value_for_babe(product_id,babe)
+    if variant = Spree::Variant.joins(:effective_sizes).includes(:option_values => :option_type).joins(:stock_items).where("spree_variants.product_id = #{product_id}").where("LOWER(spree_effective_sizes.effective_size) in ('#{babe.bottoms.downcase}','#{babe.bra_size.downcase}','one size') AND spree_stock_items.count_on_hand > 0").first
+      variant.option_values.each do |ov|
+        if ov.option_type.isSizeOptionType?
+          return ov.name.downcase
+        end
+      end
+    end
+  end
+  
 end
