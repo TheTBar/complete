@@ -48,7 +48,7 @@
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
   <% cache('header') do %>
     <header>
-      <%= link_to image_tag('panic-button.png'), nil, id: 'panic' %>
+      <%= link_to image_tag('panic-button.png'), nil, id: 'panic', title: "Afraid of getting BUSTED? We've got you covered!" %>
       <div>
         <nav>
           <ul id='account-links'>
