@@ -17,17 +17,52 @@ module Spree
       self.flirt_value = 0
       self.romantic_value = 0
       self.sophisticate_value = 0
+      trait_values = {}
       chosen_traits.each do |t|
         self.vixen_value += t.vixen_value
         self.flirt_value += t.flirt_value
         self.romantic_value += t.romantic_value
         self.sophisticate_value += t.sophisticate_value
-      end
 
+      end
       self.vixen_value = (self.vixen_value / chosen_traits.length).round(2)
       self.flirt_value = (self.flirt_value / chosen_traits.length).round(2)
       self.romantic_value = (self.romantic_value / chosen_traits.length).round(2)
       self.sophisticate_value = (self.sophisticate_value / chosen_traits.length).round(2)
+      if self.personality[0][1] == self.personality[1][1]
+        primary_personality_values = []
+        secondary_personality_values = []
+        chosen_traits.each do |t|
+          primary_personality_values.push(t.get(personality[0][0]))
+          secondary_personality_values.push(t.get(personality[1][0]))
+        end
+        primary_personality_values = primary_personality_values.sort.reverse
+        secondary_personality_values = secondary_personality_values.sort.reverse
+        primary_total_of_top_n = 0
+        secondary_total_of_top_n = 0
+        for i in 0..(chosen_traits.size-2)
+          primary_total_of_top_n = primary_total_of_top_n + primary_personality_values[i]
+          secondary_total_of_top_n = secondary_total_of_top_n + secondary_personality_values[i]
+        end
+
+        if primary_total_of_top_n > secondary_total_of_top_n
+          set(self.personality[0][0], self.personality[0][1] + 0.1)
+        else
+          set(self.personality[1][0], self.personality[1][1] + 0.1)
+        end
+      end
+    end
+
+    def set(trait,value)
+      if trait == 'vixen_value'
+        self.vixen_value = value
+      elsif trait == 'flirt_value'
+        self.flirt_value = value
+      elsif trait == 'romantic_value'
+        self.romantic_value = value
+      elsif trait ==   'sophisticate_value'
+        self.sophisticate_value = value
+      end
     end
 
     def words(trait)

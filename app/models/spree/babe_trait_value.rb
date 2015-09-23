@@ -10,5 +10,17 @@ module Spree
       self.save
     end
 
+    def get(personality_field)
+      if personality_field == 'vixen_value'
+        self.vixen_value
+      elsif personality_field == 'flirt_value'
+        self.flirt_value
+      elsif personality_field == 'romantic_value'
+        self.romantic_value
+      elsif personality_field == 'sophisticate_value'
+        self.sophisticate_value
+      end
+    end
+
   end
 end
