@@ -62,3 +62,11 @@ Spree::PermittedAttributes.taxon_attributes << :theme_taxon_id
 Spree::PermittedAttributes.line_item_attributes << :babe_id
 
 Spree::PermittedAttributes.product_attributes.push :show_in_main_search
+
+Recaptcha.configuration.public_key = '6LeygQ0TAAAAAB3ayjq7hPzBeAEh7k0t_kFmeXPr'
+Recaptcha.configuration.private_key = '6LeygQ0TAAAAAHIv8a-uBmdfpmkO81n5YgBtKb6A'
+
+#Recaptcha.configuration.use_captcha = false
+# Spree::CaptchaConfiguration.public_key = '6LeygQ0TAAAAAB3ayjq7hPzBeAEh7k0t_kFmeXPr'
+# Spree::Captcha.private_key = '6LeygQ0TAAAAAHIv8a-uBmdfpmkO81n5YgBtKb6A'
+# Spree::Captcha.use_captcha = false
