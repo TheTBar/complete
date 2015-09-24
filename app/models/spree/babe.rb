@@ -17,7 +17,6 @@ module Spree
       self.flirt_value = 0
       self.romantic_value = 0
       self.sophisticate_value = 0
-      trait_values = {}
       chosen_traits.each do |t|
         self.vixen_value += t.vixen_value
         self.flirt_value += t.flirt_value
