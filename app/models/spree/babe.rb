@@ -33,8 +33,8 @@ module Spree
         primary_personality_values = []
         secondary_personality_values = []
         chosen_traits.each do |t|
-          primary_personality_values.push(t.get(personality[0][0]))
-          secondary_personality_values.push(t.get(personality[1][0]))
+          primary_personality_values.push(t[personality[0][0]])
+          secondary_personality_values.push(t[personality[1][0]])
         end
         primary_personality_values = primary_personality_values.sort.reverse
         secondary_personality_values = secondary_personality_values.sort.reverse
@@ -46,22 +46,10 @@ module Spree
         end
 
         if primary_total_of_top_n > secondary_total_of_top_n
-          set(self.personality[0][0], self.personality[0][1] + 0.1)
+          self[personality[0][0]] = personality[0][1] + 0.1
         else
-          set(self.personality[1][0], self.personality[1][1] + 0.1)
+          self[personality[1][0]] = personality[1][1] + 0.1
         end
-      end
-    end
-
-    def set(trait,value)
-      if trait == 'vixen_value'
-        self.vixen_value = value
-      elsif trait == 'flirt_value'
-        self.flirt_value = value
-      elsif trait == 'romantic_value'
-        self.romantic_value = value
-      elsif trait ==   'sophisticate_value'
-        self.sophisticate_value = value
       end
     end
 
