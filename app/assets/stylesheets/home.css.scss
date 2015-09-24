@@ -1,5 +1,19 @@
 @import 'colors', 'breakpoints', 'mixins';
 
+[data-route="spree/home/how_the_wishlist_works"] {
+  color: $black-color;
+
+  .wishlist-image {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+  }
+}
+
+[data-route="spree/wishlists/edit"] {
+  color: $black-color;
+}
+
 [data-route="spree/home/sizing"] {
   color: $black-color;
 
