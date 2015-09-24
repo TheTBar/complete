@@ -47,7 +47,7 @@ attachment_config = {
     default_url:    "/:class/:id/:style/:basename.:extension",
     default_style:  "product"
 }
-
+ 
 attachment_config.each do |key, value|
   Spree::Image.attachment_definitions[:attachment][key.to_sym] = value
 end
