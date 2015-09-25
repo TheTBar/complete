@@ -24,6 +24,9 @@ module Spree
     def sizing
     end
 
+    def how_the_wishlist_works
+    end
+
     def csrf_meta_tags
       render layout: false
     end

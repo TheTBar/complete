@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     get '/build_your_babe' => 'babes#access_concierge'
     get '/my_babes_package_list/:id' => 'taxons#my_babes_package_list', as: 'my_babes_package_list'
     get '/' => 'home#concierge_page'
+
     get '/about' => 'home#about'
+    get '/how_the_wishlist_works' => 'home#how_the_wishlist_works'
     get '/ourstory' => 'home#ourstory'
     get '/returns_and_exchanges' => 'home#returns_and_exchanges'
     get '/privacy_policy' => 'home#privacy_policy'

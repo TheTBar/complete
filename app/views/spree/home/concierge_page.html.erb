@@ -57,18 +57,21 @@
     <p>Who are we to give you advice?</p>
   </article>
   </a>
-  <a href='/t/giftideas'>
+  <a href='/how_the_wishlist_works'>
   <article id='subscriptions'>
-    <h2>Gift Ideas</h2>
-    <p>Fun somethings for someone special</p>
+    <h2>Ladies! The Wish-list!</h2>
+    <p>Let your special friend know what you'd like!</p>
   </article>
   </a>
 </section>
 
 <section id='press'>
   <h1>The T*Bar in the press</h1>
-  <a href='http://www.themanual.com/living/sexiest-valentines-day-lingerie-brands/' target=_blank>The Manual</a>
-  <a href='http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL' target=_blank>Urban Daddy</a>
+  <%#= link_to image_tag(getS3GeneralUrl('TheManual.png')), 'http://www.themanual.com/living/sexiest-valentines-day-lingerie-brands/', :target => "_blank" %>
+  <%#= link_to image_tag(getS3GeneralUrl('urbandaddy.png')), 'http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL', :target => "_blank" %>
+<p>&nbsp;</p>
+  <a href='http://www.themanual.com/living/sexiest-valentines-day-lingerie-brands/' target=_blank><%= image_tag(getS3GeneralUrl('TheManual.png')) %></a>
+  <a href='http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL' target=_blank><%= image_tag(getS3GeneralUrl('urbandaddy.png')) %></a>
   <!-- <a href=''>TechCrunch</a>
   <a href=''>Time</a>
   <a href=''>The Wall Street Journal</a>
