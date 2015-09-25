@@ -15,6 +15,7 @@ describe "Getting Babe product results", type: :feature do
     create(:babe_trait_value, name: "shoe 1", spree_babe_trait_type_id: @shoe_trait.id, vixen_value: 5, flirt_value: 1, romantic_value: 1, sophisticate_value: 4)
   end
 
+  let(:sets_taxon) { create(:taxon, name: 'sets')}
   let(:user) {FactoryGirl.create(:user)}
 
   before (:each) do
@@ -23,23 +24,11 @@ describe "Getting Babe product results", type: :feature do
 
   context "user gets selection for their babe" do
 
-    let(:sets_taxon) { create(:taxon, name: 'sets')}
+
     let!(:taxon1) { create(:taxon, name: 'package1', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
     let!(:taxon2) { create(:taxon, name: 'package2', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
     let!(:taxon3) { create(:taxon, name: 'package3', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
     let!(:taxon4) { create(:taxon, name: 'package4', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
-
-    def build_option_type_with_values(name, values)
-      ot = create(:option_type, :name => name)
-      values.each do |val|
-        ot.option_values.create(:name => val.downcase, :presentation => val)
-      end
-      ot
-    end
-
-    def build_options_values_hash_from_option_type(option_type,hash)
-      hash[option_type.id.to_s] = option_type.option_value_ids
-    end
 
     let!(:bottom_option_type) do
       build_option_type_with_values("named sizes", %w(Small Medium Large))
@@ -113,6 +102,54 @@ describe "Getting Babe product results", type: :feature do
     end
 
 
+
+  end
+
+  context "named sizes for bra and bottom" do
+
+    let(:bottom_option_type) do
+      build_option_type_with_values("named sizes", %w(Small Medium Large))
+    end
+    let(:taxon1) { create(:taxon, name: 'package1', is_package_node: true, taxonomy_id: sets_taxon.taxonomy_id, parent_id: sets_taxon.id ) }
+    let(:product1) { create(:product, name: 'product1', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
+    let(:product1b) { create(:product, name: 'product1b', vixen_value: 5, flirt_value: 3, sophisticate_value: 1, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
+
+    it "should return the package based on the effective size" do
+      set_count_on_hand_for_size(product1,'small',1)
+      set_count_on_hand_for_size(product1b,'Medium',1)
+      babe = create(:babe, name: 'my babe 1', band: 30, cup: 'a', bottoms: 'Medium', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+      visit spree.my_babes_package_list_path(babe.id)
+      expect(page).to have_content(/oh no/i)
+
+      Spree::Variant.assign_custom_effective_size_value_to_variant(product1.id,'Small','30A')
+      visit spree.my_babes_package_list_path(babe.id)
+      expect(page).to have_content("package1")
+      click_button "Add To Cart"
+      expect(current_path).to eql(spree.cart_path)
+
+      babe2 = create(:babe, name: 'my babe 1', band: 28, cup: 'a', bottoms: 'Medium', vixen_value: 2, flirt_value: 0, sophisticate_value: 1, romantic_value:0)
+      visit spree.my_babes_package_list_path(babe2.id)
+      expect(page).to have_content(/oh no/i)
+
+      Spree::Variant.add_custom_effective_size_value_to_variant(product1.id,'Small','28A')
+      visit spree.my_babes_package_list_path(babe.id)
+      expect(page).to have_content("package1")
+      click_button "Add To Cart"
+      expect(current_path).to eql(spree.cart_path)
+
+    end
+  end
+
+  def build_option_type_with_values(name, values)
+    ot = create(:option_type, :name => name)
+    values.each do |val|
+      ot.option_values.create(:name => val.downcase, :presentation => val)
+    end
+    ot
+  end
+
+  def build_options_values_hash_from_option_type(option_type,hash)
+    hash[option_type.id.to_s] = option_type.option_value_ids
   end
 
   def set_count_on_hand_for_size(product,size,count)

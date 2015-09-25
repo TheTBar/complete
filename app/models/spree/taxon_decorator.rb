@@ -76,7 +76,8 @@ Spree::Taxon.class_eval do
     #          Spree::OptionType.find_by_name('tshirt-size').id)
 
     available_taxons = []
-    product_variants_in_babes_sizes = Spree::Variant.select("spree_products.id as product_id,spree_variants.id as id").joins(:product).joins(:option_values).joins(:stock_items).where("LOWER(spree_option_values.name) in ('#{babe.bottoms.downcase}','#{babe.bra_size.downcase}','one size') AND spree_stock_items.count_on_hand > 0")
+    #product_variants_in_babes_sizes = Spree::Variant.select("spree_products.id as product_id,spree_variants.id as id").joins(:product).joins(:option_values).joins(:stock_items).where("LOWER(spree_option_values.name) in ('#{babe.bottoms.downcase}','#{babe.bra_size.downcase}','one size') AND spree_stock_items.count_on_hand > 0")
+    product_variants_in_babes_sizes = Spree::Variant.select("spree_products.id as product_id,spree_variants.id as id").joins(:product).joins(:effective_sizes).joins(:stock_items).where("LOWER(spree_effective_sizes.effective_size) in ('#{babe.bottoms.downcase}','#{babe.bra_size.downcase}','one size') AND spree_stock_items.count_on_hand > 0")
     product_prices = Spree::Product.find_by_sql("select a.id,c.amount From spree_products a JOIN spree_variants b ON a.id = b.product_id JOIN spree_prices c ON b.id = c.variant_id WHERE b.is_master = 't'");
     get_babes_package_list(babe).each do |taxon|
       taxon_is_available = true
