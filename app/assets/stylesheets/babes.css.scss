@@ -541,7 +541,7 @@
   
   #finish {
     padding: 6rem 0;
-    font-size: 5rem;
+    //font-size: 5rem;
     text-align: center;
     background-color: white;
     
@@ -551,10 +551,14 @@
     
     input[type=submit] {
       text-transform: uppercase;
-      color: $link-color;
+      color: white;
       background: none;
       border: none;
       -webkit-appearance: none;
+    }
+
+    input.show-me-the-goods {
+      font-size: 30pt;
     }
   }
 
