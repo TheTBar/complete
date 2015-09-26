@@ -10,7 +10,9 @@ Deface::Override.new(:virtual_path => 'spree/admin/orders/edit',
   <div class="panel-body">
     Name: <strong><%= @order.shipping_address.first_name %> <%= @order.shipping_address.last_name %></strong> &nbsp;&nbsp;&nbsp;&nbsp; Phone: <strong><%= @order.shipping_address.phone %></strong> &nbsp;&nbsp;&nbsp;&nbsp; Email: <strong><%= @order.email %></strong><p></p>
     <strong><%= @order.shipping_address.address1 %><br>
-      <%= @order.shipping_address.address2+"<br>" unless @order.shipping_address.address2.blank? %>
+      <% if !@order.shipping_address.address2.blank? %>
+        <%= @order.shipping_address.address2 %><br>
+      <% end %>
       <%= @order.shipping_address.city %>, <%= @order.shipping_address.state.abbr%> <%= @order.shipping_address.zipcode %></strong>
   </div>
 </div>')
