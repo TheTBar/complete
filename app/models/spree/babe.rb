@@ -12,6 +12,14 @@ module Spree
       self.body_type.name
     end
 
+    def display_name_babe
+      self.name == '' ? 'Your Babe' : self.name
+    end
+
+    def display_name_lady
+      self.name == '' ? 'Your Lady' : self.name
+    end
+
     def set_personality_from_trait_array(chosen_traits)
       self.vixen_value = 0
       self.flirt_value = 0

@@ -2,7 +2,19 @@
 
 [controller-type='spree/products']  {
   color: #1a1919;
+  padding-top: 30px;
 
+  .products-top-section {
+    .product-index-title {
+      font-size: 50pt;
+    }
+
+    #our-picks-for-babe-button {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+
+  }
 
   .more-colors-available {
     padding-bottom: 3px;

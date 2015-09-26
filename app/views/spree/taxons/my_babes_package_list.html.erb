@@ -1,8 +1,8 @@
 <section id="babes-list-main">
-  <h1 class="byb-results-title"> This is what we heard about <%= @babe.name == '' ? 'your babe' : @babe.name  %>:</h1>
+  <h1 class="byb-results-title"> This is what we heard about <%= @babe.display_name_babe %>:</h1>
     <h2 class="byb-results-description"> <%= @babe.personality_statement %><br>
   <%= @babe.bra_size %> Top, with <%= @babe.bottoms %> Bottoms</h2>
-  <h3 class="taxon-title">Our personalized selection for <%= @babe.name == '' ? 'Your Lady' : @babe.name  %></h3>
+  <h3 class="taxon-title">Our personalized selection for <%= @babe.display_name_lady  %></h3>
 
   <!-- babe_id = <%= @babe.id %> -->
   <div data-hook="the_goods_list">
