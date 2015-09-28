@@ -32,7 +32,12 @@
   div.product-brand {
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 30px;
+    font-size: 40px;
+    padding-bottom: 15px;
+  }
+
+  .input-group-btn.add-package {
+    padding-bottom: 15px;
   }
 
   div.product-title {

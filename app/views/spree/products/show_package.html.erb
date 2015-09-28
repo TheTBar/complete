@@ -1,6 +1,6 @@
 <div class="col-md-5" data-hook="product_left_part">
   <div data-hook="package_left_part_wrap">
-    <h1 class="taxon-title"><%= @taxon.name %></h1>
+    <h5 class="taxon-title">&nbsp;</h5>
     <div id="product-images" data-hook="product-images">
       <div id="main-image" class="panel panel-default" data-hook>
         <div class="panel-body text-center">
@@ -18,14 +18,14 @@
 <% @body_id = 'package-details' %>
 
 <div id="cart-form" class="col-md-7" data-hook="cart_form">
+  <div class="product-brand" itemprop="brand"><%= @products[0].brand %>: <%= @taxon.name %></div>
   <%= form_for :order, :url => populate_from_package_path do |f| %>
-    <span class="input-group-btn">
+    <span class="input-group-btn add-package">
               <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
                 <%= Spree.t(:add_package_to_cart) %>
               <% end %>
     </span>
     <%= hidden_field_tag "product_count", @products.count %>
-    <div class="product-brand" itemprop="brand"><%= @products[0].brand %>: <%= @taxon.name %></div>
     Total Price: <span class="lead price selling" itemprop="price">$<%= @taxon.package_price %></span>
     <% @products.each_with_index do |product, index| %>
       <% if index > 0 %>
@@ -47,7 +47,7 @@
                 </div>
               </div> -->
               <div id="product-description" data-hook="product_description">
-                <div class="product-title" itemprop="name"><%= @product.name %></div>
+                <div class="product-title package" itemprop="name"><%= @product.name %></div>
 
                 <div class="well" itemprop="description" data-hook="description">
                   <%= product_description(product) rescue Spree.t(:product_has_no_description) %>
