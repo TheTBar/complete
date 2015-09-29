@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920164203) do
+ActiveRecord::Schema.define(version: 20150929160250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,8 +150,10 @@ ActiveRecord::Schema.define(version: 20150920164203) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "number_size"
+    t.string   "guest_token"
   end
 
+  add_index "spree_babes", ["guest_token"], name: "index_spree_babes_on_guest_token", using: :btree
   add_index "spree_babes", ["spree_user_id"], name: "index_spree_babes_on_spree_user_id", using: :btree
 
   create_table "spree_body_types", force: :cascade do |t|
