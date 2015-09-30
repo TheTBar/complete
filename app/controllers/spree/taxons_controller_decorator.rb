@@ -11,6 +11,9 @@ module Spree
       if @taxon.parent && @taxon.parent.name == "Themes"
         @themed_packages = Taxon.where(:theme_taxon_id => @taxon.id).all
       end
+      if @taxon.name.downcase == 'themes'
+        render "show_themes"
+      end
     end
 
     def my_babes_package_list
