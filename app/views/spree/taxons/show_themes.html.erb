@@ -1,0 +1,5 @@
+<h1 class="taxon-title"><%= @taxon.name %></h1>
+&nbsp;
+  <div data-hook="taxon_children">
+      <%= render partial: 'themes_taxon', collection: @taxon.children %>
+  </div>
