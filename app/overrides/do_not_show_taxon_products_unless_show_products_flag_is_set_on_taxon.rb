@@ -7,4 +7,4 @@ Deface::Override.new(:virtual_path => 'spree/taxons/show',
 Deface::Override.new(:virtual_path => 'spree/taxons/show',
                      :name => 'show_themed_colections',
                      :surround_contents => '[data-hook="taxon_children"]',
-                     :text => "<% if @themed_packages %><%= render partial: 'taxon', collection: @themed_packages %><% else %><%= render_original %><% end %>");
+                     :text => "<% if @taxon.show_products == false %><%= render_original %><% end %>");
