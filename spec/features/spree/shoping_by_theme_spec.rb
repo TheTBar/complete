@@ -22,11 +22,11 @@ describe "shopping by themes", type: :feature do
     expect(page).to have_content ("Theme 2")
   end
 
-  it "should only show sets that are part of the clicked theme" do
+  it "should not show and sets on a theme page" do
     visit "/t/themes"
     click_link 'taxon-link-themes/theme-1'
-    expect(page).to have_link ('taxon-link-sets/set-10')
-    expect(page).to have_link ('taxon-link-sets/set-11')
+    expect(page).to_not have_link ('taxon-link-sets/set-10')
+    expect(page).to_not have_link ('taxon-link-sets/set-11')
     expect(page).to_not have_link ('taxon-link-sets/set-20')
     expect(page).to_not have_link ('taxon-link-sets/set-21')
   end

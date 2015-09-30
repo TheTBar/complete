@@ -91,7 +91,7 @@ describe "babes link", type: :feature do
         expect(page).to have_content('Your Babes')
         expect(page).to have_content('BABE1')
         expect(page).to have_content('BABE2')
-        expect(page).to have_content('Build A New Babe')
+        expect(page).to have_content('Add A New Babe')
       end
 
 
@@ -103,7 +103,7 @@ describe "babes link", type: :feature do
       it "should allow the user to create another babe" do
         starting_count = Spree::Babe.where("spree_user_id = #{user.id}").count
         visit spree.build_your_babe_path
-        click_link "Build A New Babe"
+        click_link "Add A New Babe"
         expect(current_path).to eql(spree.new_babe_path)
         fill_in_babe
         fill_in "babe_name", :with => "New Stella"
