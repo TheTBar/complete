@@ -1,6 +1,6 @@
 <div class="themes-outer-box">
   <div class="themes-taxon" data-hook="themes_taxon">
-    <h5 class="subtaxon-title"><%= link_to themes_taxon.name, getUrlForTaxonDisplay(themes_taxon), class: 'btn btn-success', id: "taxon-link-#{themes_taxon.permalink}" %></h5>
+    <div class="theme-head-link"><%= link_to themes_taxon.name, getUrlForTaxonDisplay(themes_taxon), class: 'btn btn-success theme-link', id: "taxon-link-#{themes_taxon.permalink}" %></div>
     <div class="taxon-description"><%= themes_taxon.description %></div>
     <%= link_to(image_tag(themes_taxon.icon(:display)), getUrlForTaxonDisplay(themes_taxon)) unless themes_taxon.icon_file_name.nil? %>
   </div>

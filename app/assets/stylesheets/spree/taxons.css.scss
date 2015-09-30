@@ -45,7 +45,7 @@
   }
 
   .themes-taxon {
-    width: 240px;
+    width: 280px;
     height: 700px;
     font-size: 12pt;
     text-align: center;
@@ -56,13 +56,25 @@
     border-width: 5px;
 
     .taxon-description {
-      height: 380px;
+      height: 330px;
+    }
+    .theme-link {
+      width: 200px;
+    }
+
+    .theme-head-link {
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
   }
   
     .themes-outer-box {
-      width: 260px;
+      width: 300px;
       float: left;
     }
+
+  .taxon-title {
+    padding-top: 40px;
+  }
 
 }
