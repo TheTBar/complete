@@ -1,7 +1,7 @@
 Deface::Override.new(:virtual_path => 'spree/admin/orders/edit',
                      :name => 'add_custom_shipping_info_to_order_shipments_screen',
                      :insert_after => 'erb[loud]:contains("render partial: \'add_product\'")',
-                     :text => '<div class="panel panel-default" id="add-line-item" data-hook>
+                     :text => '<div class="panel panel-default" id="customer-shipping-information" data-hook="customer-shipping-info">
   <div class="panel-heading">
     <h1 class="panel-title">
       Customer Shipping Information
