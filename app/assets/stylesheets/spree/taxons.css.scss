@@ -44,10 +44,9 @@
     box-shadow: none;
   }
 
-
-  .themes_taxon {
+  .themes-taxon {
     width: 240px;
-    height: 900px;
+    height: 700px;
     font-size: 12pt;
     text-align: center;
     float: left;
@@ -60,4 +59,10 @@
       height: 380px;
     }
   }
+  
+    .themes-outer-box {
+      width: 260px;
+      float: left;
+    }
+
 }
