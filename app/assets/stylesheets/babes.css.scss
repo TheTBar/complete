@@ -1,5 +1,44 @@
 @import 'colors', 'breakpoints', 'mixins';
 
+[data-route='spree/babes/index'] {
+  .btn,
+  button,
+  input[type=submit] {
+    padding: .29em 1em;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: $black-color;
+    background-color: white !important;
+    border: 5px solid white !important;
+    box-shadow: inset 0 0 0 1px $black-color !important;
+    border-radius: 0;
+    &:hover {
+      color: $black-color !important;
+      cursor: hand;
+    }
+    &:active {
+      color: white !important;
+      background-color: $black-color !important;
+    }
+    &[disabled],
+    &.disabled {
+      opacity: 1 !important;
+      &:hover {
+        opacity: .6 !important;
+      }
+      &:active {
+        color: $black-color !important;
+        background-color: white !important;
+      }
+    }
+  }
+
+  a.babe-link {
+    color: #006472;
+  }
+}
+
 [data-route='spree/babes/new'] {
   background-color: $body-dark-background-color;
 

@@ -76,6 +76,10 @@ module Spree
       "She's really #{self.words(self.personality[0][0])}, and pretty #{self.words(self.personality[1][0])}."
     end
 
+    def personality_statment_with_brevity
+      "Really #{self.words(self.personality[0][0])}, and pretty #{self.words(self.personality[1][0])}."
+    end
+
     def personality
       personality = Hash.new
       personality['vixen_value'] = self.vixen_value
