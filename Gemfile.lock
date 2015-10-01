@@ -97,6 +97,14 @@ GIT
       spree_core (~> 3.0.0)
 
 GIT
+  remote: git://github.com/spree/spree_jirafe.git
+  revision: 3f9a683739fd57278049124dd285ae19f26fc193
+  specs:
+    spree_jirafe (0.0.1)
+      active_model_serializers (= 0.9.0.alpha1)
+      spree_core
+
+GIT
   remote: https://github.com/radamnyc/spree_product_packages.git
   revision: 663c7283a166bcf4d6fe6bc98d46d4030d340a1b
   specs:
@@ -136,6 +144,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_model_serializers (0.9.0.alpha1)
+      activemodel (>= 3.2)
     activejob (4.2.1)
       activesupport (= 4.2.1)
       globalid (>= 0.3.0)
@@ -557,6 +567,7 @@ DEPENDENCIES
   spree_contact_us!
   spree_email_to_friend!
   spree_gateway!
+  spree_jirafe!
   spree_mail_settings!
   spree_paypal_express!
   spree_product_packages!
