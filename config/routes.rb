@@ -33,7 +33,12 @@ Rails.application.routes.draw do
     get '/terms_of_use' => 'home#terms_of_use'
     get '/sizing' => 'home#sizing'
     get '/csrf_meta_tags' => 'home#csrf_meta_tags'
+
+    match '/admin/reports/abandoned_carts' => 'admin/reports#abandoned_carts',  :via  => [:get, :post],
+          :as   => 'abandoned_carts_admin_reports'
+
   end
+
 
 
 

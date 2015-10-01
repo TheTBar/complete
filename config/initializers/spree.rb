@@ -64,3 +64,5 @@ Spree::PermittedAttributes.line_item_attributes << :babe_id
 Spree::PermittedAttributes.product_attributes.push :show_in_main_search
 
 Spree::PermittedAttributes.checkout_attributes << :gift_note
+
+Spree::Admin::ReportsController.add_available_report!(:abandoned_carts, 'Abandoned Carts Data')

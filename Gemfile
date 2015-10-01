@@ -104,3 +104,6 @@ gem 'actionpack-action_caching'
 
 #new relic monitoring
 gem 'newrelic_rpm'
+
+#reports
+gem 'spree_advanced_reporting', github: 'fidenz-suchith/spree_advanced_reporting'
