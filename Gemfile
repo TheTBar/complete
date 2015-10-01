@@ -104,6 +104,3 @@ gem 'actionpack-action_caching'
 
 #new relic monitoring
 gem 'newrelic_rpm'
-
-#jiraf
-gem "spree_jirafe", :github => "spree/spree_jirafe"
