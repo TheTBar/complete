@@ -280,6 +280,10 @@
     background-image: url('https://tbar-general.s3.amazonaws.com/images/panty-press-new-image-round.png');
   }
 
+  #themed-collections {
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/panty-press-new-image-round.png');
+  }
+
   #our-story {
     background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-window.png');
   }
@@ -295,6 +299,18 @@
 
     a {
       margin: 0 1rem;
+    }
+
+  }
+
+  #store-links {
+
+    a {
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: white;
     }
 
   }
