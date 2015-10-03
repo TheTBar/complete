@@ -7,5 +7,4 @@ Deface::Override.new(:virtual_path => 'spree/products/index',
       <%= link_to "Click Here To See Our Picks For #{Spree::Babe.find(session[:babe_id]).display_name_babe}", my_babes_package_list_path(session[:babe_id]), :class => "btn btn-success", :id => "see-our-pics" %>
 </div>
   <% end %>
-  <div class="product-index-title">Our Collection</div>
 </div>');
