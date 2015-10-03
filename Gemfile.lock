@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/fidenz-suchith/spree_advanced_reporting.git
+  revision: 97c47389c7f4e7575b190b2d801cd06d492065ca
+  specs:
+    spree_advanced_reporting (2.0.0)
+      ruport (>= 1.6.3)
+      ruport-util
+      spree_core
+
+GIT
   remote: git://github.com/radamnyc/spree_variant_options.git
   revision: 15b6ca66448b2789770e73e80b300b280a1b1260
   branch: 3.0.0
@@ -204,6 +213,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    color (1.7.1)
     colorize (0.7.7)
     css_parser (1.3.6)
       addressable
@@ -233,6 +243,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    fastercsv (1.5.5)
     ffaker (1.32.1)
     font-awesome-rails (4.4.0.0)
       railties (>= 3.2, < 5.0)
@@ -265,6 +276,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mailfactory (1.4.0)
+      mime-types (>= 1.13.1)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.8.0)
@@ -322,6 +335,9 @@ GEM
       xml-simple
     paypal-sdk-merchant (1.106.1)
       paypal-sdk-core (~> 0.2.3)
+    pdf-writer (1.1.8)
+      color (>= 1.4.0)
+      transaction-simple (~> 1.3)
     pg (0.18.2)
     poltergeist (1.6.0)
       capybara (~> 2.1)
@@ -401,6 +417,14 @@ GEM
       rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
+    rubyzip (1.1.7)
+    ruport (1.6.3)
+      fastercsv
+      pdf-writer (= 1.1.8)
+    ruport-util (0.14.0)
+      mailfactory (>= 1.2.3)
+      rubyzip (>= 0.9.1)
+      ruport (>= 1.6.0)
     sass (3.4.18)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -491,6 +515,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    transaction-simple (1.4.0.2)
     truncate_html (0.9.2)
     twitter_cldr (3.2.1)
       camertron-eprun
@@ -553,6 +578,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simplecov
   spree (= 3.0.1)
+  spree_advanced_reporting!
   spree_auth_devise!
   spree_contact_us!
   spree_email_to_friend!
