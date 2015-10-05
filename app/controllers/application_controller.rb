@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
         babe.spree_user_id = spree_current_user.id
         babe.save
       end
+      if cookies.signed[:guest_token].present?
+        Spree::Babe.where(:spree_user_id => 1).where(:guest_token => cookies.signed[:guest_token]).each do |babe|
+          babe.spree_user_id = spree_current_user.id
+          babe.save
+        end
+      end
     end
   end
 

@@ -12,6 +12,10 @@ describe "babes link", type: :feature do
     create(:babe_trait_value, name: "date 1", spree_babe_trait_type_id: @date_trait.id, vixen_value: 4, flirt_value: 4, romantic_value: 2, sophisticate_value: 1)
     @shoe_trait = create(:babe_trait_type, name: 'shoe', active: false)
     create(:babe_trait_value, name: "shoe 1", spree_babe_trait_type_id: @shoe_trait.id, vixen_value: 1, flirt_value: 5, romantic_value: 5, sophisticate_value: 5)
+
+    #create the admin user
+    FactoryGirl.create(:user)
+
   end
 
   context "guest is exploring site" do
@@ -58,8 +62,57 @@ describe "babes link", type: :feature do
       babe = Spree::Babe.last
       expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
     end
+
+    it "should as for an email on BYB if the user is a guest" do
+      visit '/build_your_babe'
+      expect(page).to have_content(/Enter your email/i)
+    end
+
   end
 
+  context "user starts as guest but then logs in" do
+
+    it "should create a user" do
+      visit '/'
+      visit '/signup'
+      fill_in "spree_user_email", :with => "myemail@tbar.com"
+      fill_in "spree_user_name", :with => "bob"
+      fill_in "spree_user_password", :with => "welcome"
+      fill_in "spree_user_password_confirmation", :with => "welcome"
+      click_button 'Create'
+      expect(Spree::User.last.email).to eq "myemail@tbar.com"
+    end
+
+    it "should allow a user to log in" do
+      user = FactoryGirl.create(:user, password: 'welcome')
+      visit '/login'
+      fill_in "spree_user_email", :with => user.email
+      fill_in "spree_user_password", :with => "welcome"
+      click_button "Login"
+      expect(current_path).to eql("/")
+    end
+
+    it "should assign the babe to the use if tehy were created as a guest and then logged in" do
+      user = FactoryGirl.create(:user, password: 'welcome')
+      visit '/build_your_babe'
+      expect(current_path).to eql(spree.new_babe_path)
+      fill_in_babe
+      click_button "Show me the goods"
+      babe = Spree::Babe.last
+      babe_id = babe.id
+      expect(babe.spree_user_id).to eq 1
+
+      visit '/login'
+      fill_in "spree_user_email", :with => user.email
+      fill_in "spree_user_password", :with => "welcome"
+      click_button "Login"
+
+      babe_now = Spree::Babe.find(babe_id)
+      expect(babe_now.spree_user_id).to eq user.id
+    end
+
+
+  end
 
   context "user logs in" do
     let!(:user) {FactoryGirl.create(:user)}
@@ -71,6 +124,11 @@ describe "babes link", type: :feature do
     it "should allow the user to load the build a babe page" do
       visit spree.build_your_babe_path
       expect(page).to have_content("Let's start with sizing")
+    end
+
+    it "should NOT show the email if the user is logged in and clicks build your babe" do
+      visit '/build_your_babe'
+      expect(page).to_not have_content(/Enter your email/i)
     end
 
     it "should allow the user to save a babe" do
