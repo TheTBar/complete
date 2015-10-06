@@ -194,7 +194,7 @@
     <% if !spree_current_user %>
       <div class="collect-email-on-new-babe">
         Enter your email to be notified of specials that apply to your babe:
-        <input placeholder="email" type="text" name="email" id="email" />
+        <%= form.text_field :guest_email %>
       </div>
       <p></p>
     <% end %>

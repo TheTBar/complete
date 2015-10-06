@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930000537) do
+ActiveRecord::Schema.define(version: 20151005235955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20150930000537) do
     t.datetime "updated_at"
     t.string   "number_size"
     t.string   "guest_token"
+    t.string   "guest_email"
   end
 
   add_index "spree_babes", ["guest_token"], name: "index_spree_babes_on_guest_token", using: :btree

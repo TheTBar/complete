@@ -68,6 +68,14 @@ describe "babes link", type: :feature do
       expect(page).to have_content(/Enter your email/i)
     end
 
+    it "should save the entered email on the babe if the user is a guest" do
+      visit '/build_your_babe'
+      fill_in_babe
+      click_button "Show me the goods"
+      babe = Spree::Babe.last
+      expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
+    end
+
   end
 
   context "user starts as guest but then logs in" do
@@ -91,6 +99,16 @@ describe "babes link", type: :feature do
       click_button "Login"
       expect(current_path).to eql("/")
     end
+
+    it "should allow the guest user to save on a babe" do
+      visit spree.build_your_babe_path
+      fill_in "babe_name", :with => "Stella"
+      fill_in "babe_guest_email", :with => "sumdumemail@tbar.com"
+      click_button "Show me the goods"
+      babe = Spree::Babe.last
+      expect(babe.guest_email).to eql("sumdumemail@tbar.com")
+    end
+
 
     it "should assign the babe to the use if tehy were created as a guest and then logged in" do
       user = FactoryGirl.create(:user, password: 'welcome')
@@ -129,14 +147,6 @@ describe "babes link", type: :feature do
     it "should NOT show the email if the user is logged in and clicks build your babe" do
       visit '/build_your_babe'
       expect(page).to_not have_content(/Enter your email/i)
-    end
-
-    it "should allow the user to save a babe" do
-      visit spree.build_your_babe_path
-      fill_in_babe
-      click_button "Show me the goods"
-      babe = Spree::Babe.last
-      expect(current_path).to eql(spree.my_babes_package_list_path(babe.id))
     end
 
     context "user has at least one babe already" do
