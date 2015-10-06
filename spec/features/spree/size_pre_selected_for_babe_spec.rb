@@ -5,6 +5,12 @@ Warden.test_mode!
 
 describe "Get Size pre selected", type: :feature do
 
+  before do
+    #create the admin user
+    FactoryGirl.create(:user)
+  end
+
+
   let(:user) {FactoryGirl.create(:user)}
 
   before (:each) do
