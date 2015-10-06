@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
 
   def assign_babe
     if spree_user_signed_in?
+      #need to do both in case they have cookies turned off
       if session.key?(:babe_id)
         babe = Spree::Babe.find(session[:babe_id])
         babe.spree_user_id = spree_current_user.id

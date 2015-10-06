@@ -603,6 +603,10 @@
     .collect-email-on-new-babe {
       color: $black-color;
       padding-bottom: 30px;
+
+      .email-input {
+        padding-top: 10px;
+      }
     }
   }
 
