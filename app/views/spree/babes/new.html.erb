@@ -1,6 +1,5 @@
-<% cache('newbabe') do %>
-<script>
-
+<% cache('newbabe-header') do %>
+  <script>
   var presets = {
     small: {
       cup: { value: 'B', range: [ 'A', 'B', 'C', 'D', 'DD', 'F' ] },
@@ -86,11 +85,11 @@
   });
   
 </script>
-
+<% end %>
 <h1>Build your babe</h1>
 
 <%= form_for @babe do |form| %>
-
+  <% cache('newbabe') do %>
   <section id='sizing'>
 
     <h2>Let's start with sizing</h2>
@@ -188,8 +187,7 @@
     <% end %>
   
   </section>
-
-
+  <% end %>
   <section id='finish'>
     <% if !spree_current_user %>
       <div class="collect-email-on-new-babe">
@@ -213,4 +211,3 @@
   }
 
 </script>
-<% end %>
