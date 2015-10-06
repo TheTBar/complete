@@ -94,7 +94,7 @@ module Spree
     end
 
     def babe_params
-      params.require(:babe).permit(:spree_user_id, :body_type_id, :name, :height, :band, :cup, :bottoms, :number_size, :vixen_value, :romantic_value, :flirt_value, :sophisticate_value)
+      params.require(:babe).permit(:spree_user_id, :body_type_id, :name, :height, :band, :cup, :bottoms, :number_size, :vixen_value, :romantic_value, :flirt_value, :sophisticate_value, :guest_email)
     end
 
 

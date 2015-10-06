@@ -70,4 +70,6 @@ end
 
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
-
+# Capybara::Poltergeist.methods.each do |method|
+#   puts method.to_s
+# end

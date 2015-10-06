@@ -28,6 +28,9 @@ describe "Get user wants to purchase through BYB", type: :feature do
   let(:product1b) { FactoryGirl.create(:product, name: 'product1b', vixen_value: 5, flirt_value: 3, sophisticate_value: 2, romantic_value:1, option_values_hash: {bottom_option_type.id.to_s => bottom_option_type.option_value_ids}, taxons: [taxon1]) }
 
   before do
+    #create the admin user
+    FactoryGirl.create(:user)
+
     set_count_on_hand(product1,1)
     set_count_on_hand(product1b,1)
   end
