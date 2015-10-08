@@ -10,26 +10,6 @@
   <%= render :partial => 'spree/admin/shared/report_order_criteria' %>
 </div>
 
-<table class="table table-bordered admin-report" data-hook="sales_total">
-  <thead>
-    <tr>
-      <th><%= Spree.t(:currency) %></th>
-      <th><%= Spree.t(:item_total) %></th>
-      <th><%= Spree.t(:adjustment_total) %></th>
-      <th><%= Spree.t(:sales_total) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @totals.each do |key, row| %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= row[:item_total].format %></td>
-        <td><%= row[:adjustment_total].format %></td>
-        <td><%= row[:sales_total].format %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 <table class="table table-bordered admin-report">
   <tbody>
   <tr>
@@ -48,7 +28,7 @@
   <% end %>
   <tr>
     <td>Shipping Costs</td>
-    <td>$<%= @totals['USD'][:shipping_total]%></td>
+    <td><%= number_to_currency(@shipping) %></td>
   </tr>
   <tr>
     <td>Grand Total</td>

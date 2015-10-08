@@ -49,11 +49,12 @@ module Spree
         @totals = {}
         @cost = 0
         @taxes = Hash.new(0)
+        @shipping = 0
         @orders.each do |order|
           @totals[order.currency] = { :item_total => ::Money.new(0, order.currency),:cost_total => ::Money.new(0, order.currency),:shipping_total => ::Money.new(0, order.currency), :adjustment_total => ::Money.new(0, order.currency), :sales_total => ::Money.new(0, order.currency) } unless @totals[order.currency]
           @totals[order.currency][:item_total] += order.display_item_total.money
           @totals[order.currency][:adjustment_total] += order.display_adjustment_total.money
-          @totals[order.currency][:shipping_total] += order.shipment_total
+          @shipping += order.shipment_total
           Spree::Adjustment.where(:order_id => order.id).each do |adjustment|
             @taxes[adjustment.label.to_s] += adjustment.amount
           end
