@@ -36,7 +36,7 @@
 }
 
 [data-route='spree/home/concierge_page'] {
-  background-color: $body-dark-background-color;
+  //background-color: $body-dark-background-color;
 
   h1,
   h2,
@@ -142,10 +142,11 @@
     padding-top: 15rem;
     padding-left: 40%;
     //background-image: image-url('woman-on-stairs.jpg');
-    background-image: url('https://tbar-general.s3.amazonaws.com/images/woman-on-stairs.jpg');
+    //background-image: url('https://tbar-general.s3.amazonaws.com/images/woman-on-stairs.jpg');
+    background-image: url('https://tbar-general.s3.amazonaws.com/images/angelabed.jpg');
 
     background-position: center top;
-    background-size: auto 100%;
+    background-size: 1300px;
     background-repeat: no-repeat;
 
     @media screen and (max-width: $medium-large-breakpoint) {
