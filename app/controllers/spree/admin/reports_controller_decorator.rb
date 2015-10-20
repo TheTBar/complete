@@ -6,17 +6,17 @@ module Spree
 
         params[:q] = {} unless params[:q]
 
-        if params[:q][:updated_at_gt].blank?
-          params[:q][:updated_at_gt] = Time.zone.now.beginning_of_month
+        if params[:q][:created_at_gt].blank?
+          params[:q][:created_at_gt] = Time.zone.now.beginning_of_month
         else
-          params[:q][:updated_at_gt] = Time.zone.parse(params[:q][:updated_at_gt]).beginning_of_day rescue Time.zone.now.beginning_of_month
+          params[:q][:created_at_gt] = Time.zone.parse(params[:q][:created_at_gt]).beginning_of_day rescue Time.zone.now.beginning_of_month
         end
 
         if params[:q] && !params[:q][:completed_at_lt].blank?
-          params[:q][:updated_at_lt] = Time.zone.parse(params[:q][:updated_at_lt]).end_of_day rescue ""
+          params[:q][:created_at_lt] = Time.zone.parse(params[:q][:created_at_lt]).end_of_day rescue ""
         end
 
-        params[:q][:s] ||= "updated_at desc"
+        params[:q][:s] ||= "created_at desc"
 
         @search = Order.where.not(state: 'complete').ransack(params[:q])
 

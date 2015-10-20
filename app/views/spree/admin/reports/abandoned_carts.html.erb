@@ -13,11 +13,11 @@
       <div class="date-range-filter row">
         <div class="col-md-6">
           Start Date<br>
-          <%= s.text_field :updated_at_gt, :class => 'datepicker datepicker-from form-control', :value => datepicker_field_value(params[:q][:updated_at_gt]) %>
+          <%= s.text_field :created_at_gt, :class => 'datepicker datepicker-from form-control', :value => datepicker_field_value(params[:q][:created_at_gt]) %>
         </div>
         <div class="col-md-6">
           End Date (leave blank for today)<br>
-          <%= s.text_field :updated_at_lt, :class => 'datepicker datepicker-to form-control', :value => datepicker_field_value(params[:q][:updated_at_lt]) %>
+          <%= s.text_field :created_at_lt, :class => 'datepicker datepicker-to form-control', :value => datepicker_field_value(params[:q][:created_at_lt]) %>
         </div>
       </div>
     </div>
