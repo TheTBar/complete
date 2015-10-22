@@ -3,14 +3,21 @@
 <html lang="en" xml:lang="en" xmlns= "http://www.w3.org/1999/xhtml">
 
   <head>
+    <meta charset="utf-8">
     <title>The T Bar</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+    <%== meta_data_tags %>
+    <%= canonical_tag(current_store.url) %>
+    <%= favicon_link_tag 'favicon.ico' %>
     <meta http-equiv="Content-Language" content="en">
     <link rel="image_src" href="<%= getS3GeneralUrl('thetbar_facebook_thumbnail.png')%>" /><!--formatted-->
     <link rel="image_src" href="<%= getS3GeneralUrl('thetbar_facebook_thumbnail_too.png')%>" /><!--formatted-->
-    <meta name="description" content="Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it. The T*Bar takes the guesswork out and helps you nail it!" /><!--formatted-->
     <%= stylesheet_link_tag 'tbar_custom', 'spree/frontend/all', 'https://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
     <%= javascript_include_tag 'application', 'spree/frontend/all' %>
     <%= csrf_meta_tags %>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
+    <%= yield :head %>
     <script src="//load.sumome.com/" data-sumo-site-id="24c7b2192dbf9681827faf60a91fc346c3625aa4ab77533720d1c4b0ae05ff3b" async="async"></script>
     <script type="text/javascript">
       function readCookie(name)
