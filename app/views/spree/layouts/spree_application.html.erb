@@ -135,7 +135,7 @@
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
   <% cache('header') do %>
     <header>
-      <%= link_to image_tag('panic-button.png'), nil, id: 'panic', title: "Afraid of getting BUSTED? We've got you covered!" %>
+      <%= link_to image_tag('panic-button.png'), nil, id: 'panic', "data-toggle"=>"tooltip", "data-placement"=>"right", title: "Afraid of getting BUSTED? We've got you covered!" %>
       <div>
         <nav>
           <ul id='account-links'>
@@ -195,6 +195,12 @@
     } else {
       $("#login-logout-links").html('<li><a href="/login">Have an account? <span>Sign in</span></a><%= link_to image_tag("user-icon.png")%></li>');
     }
+
+    var options = { 'html': '<div class="tooltip" role="tooltip" style="background-color: white;"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="color: black;"></div></div>'};
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip(options)
+    })
   </script>
 
 </html>
