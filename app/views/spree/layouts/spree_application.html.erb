@@ -127,6 +127,13 @@
         $('#panic').on('click', function(event) {
           event.preventDefault();
           $('#panic-overlay').toggle();
+          $('[data-toggle="tooltip"]').tooltip('hide');
+        });
+      });
+
+      $(document).on('ready', function() {
+        $('#panic').on('mouseout', function(event) {
+          $('[data-toggle="tooltip"]').tooltip('hide');
         });
       });
     </script>
@@ -200,6 +207,8 @@
     $(function () {
       $('[data-toggle="tooltip"]').tooltip(options)
     })
+
+
   </script>
 
 </html>
