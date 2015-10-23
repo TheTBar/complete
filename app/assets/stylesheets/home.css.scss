@@ -37,6 +37,9 @@
 
 [data-route='spree/home/concierge_page'] {
   //background-color: $body-dark-background-color;
+  .ui-dialog-titlebar {
+    display: none;
+  }
 
   h1,
   h2,
@@ -112,29 +115,39 @@
     color: #006472;
   }
 
-  section .home-statement {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    text-align: left;
+  #statement{
+    //min-height: 100px;
+    font-family: 'roboto', sans-serif;
+    font-size: 2.2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .home-statement {
+      text-align: center;
+      color: black;
+    }
   }
 
   section .small-print {
     position: absolute;
-    top: 370px;
-    left: 420px;
-    text-align: center;
+    bottom:0px;
+    padding-bottom: 2rem;
+    margin: 0 auto;
+    width: 100%;
     color: black;
+    text-align: center;
   }
 
 
   footer {
     span#copyright {
-      color: white;
+      color: $black-color;
     }
 
     a {
-      color: white;
+      color: $black-color;
     }
   }
 
@@ -150,21 +163,19 @@
     font-size: 4rem;
   }
 
+
   #introduction {
-    min-height: 50rem;
-    padding-top: 15rem;
-    padding-left: 40%;
-    //background-image: image-url('woman-on-stairs.jpg');
-    //background-image: url('https://tbar-general.s3.amazonaws.com/images/woman-on-stairs.jpg');
+    min-height: 42rem;
+    padding-top: 35rem;
     background-image: url('https://tbar-general.s3.amazonaws.com/images/angelabed.jpg');
 
     background-position: center top;
     background-size: 1300px;
     background-repeat: no-repeat;
+    padding: 10px;
 
     @media screen and (max-width: $medium-large-breakpoint) {
       background-position: -20rem center;
-      padding-left: 35%;
     }
 
     h1 {
@@ -200,9 +211,12 @@
       position: relative;
       float: left;
       color: black;
+      min-width: 380px;
+      min-height: 380px;
 
       @media screen and (max-width: $medium-large-breakpoint) {
         width: 100%;
+        min-height: 350px;
       }
 
       .innerContent {
@@ -213,6 +227,15 @@
         bottom: 20px;
         padding: 10px;
         background: #d3d3d3;
+
+        .instruction-list {
+          padding-left: 20px;
+
+          .instruction {
+            font-size: 2.2rem;
+            cursor: default;
+          }
+        }
       }
 
       @media only screen and (max-width : 480px) {
@@ -248,15 +271,40 @@
     background-position: center center;
     background-size: cover;
 
+    padding-top: 10px;
+
     article {
       color: white;
       width: 33.333%;
       padding-top: 30rem;
+      .how-it-works-dialog {
+        width: 100%;
+      }
 
       @media screen and (max-width: $medium-large-breakpoint) {
         width: 100%;
       }
 
+    }
+
+    .dialog-title {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 2.5rem;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .how-it-works-dialog {
+      color: white;
+      width: 100%;
+      padding-top: 30rem;
+
+      @media screen and (max-width: $medium-large-breakpoint) {
+        width: 100%;
+      }
     }
 
     a {

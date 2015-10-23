@@ -1,10 +1,9 @@
-<section id="spacer" style="padding: 1rem">
-  &nbsp;
+<section id="statement">
+  <div class="home-statement" >
+    "Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it"&nbsp;&nbsp;-theTQueen
+  </div>
 </section>
 <section id='introduction'>
-  <h2 class="home-statement">
-    Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it
-  </h2>
   <div class="small-print">The T*Bar takes the guesswork out and helps you nail it!</div>
   <!--<a class="home-page-byb-link" href='/build_your_babe'>Let's build your babe<span>&rarr;</span></a>-->
 </section>
@@ -13,11 +12,13 @@
   <article class="box">
     <div class="innerContent novice">
       <h2>I'm A Novice</h2>
-      <p>Use our AWESOM build your babe to nail it with size and style for your special someon</p>
-      <h4><a href="#">1: Tell Us About Her</a></h4>
-      <h4><a href="#">2: Choose Awesome Lingerie</a></h4>
-      <h4><a href="#">3: Have some fun!</a></h4>
-      <h4><a href="/babes/new">OK! LETS DO THIS!</a></h4>
+      <p>Use our AWESOME build your babe to nail it with size and style for your special someone. It's Simple!<br>Here's how....</p>
+      <div class="instruction-list">
+        <div id="tell-us-about-her" class="instruction">1: Tell Us About Her</div>
+        <div id="choose-lingerie" class="instruction">2: Choose Awesome Lingerie</div>
+        <div id="have-some-fun" class="instruction">3: Have some fun!</div>
+        <h2><a href="/babes/new">OK! LETS DO THIS!</a></h2>
+      </div>
     </div>
   </article>
   <article class="box">
@@ -40,24 +41,69 @@
 
 </section>
 
-<section id='explanation'>
-  <h1>How it works</h1>
-  <article id='step-1'>
-    <h2>Tell us about her</h2>
-    <p>Start by using our 'Babe' to get her overall shape an size. Yes we want the details! Then answer a few questions about her to help us understand her style, and personality.</p>
-  </article>
-  <article id='step-2'>
-    <h2>Get awesome lingerie</h2>
-    <!-- <p>We'll present you a curated list of our recommendations that best fit your lady's overall persona. Peruse the list, and find what you think she'll love, or at least what you'll love her in (or out of).</p>-->
-  </article>
-  <article id='step-3'>
-    <h2>Have some fun!</h2>
-    <!--<p>Do we really need to provide you instructions on what to do here? We're confident that our process will help you nail it! Lingerie looks great on the floor too!</p>-->
-  </article>
-  <h3><a class="home-page-byb-link" href='/build_your_babe'>Ready? Let's go! <span>&rarr;</span></a></h3>
-</section>
+<div id="dialog-step1" style="width: auto; padding: 0px;" hidden="hidden">
+  <section id='explanation' class="dialog-explanation" style="padding: 1rem">
+    <div class="dialog-title" style="color: white">TELL US ABOUT HER</div>
+    <div id='step-1' class="how-it-works-dialog">
+      <p>Start by using our 'Babe' to get her overall shape an size. Yes we want the details! Then answer a few questions about her to help us understand her style, and personality.</p>
+    </div>
+  </section>
+</div>
+<div id="dialog-step2" style="width: auto; padding: 0px;" hidden="hidden">
+  <section id='explanation' class="dialog-explanation" style="padding: 1rem">
+    <div class="dialog-title" style="color: white">SELECTION TIME</div>
+    <div id='step-2' class="how-it-works-dialog">
+      <p>We'll present you a curated list of our recommendations that best fit your lady's overall persona. Peruse the list, and find what you think she'll love, or at least what you'll love her in (or out of).</p>
+    </div>
+  </section>
+</div>
+<div id="dialog-step3" style="width: auto; padding: 0px;" hidden="hidden">
+  <section id='explanation' class="dialog-explanation" style="padding: 1rem">
+    <div class="dialog-title" style="color: white">HAVE SOME FUN!</div>
+    <div id='step-3' class="how-it-works-dialog">
+      <p>Do we really need to provide you instructions on what to do here? We're confident that our process will help you nail it! Lingerie looks great on the floor too!</p>
+    </div>
+  </section>
+</div>
+<script>
+  function openitup(id) {
+    $(function() {
+      $( "#"+id ).dialog();
+    })
+  }
 
-<!-- <section id='testimonials'>
+  function closeitdown(id) {
+    $(function() {
+      $( "#"+id ).dialog('close');
+    })
+  }
+
+  $("#tell-us-about-her").mouseenter(function() {
+    openitup('dialog-step1');
+  }).mouseleave(function() {
+    // include to clear on mouse out - $("#SpanToTypeIn").typed('reset');
+    closeitdown('dialog-step1');
+  })
+
+  $("#choose-lingerie").mouseenter(function() {
+    openitup('dialog-step2');
+  }).mouseleave(function() {
+    // include to clear on mouse out - $("#SpanToTypeIn").typed('reset');
+    closeitdown('dialog-step2');
+  })
+
+  $("#have-some-fun").mouseenter(function() {
+    openitup('dialog-step3');
+  }).mouseleave(function() {
+    // include to clear on mouse out - $("#SpanToTypeIn").typed('reset');
+    closeitdown('dialog-step3');
+  })
+</script>
+<section id="instagram">
+  <!-- SnapWidget -->
+  <iframe src="http://snapwidget.com/sc/?u=dGhldGJhcnxpbnwyMDB8M3wzfHxub3w1fG5vbmV8b25TdGFydHx5ZXN8bm8=&ve=231015" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1140px; height:200px"></iframe>
+</section>
+<section id='testimonials'>
   <h1>What our customers are saying</h1>
   <article>
     <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.</q>
@@ -76,7 +122,7 @@
     <cite>@FlirtyFishy</cite>
   </article>
   <h3><a href=''>Read more <span>&rarr;</span></a></h3>
-</section> -->
+</section>
 
 <section id='extras'>
   <a href='/t/themes'>
