@@ -3,14 +3,21 @@
 <html lang="en" xml:lang="en" xmlns= "http://www.w3.org/1999/xhtml">
 
   <head>
+    <meta charset="utf-8">
     <title>The T Bar</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+    <%== meta_data_tags %>
+    <%= canonical_tag(current_store.url) %>
+    <%= favicon_link_tag 'favicon.png' %>
     <meta http-equiv="Content-Language" content="en">
     <link rel="image_src" href="<%= getS3GeneralUrl('thetbar_facebook_thumbnail.png')%>" /><!--formatted-->
     <link rel="image_src" href="<%= getS3GeneralUrl('thetbar_facebook_thumbnail_too.png')%>" /><!--formatted-->
-    <meta name="description" content="Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it. The T*Bar takes the guesswork out and helps you nail it!" /><!--formatted-->
     <%= stylesheet_link_tag 'tbar_custom', 'spree/frontend/all', 'https://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
     <%= javascript_include_tag 'application', 'spree/frontend/all' %>
     <%= csrf_meta_tags %>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6/html5shiv.min.js"></script>
+    <%= yield :head %>
     <script src="//load.sumome.com/" data-sumo-site-id="24c7b2192dbf9681827faf60a91fc346c3625aa4ab77533720d1c4b0ae05ff3b" async="async"></script>
     <script type="text/javascript">
       function readCookie(name)
@@ -120,6 +127,13 @@
         $('#panic').on('click', function(event) {
           event.preventDefault();
           $('#panic-overlay').toggle();
+          $('[data-toggle="tooltip"]').tooltip('hide');
+        });
+      });
+
+      $(document).on('ready', function() {
+        $('#panic').on('mouseout', function(event) {
+          $('[data-toggle="tooltip"]').tooltip('hide');
         });
       });
     </script>
@@ -128,7 +142,7 @@
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
   <% cache('header') do %>
     <header>
-      <%= link_to image_tag('panic-button.png'), nil, id: 'panic', title: "Afraid of getting BUSTED? We've got you covered!" %>
+      <%= link_to image_tag('panic-button.png'), nil, id: 'panic', "data-toggle"=>"tooltip", "data-placement"=>"right", title: "Afraid of getting BUSTED? We've got you covered!" %>
       <div>
         <nav>
           <ul id='account-links'>
@@ -180,7 +194,6 @@
   <% end %>
   
   <div id='panic-overlay'></div>
-  
   </body>
   <script type="text/javascript">
     if (readCookie('logged_in') == 'true') {
@@ -188,6 +201,14 @@
     } else {
       $("#login-logout-links").html('<li><a href="/login">Have an account? <span>Sign in</span></a><%= link_to image_tag("user-icon.png")%></li>');
     }
+
+    var options = { template : '<div class="tooltip" role="tooltip" style="background-color: white;"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="background-color: white; color: black;max-width: 290px;"></div></div>'};
+
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip(options)
+    })
+
+
   </script>
 
 </html>
