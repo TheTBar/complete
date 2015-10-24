@@ -127,6 +127,9 @@
     .home-statement {
       text-align: center;
       color: black;
+      .thetqueen {
+        font-size: 1.5rem;
+      }
     }
   }
 
@@ -211,8 +214,8 @@
       position: relative;
       float: left;
       color: black;
-      min-width: 380px;
-      min-height: 380px;
+      min-width: 340px;
+      min-height: 400px;
 
       @media screen and (max-width: $medium-large-breakpoint) {
         width: 100%;
@@ -229,10 +232,10 @@
         background: #d3d3d3;
 
         .instruction-list {
-          padding-left: 20px;
+          padding-left: 17px;
 
           .instruction {
-            font-size: 2.2rem;
+            font-size: 2.0rem;
             cursor: default;
           }
         }
