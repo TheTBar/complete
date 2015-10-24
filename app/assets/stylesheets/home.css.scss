@@ -132,8 +132,8 @@
 
   section .small-print {
     position: absolute;
-    bottom:0px;
-    padding-bottom: 2rem;
+    bottom:2.5rem;
+    //padding-bottom: 2rem;
     margin: 0 auto;
     width: 100%;
     color: black;
@@ -196,7 +196,7 @@
   }
 
   #tiles {
-    overflow: hidden;
+    //overflow: hidden;
     min-height: 20em;
 
     h4 {
