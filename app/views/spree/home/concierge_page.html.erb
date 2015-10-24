@@ -130,8 +130,10 @@
   <a href='http://www.5280.com/fashionandbeauty/digital/2015/10/whats-happening-local-fashion-october' target=_blank><%= image_tag(getS3GeneralUrl('5280logosmall.jpg')) %></a>
   <a href='http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL' target=_blank><%= image_tag(getS3GeneralUrl('urbandaddy.png')) %></a>
 </section>
-<script>
-  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
-    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
-  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/27658/script.js');
-</script>
+<% if Rails.env.production? %>
+  <script>
+    (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+      t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+    })(window, document, '_gscq','script','//widgets.getsitecontrol.com/27658/script.js');
+  </script>
+<% end %>
