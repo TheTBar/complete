@@ -13,6 +13,11 @@
     <meta http-equiv="Content-Language" content="en">
     <link rel="image_src" href="<%= getS3GeneralUrl('thetbar_facebook_thumbnail.png')%>" /><!--formatted-->
     <link rel="image_src" href="<%= getS3GeneralUrl('thetbar_facebook_thumbnail_too.png')%>" /><!--formatted-->
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
     <%= stylesheet_link_tag 'tbar_custom', 'spree/frontend/all', 'https://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic' %>
     <%= javascript_include_tag 'application', 'spree/frontend/all' %>
     <%= csrf_meta_tags %>
@@ -121,7 +126,6 @@
       <% end %>
       <!-- your GA code -->
     <% end %>
-
     <script>
       $(document).on('ready', function() {
         $('#panic').on('click', function(event) {
@@ -137,10 +141,6 @@
         });
       });
     </script>
-
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
   </head>
   
