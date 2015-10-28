@@ -1,40 +1,40 @@
 <section id="statement">
   <div class="home-statement" >
-    "Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it"&nbsp;&nbsp;<span class="thetqueen">-theTQueen</span>
+    <!--<q>Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it</q>&nbsp;&nbsp;<cite class="thetqueen">@TheTQween</cite>-->
+    The T*Bar takes the guesswork out and helps you nail it!
   </div>
 </section>
 <section id='introduction'>
-  <div class="small-print">The T*Bar takes the guesswork out and helps you nail it!</div>
+  <!--<div class="small-print">The T*Bar takes the guesswork out and helps you nail it!</div>-->
   <!--<a class="home-page-byb-link" href='/build_your_babe'>Let's build your babe<span>&rarr;</span></a>-->
 </section>
 <section id="tiles">
   <article class="box">
     <div class="innerContent novice">
-      <h2>I'm A Novice</h2>
-      <p>Use our AWESOME build your babe to nail it with size and style for your special someone. It's Simple!<br>Here's how....</p>
+      <h2>First Timer</h2>
+      <p>Use our <%= link_to "BUILD YOUR BABE", new_babe_path %>&trade; tool to nail it with size and style for your special someone. It's Simple!<br>Here's how....</p>
       <div class="instruction-list">
         <div id="tell-us-about-her" class="instruction">1: Tell Us About Her</div>
-        <div id="choose-lingerie" class="instruction">2: Choose Awesome Lingerie</div>
+        <div id="choose-lingerie" class="instruction">2: Select Items</div>
         <div id="have-some-fun" class="instruction">3: Have some fun!</div>
-        <h2><a href="/babes/new">OK! LETS DO THIS!</a></h2>
       </div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "LETS BUILD YOUR BABE", new_babe_path, :class => "btn btn-success", :id => 'see-more-selections' %></div>
     </div>
   </article>
   <article class="box">
     <div class="innerContent experienced">
       <h2>I got this, let me shop</h2>
-      <h4><a href='/products'>Curated Catalogue</a></h4>
-      <h4><a href='/t/themes'>Themed Collections</a></h4>
-      <h4><a href='/t/giftideas'>Gift Ideas</a></h4>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "THEMED COLLECTIONS", '/t/themes', :class => "btn btn-success btn-experienced-shopper", :id => 'see-more-selections' %></div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "CURRENT CATALOGUE", products_path, :class => "btn btn-success btn-experienced-shopper", :id => 'see-more-selections' %></div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "GIFT IDEAS", '/t/giftideas', :class => "btn btn-success btn-experienced-shopper", :id => 'see-more-selections' %></div>
     </div>
   </article>
   <article class="box">
     <div class="innerContent lady">
       <h2>Wishlist</h2>
       <h4>(for the ladies)</h4>
-      <p>So.... you want your special someone to buy you some sexy intimate apparel, but even with our awesome service to help them, you still think they'll blow it, its just who they are. Don't worry, we wont
-        take it personally. To help, we've added the wish-list feature</p>
-
+      <p>Think your boy will blow it? Dont worry, we're here to help with our wishlist feature.</p>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "HOW IT WORKS", how_the_wishlist_works_path, :class => "btn btn-success", :id => 'see-more-selections' %></div>
     </div>
   </article>
 
@@ -44,7 +44,7 @@
   <section id='explanation' class="dialog-explanation" style="padding: 1rem">
     <div class="dialog-title" style="color: white">TELL US ABOUT HER</div>
     <div id='step-1' class="how-it-works-dialog">
-      <p>Start by using our 'Babe' to get her overall shape an size. Yes we want the details! Then answer a few questions about her to help us understand her style, and personality.</p>
+      <p>Use our Build Your Babe to dial in her size and tell us about her personality. Then we'll work our magic.</p>
     </div>
   </section>
 </div>
@@ -52,7 +52,7 @@
   <section id='explanation' class="dialog-explanation" style="padding: 1rem">
     <div class="dialog-title" style="color: white">SELECTION TIME</div>
     <div id='step-2' class="how-it-works-dialog">
-      <p>We'll present you a curated list of our recommendations that best fit your lady's overall persona. Peruse the list, and find what you think she'll love, or at least what you'll love her in (or out of).</p>
+      <p>Select your favorites from our curated list for your babe.</p>
     </div>
   </section>
 </div>
@@ -60,7 +60,7 @@
   <section id='explanation' class="dialog-explanation" style="padding: 1rem">
     <div class="dialog-title" style="color: white">HAVE SOME FUN!</div>
     <div id='step-3' class="how-it-works-dialog">
-      <p>Do we really need to provide you instructions on what to do here? We're confident that our process will help you nail it! Lingerie looks great on the floor too!</p>
+      <p>Do we really need to provide you instructions on what to do here? We're confident that our process will help you nail it!</p>
     </div>
   </section>
 </div>
@@ -98,29 +98,19 @@
     closeitdown('dialog-step3');
   })
 </script>
-<section id="instagram">
-  <!-- SnapWidget -->
-  <iframe src="http://snapwidget.com/sc/?u=dGhldGJhcnxpbnwyMDB8M3wzfHxub3w1fG5vbmV8b25TdGFydHx5ZXN8bm8=&ve=231015" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; height:200px"></iframe>
-</section>
+<!--<section id="instagram">-->
+  <!--<h2 style="padding-bottom: 3rem;color: black;text-transform: none; ">@TheTBar Social</h2>-->
+  <!--<iframe src="http://snapwidget.com/sc/?u=dGhldGJhcnxpbnwyMDB8M3wzfHxub3w1fG5vbmV8b25TdGFydHx5ZXN8bm8=&ve=231015" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:300px; height:200px"></iframe>-->
+<!--</section>-->
 <section id='testimonials'>
-  <h1>What our customers are saying</h1>
-  <article>
-    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.</q>
-    <cite>@OneHotHoney</cite>
+  <h1>Monthly Musings</h1>
+  <article class="full">
+    <div class="testimonial-description">Our favorite letter this month was from customer who took issue with our description of the MARLIES DEKKERS <a href="/products/gloria-padded-plunge-bra" class="testimonial-link">Gloria Pinstripe Padded Plunge Bra</a>.<p></p>
+    <q class="testimonial-quote">I have to quibble, just a bit, though – This set reminds me so much more of a grown up Kentucky straight bourbon, aged well, evolved from the workaday bluster, but not completely. I was struck by how its low panty lines would work well under a pantsuit, but it also has a seductive allure that is all fun and weekend.<p></p>Either way, hope it is going well all around, and I am forever a fan of the T-Bar.</q>
+    <p></p><div style="text-align: center"><cite>anonymous</cite> (unless given permission we will never post a customers name)</div>
+    </div>
+    <div class="testimonial-image"><%= image_tag 'https://tbar-products.s3.amazonaws.com/spree/images/27/product2/18150_3_lb_f_zoom.jpg', :itemprop => "image" %></div>
   </article>
-  <article>
-    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.</q>
-    <cite>@TheLibrarian</cite>
-  </article>
-  <article>
-    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.</q>
-    <cite>@DirtyThirty</cite>
-  </article>
-  <article>
-    <q>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris.</q>
-    <cite>@FlirtyFishy</cite>
-  </article>
-  <h3><a href=''>Read more <span>&rarr;</span></a></h3>
 </section>
 
 <section id='press'>

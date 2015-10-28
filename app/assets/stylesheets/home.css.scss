@@ -66,6 +66,11 @@
     position: relative;
     padding: 6rem;
 
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
     &:not(:first-child)::before {
       content: '';
       display: block;
@@ -134,6 +139,7 @@
   }
 
   section .small-print {
+    font-size: 2.6rem;
     position: absolute;
     bottom:2.5rem;
     //padding-bottom: 2rem;
@@ -202,10 +208,19 @@
     //overflow: hidden;
     min-height: 20em;
 
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+
     h4 {
       text-align: center;
     }
 
+    .btn-experienced-shopper {
+      width: 250px;
+    }
 
     .box {
       width: 33.333%;
@@ -215,11 +230,11 @@
       float: left;
       color: black;
       min-width: 340px;
-      min-height: 400px;
+      min-height: 420px;
 
       @media screen and (max-width: $medium-large-breakpoint) {
         width: 100%;
-        min-height: 350px;
+        //min-height: 350px;
       }
 
       .innerContent {
@@ -229,6 +244,8 @@
         top: 20px;
         bottom: 20px;
         padding: 10px;
+        padding-left: 30px;
+        padding-right: 25px;
         background: #d3d3d3;
 
         .instruction-list {
@@ -239,27 +256,25 @@
             cursor: default;
           }
         }
+
       }
 
       @media only screen and (max-width : 480px) {
         /* Smartphone view: 1 tile */
         .box {
           width: 100%;
-          padding-bottom: 100%;
         }
       }
       @media only screen and (max-width : 650px) and (min-width : 481px) {
         /* Tablet view: 2 tiles */
         .box {
           width: 50%;
-          padding-bottom: 50%;
         }
       }
       @media only screen and (max-width : 1290px) and (min-width : 651px) {
         /* Small desktop / ipad view: 3 tiles */
         .box {
           width: 33.3%;
-          padding-bottom: 33.3%;
         }
       }
     }
@@ -342,25 +357,49 @@
     color: black;
     background-color: white;
 
-    article {
-      width: 50%;
-      padding-left: 15rem;
+
+    article.full {
+      width: 100%;
+
+      .testimonial-description {
+        width: 70%;
+        float: left;
+        padding: 3rem;
+        padding-top: 2rem;
+        @media screen and (max-width: $medium-large-breakpoint) {
+          width: 100%;
+          padding: 0rem;
+        }
+
+      }
+      //padding-left: 15rem;
       //background-image: url('https://tbar-general.s3.amazonaws.com/images/lingerie-hanging.png');
       //background-image: url('/panty-press-new-image.jpg');
-      background-position: 2rem center;
-      background-repeat: no-repeat;
-      background-size: 100px;
-
-      @media screen and (max-width: $medium-large-breakpoint) {
-        width: 100%;
+      //background-position: 2rem center;
+      //background-repeat: no-repeat;
+      //background-size: 100px;
+      a.testimonial-link {
+        text-transform: none;
       }
 
+      q.testimonial-quote {
+        display: block;
+        margin-bottom: 1em;
+        padding: 3rem;
+      }
+
+      .testimonial-image {
+        @media screen and (max-width: $medium-large-breakpoint) {
+          width: 100%;
+          text-align: center;
+        }
+
+      }
+
+
     }
 
-    q {
-      display: block;
-      margin-bottom: 1em;
-    }
+
 
     h3 {
       text-align: right;
@@ -420,6 +459,11 @@
     text-align: center;
     color: black;
     background-color: white;
+
+    @media screen and (max-width: $medium-large-breakpoint) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
 
     a {
       margin: 0 1rem;
