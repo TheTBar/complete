@@ -361,6 +361,9 @@
       overflow:hidden;
       width:100%;
       height:200px;
+      @media screen and (max-width: $medium-large-breakpoint) {
+        width: 500px;
+      }
       @media screen and (max-width: $small-medium-breakpoint) {
         width: 370px;
       }
