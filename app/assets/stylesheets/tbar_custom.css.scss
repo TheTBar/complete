@@ -291,6 +291,10 @@ main {
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 20px;
+  @media screen and (max-width: $medium-large-breakpoint) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 footer {
