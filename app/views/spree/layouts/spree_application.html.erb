@@ -124,22 +124,6 @@
       <!-- your GA code -->
     <% end %>
 
-    <script>
-      $(document).on('ready', function() {
-        $('#panic').on('click', function(event) {
-          event.preventDefault();
-          $('[data-toggle="tooltip"]').tooltip('option','hide');
-          $('#panic-overlay').toggle();
-        });
-      });
-
-      $(document).on('ready', function() {
-        $('#panic').on('mouseout', function(event) {
-          $('[data-toggle="tooltip"]').tooltip('option','hide');
-        });
-      });
-    </script>
-
   </head>
   
   <body id='<%= @body_id or 'default' %>' class='<%= body_class %>'  data-hook='body' data-route='<%= "#{ params[:controller] }/#{ params[:action] }" %>'>
@@ -212,6 +196,21 @@
     })
 
 
+  </script>
+  <script>
+    $(document).on('ready', function() {
+      $('#panic').on('click', function(event) {
+        event.preventDefault();
+        $('[data-toggle="tooltip"]').tooltip('option','hide');
+        $('#panic-overlay').toggle();
+      });
+    });
+
+    $(document).on('ready', function() {
+      $('#panic').on('mouseout', function(event) {
+        $('[data-toggle="tooltip"]').tooltip('option','hide');
+      });
+    });
   </script>
 
 </html>
