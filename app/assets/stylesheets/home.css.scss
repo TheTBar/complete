@@ -71,19 +71,6 @@
       padding-right: 1rem;
     }
 
-    &:not(:first-child)::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 63px;
-      position: absolute;
-      top: -32px;
-      left: 0;
-      //background-image: image-url('star-separator.png');
-      background-image: url('https://tbar-general.s3.amazonaws.com/images/star-separator-teal.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
 
     article {
       box-sizing: border-box;
@@ -114,6 +101,21 @@
 
   }
 
+  .use-star {
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 63px;
+      position: absolute;
+      top: -32px;
+      left: 0;
+      //background-image: image-url('star-separator.png');
+      background-image: url('https://tbar-general.s3.amazonaws.com/images/star-separator-teal.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
 
 
   section a.home-page-byb-link {
@@ -168,14 +170,15 @@
   }
 
   #introduction h3,
-  #explanation h3 {
+  .dialog-explanation h3 {
     font-size: 4rem;
   }
 
 
   #introduction {
-    min-height: 42rem;
+    min-height: 47rem;
     padding-top: 35rem;
+    padding-bottom: 5rem;
     background-image: url('https://tbar-general.s3.amazonaws.com/images/angelabed.jpg');
 
     background-position: center top;
@@ -206,7 +209,8 @@
 
   #tiles {
     //overflow: hidden;
-    min-height: 20em;
+    min-height: 20rem;
+    padding-top: 4rem;
 
     @media screen and (max-width: $medium-large-breakpoint) {
       padding-left: 1rem;
@@ -259,6 +263,8 @@
 
       }
 
+
+
       @media only screen and (max-width : 480px) {
         /* Smartphone view: 1 tile */
         .box {
@@ -282,7 +288,7 @@
   }
 
 
-  #explanation {
+  .dialog-explanation {
     background-color: $explanation-background-color;
     //background-image: image-url('brown-gradient.png');
     background-image: url('https://tbar-general.s3.amazonaws.com/images/brown-gradient.png');
@@ -319,6 +325,7 @@
       color: white;
       width: 100%;
       padding-top: 30rem;
+      height: 450px;
 
       @media screen and (max-width: $medium-large-breakpoint) {
         width: 100%;
@@ -344,12 +351,20 @@
     #step-2 {
       background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-circle.png') center 2.7rem;
       background-repeat: no-repeat;
+
+    }
+
+    #themed-collection-text, #current-catalog-text {
+      background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/lingerie-in-circle.png') center 2.7rem;
+      background-repeat: no-repeat;
+      //background-color: #ffffff;
     }
 
     #step-3 {
       background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/couple-in-circle.png') center 2.7rem;
       background-repeat: no-repeat;
     }
+
 
   }
 

@@ -2,35 +2,37 @@
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
-<section id="statement">
+<section id="statement" >
   <div class="home-statement" >
     <!--<q>Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it</q>&nbsp;&nbsp;<cite class="thetqueen">@TheTQween</cite>-->
     The T*Bar takes the guesswork out of buying lingerie for her and helps you nail it!
   </div>
 </section>
 <section id='introduction'>
-  <!--<div class="small-print">The T*Bar takes the guesswork out and helps you nail it!</div>-->
+  <!--<div class="small-print">The T*Bar takes the guesswork out of buying lingerie for her and helps you nail it!</div>-->
   <!--<a class="home-page-byb-link" href='/build_your_babe'>Let's build your babe<span>&rarr;</span></a>-->
 </section>
-<section id="tiles">
+<section id="tiles" class="use-star">
   <article class="box">
     <div class="innerContent novice">
       <h2>First Timer</h2>
+      <h4>(total noobe)</h4>
       <p>Use our <%= link_to "BUILD YOUR BABE", new_babe_path %>&trade; tool to nail it with size and style for your special someone. It's Simple!<br>Here's how....</p>
       <div class="instruction-list">
         <div id="tell-us-about-her" class="instruction">1: Tell Us About Her</div>
         <div id="choose-lingerie" class="instruction">2: Select Items</div>
         <div id="have-some-fun" class="instruction">3: Have some fun!</div>
       </div>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "LETS BUILD YOUR BABE", new_babe_path, :class => "btn btn-success", :id => 'see-more-selections' %></div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "LETS BUILD YOUR BABE", new_babe_path, :class => "btn btn-success", :id => 'lets-build-your-babe' %></div>
     </div>
   </article>
   <article class="box">
     <div class="innerContent experienced">
-      <h2>I got this, let me shop</h2>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "THEMED COLLECTIONS", '/t/themes', :class => "btn btn-success btn-experienced-shopper", :id => 'see-more-selections' %></div>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "CURRENT CATALOGUE", products_path, :class => "btn btn-success btn-experienced-shopper", :id => 'see-more-selections' %></div>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "GIFT IDEAS", '/t/giftideas', :class => "btn btn-success btn-experienced-shopper", :id => 'see-more-selections' %></div>
+      <h2>I got this</h2>
+      <h4>(let me shop)</h4>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "THEMED COLLECTIONS", '/t/themes', :class => "btn btn-success btn-experienced-shopper", :id => 'see-themed-collections' %></div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "CURRENT CATALOGUE", products_path, :class => "btn btn-success btn-experienced-shopper", :id => 'see-current-catalog' %></div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "GIFT IDEAS", '/t/giftideas', :class => "btn btn-success btn-experienced-shopper", :id => 'see-gift-ideas' %></div>
     </div>
   </article>
   <article class="box">
@@ -38,7 +40,7 @@
       <h2>Wishlist</h2>
       <h4>(for the ladies)</h4>
       <p>Think your boy will blow it? Dont worry, we're here to help with our wishlist feature.</p>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "HOW IT WORKS", how_the_wishlist_works_path, :class => "btn btn-success", :id => 'see-more-selections' %></div>
+      <div style="width: 100%;text-align: center;padding-top: 2rem; bottom: 0"><%= link_to "HOW IT WORKS", how_the_wishlist_works_path, :class => "btn btn-success", :id => 'see-wishlist-works' %></div>
     </div>
   </article>
 
@@ -54,7 +56,7 @@
 </div>
 <div id="dialog-step2" style="width: auto; padding: 0px;" hidden="hidden">
   <section id='explanation' class="dialog-explanation" style="padding: 1rem">
-    <div class="dialog-title" style="color: white">SELECTION TIME</div>
+    <div class="dialog-title" style="color: white">SELECT ITEMS</div>
     <div id='step-2' class="how-it-works-dialog">
       <p>Select your favorites from our curated list for your babe.</p>
     </div>
@@ -68,6 +70,24 @@
     </div>
   </section>
 </div>
+
+<div id="dialog-themed-collection" style="width: auto; padding: 0px;" hidden="hidden">
+  <section class="dialog-explanation info" style="padding: 1rem">
+    <div class="dialog-title" style="color: white">Themed Collections</div>
+    <div id='themed-collection-text' class="how-it-works-dialog">
+      <p>Looking for some inspiration? Our themed shops will help you narrow the choices and set the mood.</p>
+    </div>
+  </section>
+</div>
+<div id="dialog-current-catalog" style="width: auto; padding: 0px;" hidden="hidden">
+  <section  class="dialog-explanation info" style="padding: 1rem">
+    <div class="dialog-title" style="color: white">Current Catalog</div>
+    <div id='current-catalog-text' class="how-it-works-dialog">
+      <p>Peruse or current catalog, which has been carefully selected by the TQween for class, style, and taste. We're confident that there's something for everyone here.</p>
+    </div>
+  </section>
+</div>
+
 <script>
   function openitup(id) {
     $(function() {
@@ -101,23 +121,37 @@
     // include to clear on mouse out - $("#SpanToTypeIn").typed('reset');
     closeitdown('dialog-step3');
   })
+
+  $("#xsee-themed-collections").mouseenter(function() {
+    openitup('dialog-themed-collection');
+  }).mouseleave(function() {
+    // include to clear on mouse out - $("#SpanToTypeIn").typed('reset');
+    closeitdown('dialog-themed-collection');
+  })
+
+  $("#xsee-current-catalog").mouseenter(function() {
+    openitup('dialog-current-catalog');
+  }).mouseleave(function() {
+    // include to clear on mouse out - $("#SpanToTypeIn").typed('reset');
+    closeitdown('dialog-current-catalog');
+  })
 </script>
-<section id="instagram">
+<section id="instagram" class="use-star">
   <h2 style="padding-bottom: 3rem;color: black;text-transform: none; ">@TheTBar Social</h2>
   <iframe src="https://snapwidget.com/p/widget/?id=DyU6IVL6ja&t=785" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no"></iframe>
 </section>
-<section id='testimonials'>
+<section id='testimonials' class="use-star">
   <h1>Monthly Musings</h1>
   <article class="full">
     <div class="testimonial-description">Our favorite letter this month was from customer who took issue with our description of the MARLIES DEKKERS <a href="/products/gloria-padded-plunge-bra" class="testimonial-link">Gloria Pinstripe Padded Plunge Bra</a>.<p></p>
     <q class="testimonial-quote">I have to quibble, just a bit, though – This set reminds me so much more of a grown up Kentucky straight bourbon, aged well, evolved from the workday bluster, but not completely. I was struck by how its low panty lines would work well under a pantsuit, but it also has a seductive allure that is all fun and weekend.<p></p>Either way, hope it is going well all around, and I am forever a fan of the T-Bar.</q>
-    <p></p><div style="text-align: center"><cite>anonymous</cite> (unless given permission we will never post a customers name)</div>
+    <p></p><div style="text-align: center"><cite>-KB</cite></div>
     </div>
     <div class="testimonial-image"><%= image_tag 'https://tbar-products.s3.amazonaws.com/spree/images/27/product2/18150_3_lb_f_zoom.jpg', :itemprop => "image" %></div>
   </article>
 </section>
 
-<section id='press'>
+<section id='press' class="use-star">
   <h1>The T<%= image_tag(getS3GeneralUrl('star-separator-teal-thin.png'), class: 'tbar-star')%>Bar in the press</h1>
   <p>&nbsp;</p>
   <a href='http://www.themanual.com/living/sexiest-valentines-day-lingerie-brands/' target=_blank><%= image_tag(getS3GeneralUrl('TheManual.png')) %></a>
