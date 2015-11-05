@@ -13,37 +13,53 @@
   <!--<a class="home-page-byb-link" href='/build_your_babe'>Let's build your babe<span>&rarr;</span></a>-->
 </section>
 <section id="tiles" class="use-star">
-  <article class="box">
-    <div class="innerContent novice">
-      <h2>First Timer</h2>
-      <h4>(total noobe)</h4>
-      <p>Use our <%= link_to "BUILD YOUR BABE", new_babe_path %>&trade; tool to nail it with size and style for your special someone. It's Simple!<br>Here's how....</p>
-      <div class="instruction-list">
-        <div id="tell-us-about-her" class="instruction">1: Tell Us About Her</div>
-        <div id="choose-lingerie" class="instruction">2: Select Items</div>
-        <div id="have-some-fun" class="instruction">3: Have some fun!</div>
-      </div>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "LETS BUILD YOUR BABE", new_babe_path, :class => "btn btn-success", :id => 'lets-build-your-babe' %></div>
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <article class="box">
+        <div class="innerContent novice">
+          <h2>First Timer</h2>
+          <h4>(show me)</h4>
+          <p>Use our <%= link_to "BUILD YOUR BABE", new_babe_path %>&trade; tool to nail it with size and style for your special someone. It's Simple!<br>Here's how....</p>
+          <div class="instruction-list">
+            <div id="tell-us-about-her" class="instruction">1: Tell Us About Her</div>
+            <div id="choose-lingerie" class="instruction">2: Select Items</div>
+            <div id="have-some-fun" class="instruction">3: Have some fun!</div>
+          </div>
+          <div class="button-container">
+            <div class="single-button"><%= link_to "LETS BUILD YOUR BABE", new_babe_path, :class => "btn btn-success", :id => 'lets-build-your-babe' %></div>
+          </div>
+        </div>
+      </article>
     </div>
-  </article>
-  <article class="box">
-    <div class="innerContent experienced">
-      <h2>I got this</h2>
-      <h4>(let me shop)</h4>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "THEMED COLLECTIONS", '/t/themes', :class => "btn btn-success btn-experienced-shopper", :id => 'see-themed-collections' %></div>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "CURRENT CATALOGUE", products_path, :class => "btn btn-success btn-experienced-shopper", :id => 'see-current-catalog' %></div>
-      <div style="width: 100%;text-align: center;padding-top: 2rem;"><%= link_to "GIFT IDEAS", '/t/giftideas', :class => "btn btn-success btn-experienced-shopper", :id => 'see-gift-ideas' %></div>
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <article class="box">
+        <div class="innerContent experienced">
+          <h2>I got this</h2>
+          <h4>(let me shop)</h4>
+          <p>Don't need our help? No problem! Go straight to one of our collections.</p>
+          <div style="height: 25px;"></div>
+          <div class="button-container">
+            <div class="single-button"><%= link_to "THEMED COLLECTIONS", '/t/themes', :class => "btn btn-success btn-experienced-shopper", :id => 'see-themed-collections' %></div>
+            <div class="single-button"><%= link_to "CURRENT CATALOGUE", products_path, :class => "btn btn-success btn-experienced-shopper", :id => 'see-current-catalog' %></div>
+            <div class="single-button"><%= link_to "GIFT IDEAS", '/t/giftideas', :class => "btn btn-success btn-experienced-shopper", :id => 'see-gift-ideas' %></div>
+          </div>
+        </div>
+      </article>
     </div>
-  </article>
-  <article class="box">
-    <div class="innerContent lady">
-      <h2>Wishlist</h2>
-      <h4>(for the ladies)</h4>
-      <p>Think your boy will blow it? Dont worry, we're here to help with our wishlist feature.</p>
-      <div style="width: 100%;text-align: center;padding-top: 2rem; bottom: 0"><%= link_to "HOW IT WORKS", how_the_wishlist_works_path, :class => "btn btn-success", :id => 'see-wishlist-works' %></div>
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <article class="box">
+        <div class="innerContent lady">
+          <h2>Wishlist</h2>
+          <h4>(for the ladies)</h4>
+          <p>Think your boy will blow it? Dont worry, we're here to help with our wishlist feature.</p>
+          <div style="height: 120px;"></div>
+          <div class="button-container">
+            <div class="single-button"><%= link_to "HOW IT WORKS", how_the_wishlist_works_path, :class => "btn btn-success btn-experienced-shopper", :id => 'see-wishlist-works' %></div>
+          </div>
+        </div>
+      </article>
     </div>
-  </article>
-
+  </div>
 </section>
 
 <div id="dialog-step1" style="width: auto; padding: 0px;" hidden="hidden">
@@ -83,7 +99,7 @@
   <section  class="dialog-explanation info" style="padding: 1rem">
     <div class="dialog-title" style="color: white">Current Catalog</div>
     <div id='current-catalog-text' class="how-it-works-dialog">
-      <p>Peruse or current catalog, which has been carefully selected by the TQween for class, style, and taste. We're confident that there's something for everyone here.</p>
+      <p>Peruse our full catalog, carefully selected by the TQween for class, style, and taste. There's something here for everyone.</p>
     </div>
   </section>
 </div>

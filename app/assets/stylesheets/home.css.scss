@@ -208,51 +208,26 @@
   }
 
   #tiles {
-    //overflow: hidden;
-    min-height: 20rem;
-    padding-top: 4rem;
 
-    @media screen and (max-width: $medium-large-breakpoint) {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-
-
-    h4 {
-      text-align: center;
-    }
-
-    .btn-experienced-shopper {
-      width: 250px;
-    }
+    padding-left: 0;
+    padding-right: 0;
 
     .box {
-      width: 33.333%;
-      padding-bottom: 33.33%;
-      background: #FFFFFF;
-      position: relative;
-      float: left;
       color: black;
-      min-width: 340px;
-      min-height: 420px;
+      background-color: #eeeeee;
+      padding: 30px;
+      min-height: 410px;
+      margin-bottom: 20px;
 
-      @media screen and (max-width: $medium-large-breakpoint) {
-        width: 100%;
-        //min-height: 350px;
+      p {
+        padding-top: 1rem;
       }
 
       .innerContent {
-        position: absolute;
-        left: 20px;
-        right: 20px;
-        top: 20px;
-        bottom: 20px;
-        padding: 10px;
-        padding-left: 30px;
-        padding-right: 25px;
-        background: #d3d3d3;
+        min-height: 345px;
 
         .instruction-list {
+          padding-bottom: 10px;
           padding-left: 17px;
 
           .instruction {
@@ -260,31 +235,24 @@
             cursor: default;
           }
         }
+        .button-container {
+          //position: absolute;
+          text-align: center;
+          //bottom: 50px;
 
-      }
-
-
-
-      @media only screen and (max-width : 480px) {
-        /* Smartphone view: 1 tile */
-        .box {
-          width: 100%;
+          .single-button {
+            padding-top: 1.5rem;
+          }
+          .btn-experienced-shopper {
+            width: 250px;
+          }
         }
-      }
-      @media only screen and (max-width : 650px) and (min-width : 481px) {
-        /* Tablet view: 2 tiles */
-        .box {
-          width: 50%;
-        }
-      }
-      @media only screen and (max-width : 1290px) and (min-width : 651px) {
-        /* Small desktop / ipad view: 3 tiles */
-        .box {
-          width: 33.3%;
+
+        h4 {
+          text-align: center;
         }
       }
     }
-
   }
 
 
@@ -325,7 +293,7 @@
       color: white;
       width: 100%;
       padding-top: 30rem;
-      height: 450px;
+      height: 460px;
 
       @media screen and (max-width: $medium-large-breakpoint) {
         width: 100%;
@@ -364,7 +332,6 @@
       background: image-url('star-background.png') center top, url('https://tbar-general.s3.amazonaws.com/images/couple-in-circle.png') center 2.7rem;
       background-repeat: no-repeat;
     }
-
 
   }
 
