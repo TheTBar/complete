@@ -189,11 +189,11 @@
       $("#login-logout-links").html('<li><a href="/login">Have an account? <span>Sign in</span></a><%= link_to image_tag("user-icon.png")%></li>');
     }
 
-    var options = { template : '<div class="tooltip" role="tooltip" style="background-color: white;"><div class="tooltip-inner" style="background-color: white; color: black;max-width: 290px;"></div></div>'};
-
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip(options)
-    })
+//    var options = { template : '<div class="tooltip" role="tooltip" style="background-color: white;"><div class="tooltip-inner" style="background-color: white; color: black;max-width: 290px;"></div></div>'};
+//
+//    $(function () {
+//      $('[data-toggle="tooltip"]').tooltip(options)
+//    })
 
 
   </script>
@@ -201,16 +201,16 @@
     $(document).on('ready', function() {
       $('#panic').on('click', function(event) {
         event.preventDefault();
-        $('[data-toggle="tooltip"]').tooltip('option','hide');
+        //$('[data-toggle="tooltip"]').tooltip('option','hide');
         $('#panic-overlay').toggle();
       });
     });
 
-    $(document).on('ready', function() {
-      $('#panic').on('mouseout', function(event) {
-        $('[data-toggle="tooltip"]').tooltip('option','hide');
-      });
-    });
+//    $(document).on('ready', function() {
+//      $('#panic').on('mouseout', function(event) {
+//        $('[data-toggle="tooltip"]').tooltip('option','hide');
+//      });
+//    });
   </script>
 
 </html>
