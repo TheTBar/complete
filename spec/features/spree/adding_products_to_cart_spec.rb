@@ -41,7 +41,7 @@ describe "adding products to cart", type: :feature, js: true do
 
     visit "/products"
     click_link "product 1"
-    click_link "OneSize"
+    # click_link "OneSize"
     fill_in('quantity', :with => '5')
     click_button "Add To Cart"
     expect(page).to have_content("Quantity selected of \"product 1 (OneSize)\" is not available.")
