@@ -598,6 +598,9 @@
 
     input.show-me-the-goods {
       font-size: 30pt;
+      @media screen and (max-width: $small-medium-breakpoint) {
+        font-size: 15pt;
+      }
     }
 
     .collect-email-on-new-babe {
@@ -606,6 +609,9 @@
 
       .email-input {
         padding-top: 10px;
+        @media screen and (max-width: $small-medium-breakpoint) {
+          font-size: 15pt;
+        }
       }
     }
   }
