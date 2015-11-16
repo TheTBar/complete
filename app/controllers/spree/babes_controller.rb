@@ -72,6 +72,9 @@ module Spree
     
 
     def destroy
+      if @babe.id = session[:babe_id]
+        session.delete(:babe_id)
+      end
       @babe.destroy
       respond_to do |format|
         format.html { redirect_to build_your_babe_path, notice: 'Your babe was successfully deleted. Hopefully you will find plenty of new distractions.' }
