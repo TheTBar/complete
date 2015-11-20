@@ -207,6 +207,21 @@
 
   }
 
+  #blogs {
+    padding-left: 0;
+    padding-right: 0;
+    color: black;
+    text-align: center;
+
+    article.blog {
+      //background-color: #eeeeee;
+
+      .blog-text {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
   #tiles {
 
     padding-left: 0;
