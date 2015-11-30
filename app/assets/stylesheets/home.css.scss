@@ -215,6 +215,7 @@
 
     article.blog {
       //background-color: #eeeeee;
+      width: 100%;
 
       .blog-text {
         font-size: 1.4rem;
@@ -369,7 +370,7 @@
         width: 500px;
       }
       @media screen and (max-width: $small-medium-breakpoint) {
-        width: 370px;
+        width: 300px;
       }
     }
 
@@ -499,6 +500,12 @@
       height: 25px;
       padding-bottom: 10px;
       padding-right: 2px;
+    }
+
+    .press-image {
+      @media screen and (max-width: $small-medium-breakpoint) {
+        max-width: 250px;
+      }
     }
 
   }
