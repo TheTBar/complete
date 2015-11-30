@@ -219,6 +219,13 @@
       .blog-text {
         font-size: 1.4rem;
       }
+
+      .blog-image {
+        width: 340px;
+        @media screen and (max-width: $small-medium-breakpoint) {
+          width: 300px;
+        }
+      }
     }
   }
 
