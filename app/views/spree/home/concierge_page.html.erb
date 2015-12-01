@@ -219,10 +219,10 @@
 <section id='press' class="use-star">
   <h1>The T<%= image_tag(getS3GeneralUrl('star-separator-teal-thin.png'), class: 'tbar-star')%>Bar in the press</h1>
   <p>&nbsp;</p>
-  <a href='http://www.themanual.com/living/sexiest-valentines-day-lingerie-brands/' target=_blank><%= image_tag(getS3GeneralUrl('TheManual.png')) %></a>
-  <a href='http://www.5280.com/fashionandbeauty/digital/2015/10/whats-happening-local-fashion-october' target=_blank><%= image_tag(getS3GeneralUrl('5280logosmall.jpg')) %></a>
-  <a href='http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL' target=_blank><%= image_tag(getS3GeneralUrl('urbandaddy.png')) %></a>
-  <a href='http://www.dailycamera.com/lifestyles/ci_29014571/boulder-online-store-thetbar-com-offers-lingerie-that-fits-owner-debby-caplin' target=_blank><%= image_tag(getS3GeneralUrl('daily-camera-logo-fitted.png')) %></a>
+  <a href='http://www.themanual.com/living/sexiest-valentines-day-lingerie-brands/' target=_blank><%= image_tag(getS3GeneralUrl('TheManual.png'),:class => 'press-image') %></a>
+  <a href='http://www.5280.com/fashionandbeauty/digital/2015/10/whats-happening-local-fashion-october' target=_blank><%= image_tag(getS3GeneralUrl('5280logosmall.jpg'),:class => 'press-image') %></a>
+  <a href='http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL' target=_blank><%= image_tag(getS3GeneralUrl('urbandaddy.png'),:class => 'press-image') %></a>
+  <a href='http://www.dailycamera.com/lifestyles/ci_29014571/boulder-online-store-thetbar-com-offers-lingerie-that-fits-owner-debby-caplin' target=_blank><%= image_tag(getS3GeneralUrl('daily-camera-logo-fitted.png'),:class => 'press-image') %></a>
 </section>
 <% if Rails.env.production? %>
   <script>
