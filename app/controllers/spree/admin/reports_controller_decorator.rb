@@ -28,6 +28,19 @@ module Spree
         @total_no_confirm = @total_abandoned_carts.where(state: 'confirm')
       end
 
+      def inventory_totals
+        sql = "select z.name, z.count_on_hand, z.cost_price, (z.count_on_hand * z.cost_price) as total_value FROM (select a.name, sum(c.count_on_hand) as count_on_hand, max(b.cost_price) as cost_price from spree_products a JOIN spree_variants b ON a.id = b.product_id JOIN spree_stock_items c ON b.id = c.variant_id WHERE a.deleted_at IS NULL group by a.name ) z ORDER BY z.name "
+
+        @total_inventory_amounts_by_product = Spree::Product.find_by_sql(sql);
+
+
+        sql2 = "select 'total inventory value', sum(z.count_on_hand * z.cost_price) FROM (select a.name, sum(c.count_on_hand) as count_on_hand, max(b.cost_price) as cost_price from spree_products a JOIN spree_variants b ON a.id = b.product_id JOIN spree_stock_items c ON b.id = c.variant_id WHERE a.deleted_at IS NULL group by a.name ) z"
+
+        @total_inventory_capital = Spree::Product.find_by_sql(sql2)
+
+
+      end
+
       def sales_total
         params[:q] = {} unless params[:q]
 

@@ -1,0 +1,12 @@
+<% content_for :page_title do %>
+  Inventory Total
+<% end %>
+
+<% content_for :page_actions do %>
+  <%= link_to_with_icon 'arrow-left', Spree.t(:back_to_resource_list, resource: Spree.t(:report)), spree.admin_reports_url, class: 'btn btn-default' %>
+<% end %>
+
+<% @total_inventory_amounts_by_product.each do |product_row| %>
+  <%= product_row.name %> : <%= product_row.count_on_hand %>  :  <%= product_row.cost_price %> : <%= product_row.total_value %> <br>
+
+<% end %>
