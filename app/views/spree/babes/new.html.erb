@@ -111,7 +111,7 @@
       <fieldset id='cup'>
         <%= form.label :cup, "Bust" %>
         <%= form.select :cup, Spree::Babe::CUP_SIZES, selected: 'C' %>
-        <span>C</span>
+        <span style = "visibility: hidden">C</span>
         <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
         <% Spree::Babe::CUP_SIZES.reverse.each_with_index do |size, index| %>
           <%= link_to size, nil, class: "size size-#{ index + 1 }", data: { size: size } %>
@@ -122,7 +122,7 @@
       <fieldset id='band'>
         <%= form.label :band, "Band" %>
         <%= form.select :band, Spree::Babe::BAND_SIZES, selected: '34' %>
-        <span>34</span>
+        <span style = "visibility: hidden">34</span>
         <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
         <% Spree::Babe::BAND_SIZES.reverse.each_with_index do |size, index| %>
           <%= link_to size, nil, class: "size size-#{ index + 1 }", data: { size: size } %>
@@ -133,7 +133,7 @@
       <fieldset id='bottoms'>
         <%= form.label :bottoms, "Bottom" %>
         <%= form.select :bottoms, Spree::Babe::BOTTOMS_SIZES, selected: 'M' %>
-        <span>M</span>
+        <span style = "visibility: hidden">M</span>
         <%= link_to "&#x25BC;".html_safe, nil, class: 'previous' %>
         <% Spree::Babe::BOTTOMS_SIZES.reverse.each_with_index do |size, index| %>
           <%= link_to size, nil, class: "size size-#{ index + 1 }", data: { size: size } %>

@@ -189,12 +189,13 @@
         display: block;
         position: absolute;
         font-size: 3rem;
-        color: #222;
+        color: #993300;
         text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 1px white;
+        text-decoration: none;
         
         &:hover {
           background-color: none;
-          color: #444;
+          color: #ffcc33;
         }
         
       }
