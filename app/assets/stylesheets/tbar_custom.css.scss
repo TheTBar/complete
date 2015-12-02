@@ -15,6 +15,11 @@ body {
     color: $black-color;
   }
 
+  div#products.row {
+    @media screen and (max-width: $small-medium-breakpoint) {
+      width: 100%;
+    }
+  }
 }
 
 a {
