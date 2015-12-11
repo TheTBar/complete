@@ -126,7 +126,7 @@
     //min-height: 100px;
     font-family: 'roboto', sans-serif;
     font-size: 2.2rem;
-    padding-top: 3rem;
+    padding-top: 6rem;
     padding-bottom: 3rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -207,7 +207,7 @@
 
   }
 
-  #blogs {
+  #blogs, #holiday {
     padding-left: 0;
     padding-right: 0;
     color: black;
@@ -223,6 +223,13 @@
 
       .blog-image {
         width: 340px;
+        @media screen and (max-width: $small-medium-breakpoint) {
+          width: 250px;
+        }
+      }
+
+      .holiday-image {
+        width: 400px;
         @media screen and (max-width: $small-medium-breakpoint) {
           width: 250px;
         }
