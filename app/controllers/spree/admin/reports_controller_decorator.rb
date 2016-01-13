@@ -48,7 +48,7 @@ module Spree
 
         @totals = {}
         # set defaults
-        @totals['USD'] = {:item_total=>0,:sales_total=>0}
+        @totals['USD'] = {:item_total=>0,:sales_total=>0,:adjustment_total=>0}
 
         @cost = 0
         @taxes = Hash.new(0)
