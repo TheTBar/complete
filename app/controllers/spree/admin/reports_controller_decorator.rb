@@ -47,6 +47,9 @@ module Spree
         @orders = @search.result
 
         @totals = {}
+        # set defaults
+        @totals['USD'] = {:item_total=>0,:sales_total=>0}
+
         @cost = 0
         @taxes = Hash.new(0)
         @shipping = 0
