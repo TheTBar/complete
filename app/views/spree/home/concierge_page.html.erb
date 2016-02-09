@@ -2,29 +2,7 @@
 <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 
-<section id="holiday" style="padding-top: 3rem;">
-  <!-- <h1 style="padding-bottom: 3rem;color: black;text-transform: none;">The Holidays!</h1> -->
-  <div class="container-fluid">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <article class="blog">
-        <div class="blog-image-block gift-ideas-header">
-          <a href="/t/giftideas" target="_blank">
-            <img class="holiday-image" src="<%=getS3GeneralUrl('gift_ideas_image.png')%>" /></a>
-        </div>
-      </article>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <article class="blog">
-        <div class="blog-image-block shwag-header">
-          <a href="/t/schwag" target="_blank">
-            <img class="holiday-image" src="<%=getS3GeneralUrl('schwag_image.png')%>" /></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section id="statement" class="use-star">
+<section id="statement" >
   <div class="home-statement" >
     <!--<q>Finding the right lingerie shouldn't be as hard as it was finding the right woman to wear it</q>&nbsp;&nbsp;<cite class="thetqueen">@TheTQween</cite>-->
     The T*Bar takes the guesswork out of buying lingerie for her and helps you nail it!
@@ -227,16 +205,39 @@
     </div>
   </div>
 </section>
-<section id='testimonials' class="use-star">
-  <h1>Monthly Musings</h1>
-  <article class="full">
-    <div class="testimonial-description">Our favorite letter this month was from customer who took issue with our description of the MARLIES DEKKERS <a href="/products/gloria-padded-plunge-bra" class="testimonial-link">Gloria Pinstripe Padded Plunge Bra</a>.<p></p>
-    <q class="testimonial-quote">I have to quibble, just a bit, though – This set reminds me so much more of a grown up Kentucky straight bourbon, aged well, evolved from the workday bluster, but not completely. I was struck by how its low panty lines would work well under a pantsuit, but it also has a seductive allure that is all fun and weekend.<p></p>Either way, hope it is going well all around, and I am forever a fan of the T-Bar.</q>
-    <p></p><div style="text-align: center"><cite>-KB</cite></div>
+
+<section id="holiday" style="padding-top: 6rem;" class="use-star">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <article class="blog">
+        <div class="blog-image-block gift-ideas-header">
+          <a href="/t/giftideas" target="_blank">
+            <img class="holiday-image" src="<%=getS3GeneralUrl('gift_ideas_image.png')%>" /></a>
+        </div>
+      </article>
     </div>
-    <div class="testimonial-image"><%= image_tag 'https://tbar-products.s3.amazonaws.com/spree/images/27/product2/18150_3_lb_f_zoom.jpg', :itemprop => "image" %></div>
-  </article>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <article class="blog">
+        <div class="blog-image-block shwag-header">
+          <a href="/t/schwag" target="_blank">
+            <img class="holiday-image" src="<%=getS3GeneralUrl('schwag_image.png')%>" /></a>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
+
+
+<!--<section id='testimonials' class="use-star">-->
+  <!--<h1>Monthly Musings</h1>-->
+  <!--<article class="full">-->
+    <!--<div class="testimonial-description">Our favorite letter this month was from customer who took issue with our description of the MARLIES DEKKERS <a href="/products/gloria-padded-plunge-bra" class="testimonial-link">Gloria Pinstripe Padded Plunge Bra</a>.<p></p>-->
+    <!--<q class="testimonial-quote">I have to quibble, just a bit, though – This set reminds me so much more of a grown up Kentucky straight bourbon, aged well, evolved from the workday bluster, but not completely. I was struck by how its low panty lines would work well under a pantsuit, but it also has a seductive allure that is all fun and weekend.<p></p>Either way, hope it is going well all around, and I am forever a fan of the T-Bar.</q>-->
+    <!--<p></p><div style="text-align: center"><cite>-KB</cite></div>-->
+    <!--</div>-->
+    <!--<div class="testimonial-image"><%= image_tag 'https://tbar-products.s3.amazonaws.com/spree/images/27/product2/18150_3_lb_f_zoom.jpg', :itemprop => "image" %></div>-->
+  <!--</article>-->
+<!--</section>-->
 
 <section id='press' class="use-star">
   <h1>The T<%= image_tag(getS3GeneralUrl('star-separator-teal-thin.png'), class: 'tbar-star')%>Bar in the press</h1>
@@ -245,6 +246,7 @@
   <a href='http://www.5280.com/fashionandbeauty/digital/2015/10/whats-happening-local-fashion-october' target=_blank><%= image_tag(getS3GeneralUrl('5280logosmall.jpg'),:class => 'press-image') %></a>
   <a href='http://www.urbandaddy.com/ntl/weekender/36100/The_Weekender_Watches_Lingerie_and_a_Tacopedia_National_NTL' target=_blank><%= image_tag(getS3GeneralUrl('urbandaddy.png'),:class => 'press-image') %></a>
   <a href='http://www.dailycamera.com/lifestyles/ci_29014571/boulder-online-store-thetbar-com-offers-lingerie-that-fits-owner-debby-caplin' target=_blank><%= image_tag(getS3GeneralUrl('daily-camera-logo-fitted.png'),:class => 'press-image') %></a>
+  <a href='http://www.forbes.com/sites/celiashatzman/2016/02/03/11-lingerie-looks-for-valentines-day/#48e58c0c4a11' target=_blank><%= image_tag(getS3GeneralUrl('forbes_press.png'),:class => 'press-image') %></a>
 </section>
 <% if Rails.env.production? %>
   <script>
